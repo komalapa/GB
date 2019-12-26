@@ -1,0 +1,303 @@
+body {
+    background-color: #f8f8f8;
+    margin:0px;
+}
+
+header{
+    background-color: Wheat ;
+    background-image: url("../img/s600.webp");
+    padding: 5px;
+    height: 20%;   
+    margin: 0px;
+}
+footer{
+    background-color: Wheat ;
+    height: 10%;
+    padding: 0px 20px 5px 20px;
+    margin:0px;
+}
+footer p{
+    text-align: right;
+}
+
+p {
+    text-align: justify;
+}
+
+.item_discr p::first-letter{
+    font-family:'Marker Felt', fantasy;
+    font-size: 25px;
+    color: GoldenRod ;
+    font-weight: bold;
+    font-style: normal;
+
+}
+.item_discr{
+    padding: 10px;
+}
+
+a[href]{
+    color: #484343;
+    text-decoration: none;
+}
+a[href]:active,a[href]:hover{
+    color: black;
+}
+img[alt="logo"]{
+    float:left;
+    height: 60px;
+    margin-left:20px;
+    margin-right: 20px;
+    text-align: right;
+}
+
+.menu {
+    list-style: none;
+    margin: auto;
+    vertical-align: middle;
+}
+.menu li{
+    background-color: LightGray;
+    width:32%;
+    height: 60px;
+    border: 2px solid #A9A9A9;
+    text-align: center;
+    font:bold 18px sans-serif;
+    color:#A9A9A9;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.menu li:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.menu li:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.menu li:hover, .menu li:active{
+    color: LightGray;
+    text-decoration: none;
+    background-color: #A9A9A9;
+}
+.menu li a, .menu li a:hover{
+    text-decoration: inherit;
+    color: inherit;
+}
+.menu li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+}
+.catalog_menu{
+    position: relative;
+}
+.catalog_menu ul{
+    display: none;
+}
+.catalog_menu li{
+    width: 70%;
+}
+
+
+.catalog_menu:hover ul{
+    display: block;
+    position: absolute;   
+}
+
+.catalog_menu li:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.catalog_menu li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.container{
+    width: 90%;
+    min-height: 70%;
+    margin: auto;
+}
+ 
+h3 {
+    color:black;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #eaeaea;
+}
+
+.main_image {
+    outline : 3px solid LightGray;
+    float:left;
+    margin: 30px;
+}
+.main_image:hover {
+    outline : none;
+}
+
+.h3_short_discr{
+    overflow: hidden;
+}
+.short_discr{
+    color: #707070;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px;
+    overflow: hidden;
+}
+
+.buy_btn{
+    width: 150px;
+    height: 40px;
+    border: 5px solid  Wheat;
+    border-radius: 20px;
+    overflow: hidden;
+    text-align:center;
+    font:  bold 30px sans-serif;
+    color: GoldenRod;
+}
+.buy_btn:hover{
+    border-color: GoldenRod;
+}
+.buy_btn:active{
+    border-color: wheat;
+    color: wheat;
+}
+
+.h3_features{
+    clear: both;
+}
+.full_discr{
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+.feature_list{
+    color: #A9A9A9;
+    font-size: 20px;
+    line-height: 25px;
+    font-family: sans-serif;
+    text-align: left;
+    list-style-image: url(../img/ghost-head_16.png);
+    border: 2px solid LightGray;
+    border-radius: 5px;
+}
+.feature_table, .feature_table td, .feature_table th{
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+.feature_table{
+    margin-left: 50px;
+}
+
+.feature_table th{
+    padding: 5px;
+    text-align: center;
+    min-width: 50px;
+    background-color: wheat;
+    height: 30px;
+
+}
+
+.feature_table td{
+    padding: 5px;
+    text-align: center;
+    min-width: 50px;
+}
+
+.about_person{
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+#message_fieldset{
+    width: 400px;
+    font: bold 20px sans-serif;
+    font-style: italic;
+}
+#message_fieldset label{
+    font: bold 14px sans-serif;
+    font-style: italic;
+}
+
+#message_fieldset > input{
+    font: bold 20px sans-serif;
+    font-style: italic;
+}
+
+
+#e-mail_input:focus{
+    color:blue;
+    background-color: lightblue;
+}
+
+#name_input, #e-mail_input, #theme_input, #message_textarea, #message_type_select{
+    width: 100%;
+    font: normal 18px sans-serif;
+    font-style: italic;
+    text-transform: capitalize;
+}
+
+#name_input, #e-mail_input, #theme_input{
+    height: 22px;
+}
+#about_shop{
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+}
+#history{
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    width:90%;
+    border: 2px solid #484343;
+    border-radius: 5px;
+    margin: auto;
+    padding: 5px;
+}
+h4{
+    text-align: center;
+}
+
+.author_name{
+    font-size: 12px;
+    text-align: right;
+}
+
+.item{
+    outline: 4px solid wheat;
+    display: inline-block;
+    margin: 30px;
+    padding: 15px;
+    text-align: center;
+}
+.item:hover, .item:active{
+    outline-color: GoldenRod;
+}
+
+#message{
+    float: left;
+    margin: 0 50px 100px 50px;
+}
+
+#map{
+    margin-top: 50px;
+    clear: both;
+    width: 100%;
+    height: 374px;
+}
