@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <title>shopper</title>
+</head>
+<body>
+   <div id="app">
+    <header>
+        <h1>начни свой список</h1>
+        <input type="text" v-model="product" @keyup.enter="addProduct()">
+    </header> 
+    <main>
+        <div v-for="product in box" class="item"  v-on:click="delProduct">
+            {{ product }}
+          </div>
+    </main>
+    <footer>
+        &copy Все права защищены
+    </footer>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                box: [],
+                product: 'milk'
+             
+            },
+            methods:{
+                addProduct: function() {
+                    this.box.push(this.product.trim());
+                },
+                delProduct: function(e) {
+                    console.log("box: "+this.box);
+                    const productAdded=e.currentTarget.innerHTML.trim();
+                    console.log("productAdded: ", productAdded);
+                    const index = this.box.indexOf(productAdded);
+                    console.log("index: "+index);
+                    if (index > -1) {
+                        this.box.splice(index, 1);
+                    }
+                }
+            }
+            
+
+         
+        })
+
+    </script>  
+    
+
+</div>
+</body>
+</html>
