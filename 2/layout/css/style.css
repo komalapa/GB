@@ -337,3 +337,108 @@ body{
   color: #ffffff;
   background-color: #445161;
 }
+.contacts{
+  width: 100%;
+  padding: 50px;
+  box-sizing: border-box; 
+  background-color: #445161;
+  display: flex;
+  flex-wrap: wrap;
+}
+.contacts-title{
+  color: #ffffff;
+}
+.contacts-form{
+  width: 500px;
+  margin: 0 50px 0 250px;
+}
+.contacts-form-input{
+  background-color: #fff;
+  width:100%;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 400;
+  color: #445162;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin: 0 0 21px 0;
+}
+.contacts-form-textarea{
+  background-color: #fff;
+  width:100%;
+  height: 170px;
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 400;
+  color: #445162;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin: 0 0 21px 0;
+}
+.contacts-form-btn{
+  width: 140px;
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 700;
+  color: #445162;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 0 180px 0 180px;
+}
+.contacts-form-btn:hover{
+  background-color: #f5f5f5;
+}
+.contacts-info{
+  display: block;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  margin:0 0 20px 0;
+}
+.socials-wrp{
+  display: flex;
+}
+.socials{
+  display: block;
+  width: 43px;
+  height: 43px;
+  background: url('../icons/social_buttons_338.png') no-repeat;
+  margin: 0 5px 0 0;
+  box-sizing: border-box;
+}
+.socials:hover{
+  border: 2px solid #445161;
+  border-radius: 50%;
+}
+.socials:last-child{
+  margin: 0;
+}
+.socials-tw{
+  background-position: -1px 0;
+}
+.socials-fb{
+  background-position: -50px 0;
+}
+.socials-in{
+  background-position: -99px 0;
+}
+.socials-g{
+  background-position: -148px 0;
+}
+.socials-yt{
+  background-position: right;
+}
+.copy{
+  width: 100%;
+  box-sizing: border-box; 
+  background-color: #f5f5f5;
+  text-align: center;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: 400;
+  color: #445162;
+}
