@@ -156,4 +156,6 @@ body{
   top: 4px;
   left: -40px;
 }
-  
+.pluses-item[open] .pluses-item-title:before {
+  content: "-";
+}
