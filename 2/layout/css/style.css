@@ -330,6 +330,8 @@ body{
   background-color: #ffffff;
   border: 2px solid #ffffff;
   border-radius: 5px;
+  outline: none;
+  cursor:pointer;
 }
 .buy-item-btn:hover{
   color: #ffffff;
