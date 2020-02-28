@@ -10,16 +10,25 @@ body{
   box-sizing: border-box;
   background-color: #445161;
 }
+.main-header:after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
 .main-header-wrp {
   float: left;
 }
 .main-header-title {
   color:  #ffffff;
   font-size: 60px;
+  line-height: 45px;
   font-weight: 400;
   text-align: left;
+  display: block;
 }
 .main-header-list {
+  margin: 50px 0 0 0;
   list-style-type: none;
   color:  #ffffff;
   font-size: 20px;
@@ -38,7 +47,7 @@ body{
   position: absolute;
   top: 8px;
   left: -35px;
-  background-image: url('icons/check_icon_346.png');
+  background-image: url('../icons/check_icon_346.png');
   -webkit-background-size: contain;
   background-size: contain;
   background-repeat: no-repeat;
@@ -58,6 +67,12 @@ body{
   box-sizing: border-box;
   background-color: #ffffff;
 }
+.about:after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
 .about-text-wrp{
   width: 700px;
   float: left; 
@@ -67,14 +82,23 @@ body{
   color: #333333;
 }
 .section-header{
+  display: block;
+  width: 100%;
   font-size: 30px;
   line-height: 36px;
   font-weight: 400;
   color: #445161;
   text-align: center;/*Для всех секций кроме about*/
+  margin: 0 0 30px 0;
 }
 .about-title{
     text-align: left;
+}
+.about-p{
+  margin: 0 0 20px 0;
+}
+.about-p:last-child{
+  margin: 0;
 }
 .about-video{
   display: block;
@@ -90,12 +114,6 @@ body{
   display: flex;
   flex-wrap: wrap;
   background-color: #f5f5f5;
-}
-.pluses-title {
-  width: 100%;
-  display: block;
-  margin: 0 0 30px 0;
-  text-align: center;
 }
 .pluses-item-wrp {
   width: 50%;
