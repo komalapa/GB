@@ -332,10 +332,15 @@ body{
   border-radius: 5px;
   outline: none;
   cursor:pointer;
+  text-transform: uppercase;
 }
 .buy-item-btn:hover{
   color: #ffffff;
   background-color: #445161;
+}
+.buy-item-btn:active{
+  color: #ebebeb;
+  border-color:#ebebeb ;
 }
 .contacts{
   width: 100%;
@@ -364,6 +369,7 @@ body{
   box-sizing: border-box;
   border-radius: 5px;
   margin: 0 0 21px 0;
+  outline: none;
 }
 .contacts-form-textarea{
   background-color: #fff;
@@ -377,6 +383,8 @@ body{
   box-sizing: border-box;
   border-radius: 5px;
   margin: 0 0 21px 0;
+  resize: none;
+  outline: none;
 }
 .contacts-form-btn{
   width: 140px;
@@ -387,9 +395,15 @@ body{
   background-color: #ffffff;
   border-radius: 5px;
   margin: 0 180px 0 180px;
+  outline: none;
+  box-sizing: border-box;
+  text-transform: uppercase
 }
 .contacts-form-btn:hover{
   background-color: #f5f5f5;
+}
+.contacts-form-btn:active{
+  border:2px solid #445162;
 }
 .contacts-info{
   display: block;
@@ -409,9 +423,14 @@ body{
   background: url('../icons/social_buttons_338.png') no-repeat;
   margin: 0 5px 0 0;
   box-sizing: border-box;
+  outline: none;
 }
 .socials:hover{
   border: 2px solid #445161;
+  border-radius: 50%;
+}
+.socials:active{
+  border: 2px solid #333333;
   border-radius: 50%;
 }
 .socials:last-child{
