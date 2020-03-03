@@ -1,14 +1,14 @@
 body{
     font-family:'Raleway', sans-serif;
     margin: 0;
+    width: 1920px;
 }
 .header{
-    width: 1920px;
+    width: 100%;
     min-height: 1024px;
     background-image: url("../img/bg_photo_11949.png");
     box-sizing: border-box;
     padding: 40px 0 0 0;
-
 }
 .logo-menu-wrp{
     display: flex;
@@ -52,7 +52,6 @@ body{
 }
 .menu-list-item:last-child{
     margin: 0 63px 0 0;
-
 }
 .menu-list-item-link{
     text-decoration: none;
@@ -215,3 +214,73 @@ body{
     background: none;
     opacity: 1;
 }	
+.features{
+    width: 100%;
+    min-height: 373px;
+    padding: 80px 380px 80px 380px;
+    box-sizing: border-box;
+    display:flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.features-item{
+    width: 266px;
+    /*border-bottom: 3px solid #f1eee9;
+    border-radius: 95px;*/
+}
+.features-item-link{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+.features-item-link:hover .features-item-title,.features-item-link-active .features-item-title{
+    color: #c7b299;
+}
+.features-item-link:hover .features-item-underline, .features-item-link-active .features-item-underline{
+    border-bottom: 3px solid #c7b299;
+}
+.features-item-icon{
+    margin: 0 auto 30px;
+}
+.features-item-icon-web{
+    width: 49px;
+    height: 49px;
+    background-image: url("../img/icon_10681.png");
+}
+.features-item-icon-dev{
+    width: 44px;
+    height: 40px;
+    background-image: url("../img/icon_10692.png");
+}
+.features-item-icon-custom{
+    width: 44px;
+    height: 44px;
+    background-image: url("../img/icon_10703.png");
+}
+.features-item-icon-market{
+    width: 52px;
+    height: 36px;
+    background-image: url("../img/icon_10714.png");
+}
+.features-item-title{
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 600;
+    text-align: center;
+    color: #555555;
+}
+.features-item-text{
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 300;
+    color: #8c8c8c;
+    margin: 20px 0 30px 0;
+}
+.features-item-underline{
+    width: 70px;
+    margin:0 auto;
+    border:none;
+    border-bottom: 3px solid #f1eee9;
+}
