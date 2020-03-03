@@ -98,7 +98,7 @@ body{
 .header-slider{
     width: 100%;
     margin: 0;
-    padding: 0 150px 0 150px;
+    padding: 0 150px 40px 150px;
     box-sizing: border-box;
     text-align: center;
     color: #ffffff;
@@ -120,9 +120,10 @@ body{
 .header-slider-left{
     background-image: url(../img/left_11970.png);
 }
-.header-slider-text-wrp{
-    padding: 0 0 40px 0;
-}
+/*.header-slider-text-wrp{
+    min-height: 600px;
+    position: relative;
+}*/
 .header-slider-arrow:hover{
     box-shadow:0 0 5px #ffffff;
     border-radius: 5px;
@@ -178,6 +179,8 @@ body{
 }
 .header-slider-radio-wrp{
     margin: 300px 0 0 0;
+    /*position: absolute;
+    bottom: 0px;*/
 }
 .header-slider-radio {
 	position: absolute;
