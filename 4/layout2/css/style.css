@@ -245,6 +245,9 @@ body{
 .features-item-link:hover .features-item-title,.features-item-link-active .features-item-title{
     color: #c7b299;
 }
+.features-item-link:hover .features-item-icon,.features-item-link-active .features-item-icon{
+    fill: #c7b299;
+}
 .features-item-link:hover .features-item-text:after, .features-item-link-active .features-item-text:after{
     border-bottom: 3px solid #c7b299;
 }
@@ -254,6 +257,8 @@ body{
     height: 49px;
     background-repeat: no-repeat;
     background-position: center;
+    fill:#646464;
+    display: block;
 }
 .features-item-icon-web{
     /*width: 49px;
