@@ -138,25 +138,11 @@ body{
 .header-slider-arrow{
     width: 40px;
     height: 73px;
-    -webkit-background-size: contain;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
     margin-top: 379px;
+    fill:#ffffff
 }
-.header-slider-right{
-    background-image: url(../img/right_11969.png);
-}
-.header-slider-left{
-    background-image: url(../img/left_11970.png);
-}
-/*.header-slider-text-wrp{
-    min-height: 600px;
-    position: relative;
-}*/
 .header-slider-arrow:hover{
-    box-shadow:0 0 5px #ffffff;
-    border-radius: 5px;
+    fill:#c7b299;
 }
 .header-slider-arrow:active{
     box-shadow:0 0 10px #ffffff;
