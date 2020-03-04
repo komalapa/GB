@@ -129,7 +129,7 @@ body {
     box-shadow: 0 0 10px #ffffff;
     border-radius: 5px;
 }
-.header-slider {
+.header-carousel {
     width: 100%;
     margin: 0;
     padding: 0 150px 40px 150px;
@@ -139,34 +139,34 @@ body {
     display: flex;
     justify-content: space-between;
 }
-.header-slider-arrow {
+.header-carousel-arrow {
     width: 40px;
     height: 73px;
     margin-top: 379px;
     fill: #ffffff
 }
-.header-slider-arrow:hover {
+.header-carousel-arrow:hover {
     fill: #c7b299;
 }
-.header-slider-arrow:active {
+.header-carousel-arrow:active {
     box-shadow: 0 0 10px #ffffff;
     border-radius: 5px;
 }
-.header-slider-smalltitle {
+.header-carousel-smalltitle {
     display: block;
     font-size: 36px;
     line-height: 1.2;
     font-weight: 500;
     margin: 285px 0 0 0;
 }
-.header-slider-bigtitle {
+.header-carousel-bigtitle {
     display: block;
     font-size: 52px;
     line-height: 1.2;
     font-weight: 800;
     margin: 14px 0 0 0;
 }
-.header-slider-text {
+.header-carousel-text {
     font-family: Montserrat;
     font-size: 16px;
     line-height: 24px;
@@ -175,7 +175,7 @@ body {
     display: block;
     width: 575px;
 }
-.header-slider-bth {
+.header-carousel-bth {
     width: 170px;
     height: 53px;
     background-color: #998675;
@@ -190,10 +190,10 @@ body {
     margin: 50px 0 0 0;
     color: #ffffff;
 }
-.header-slider-bth:hover {
+.header-carousel-bth:hover {
     color: #d3d3d3;
 }
-.header-slider-bth:active {
+.header-carousel-bth:active {
     border: 2px solid #ffffff;
     color: #ffffff;
 }
