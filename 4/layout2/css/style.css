@@ -314,3 +314,110 @@ body{
     border:none;
     border-bottom: 3px solid #f1eee9;
 }
+.screenshots{
+    width:100%;
+    min-height: 700px;
+    background-color: #fbfaf8;
+    padding: 80px 345px 0 345px;
+    box-sizing: border-box;
+}
+.screenshots-title{
+    display:block;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #555555;
+}
+.screenshots-descr{
+    display: block;
+    width: 757px;
+    margin:24px auto 0;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+    color: #8c8c8c;
+}
+.screenshots-imgs{
+    margin: 40px 0 0 0;
+    position: relative;
+}
+.screenshots-item-center{
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    
+}
+.screenshots-item-left{
+    display: block;
+    position: absolute;
+    top:82px;
+    left:0;
+    z-index: 1;
+}
+.screenshots-item-right{
+    display: block;
+    position: absolute;
+    top:82px;
+    right:0;
+    z-index: 1;
+}
+.screenshots-item:hover{
+    z-index: 3;
+}
+.adv{
+    width: 100%;
+    min-height: 150px;
+    background-color: #f4f5f8;
+    background-image: linear-gradient(90.0deg, #211b19 0%, #4e3427 100%);
+    padding: 48px 375px 49px 375px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.adv-title{
+    display: block;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #ffffff;
+    margin:0
+}
+.adv-title-brand{
+    color: #c7b299;
+}
+.adv-text{
+    font-family: Montserrat;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #615855;
+    margin:8px 0 0 0;
+}
+.adv-purchase{
+    width: 170px;
+    height: 50px;
+    background-color: #998675;
+    border-radius: 3.0px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    outline: none;
+}
+.adv-purchase:hover{
+    color: #615855;
+}
+.adv-purchase:active{
+    border: 2px solid #615855;
+}
