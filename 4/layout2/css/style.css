@@ -1,7 +1,4 @@
-/*@font-face {
-    font-family:Raleway;
-    src: url(../fonts/raleway/raleway.css);
-   }*/
+
 body{
     font-family:'Raleway', sans-serif;
     margin: 0 auto;
@@ -23,8 +20,9 @@ body{
 }
 .logo{
     text-decoration: none;
+    color: #ffffff;
 }
-.logo:hover .logo-text{
+.logo:hover{
     color:#c7b299;
 }
 .logo:active{
@@ -32,17 +30,16 @@ body{
 }
 .logo-img{
     display: block;
-    width: 64px;
-    height: 56px;
+    width: 66px;
+    height: 59px;
     float: left;
-    background-image: url("../img/logos_11279.png");
+    fill: currentColor;
 }
 .logo-text{
     font-size: 34px;
     line-height: 56px;
     font-weight: 400;
     letter-spacing: -0.04em;
-    color: #ffffff;
 }
 .menu{
     display: flex;
@@ -76,28 +73,55 @@ body{
     border-radius: 5px;
 }
 .menu-bag{
-    width: 18px; 
-    height: 24px; 
+    width: 20px; 
+    height: 27px; 
     padding: 0;
     background-color: transparent;
     border: none;
     margin: 0 30px 0 0;
     outline: none;
+    fill: #ffffff;
+}
+.menu-search-form{
+    position: relative;
+    padding-top: 5px;
+}
+.search-input-wrp{
+    width: 27px;
+    height: 28px;
 }
 .menu-search{
-    width: 24px; 
-    height: 24px; 
-    padding: 0;
     background-color: transparent;
     border: none;
     outline: none;
     box-sizing: border-box;
+    margin: 0px;
+    font-size: 14px;
+    padding:0 5px;
 }
-.menu-bag:hover, .menu-search:hover{
+.menu-search-lbl{
+    fill: #ffffff;
+    position: absolute;
+}
+.menu-search-icon{
+    width: 27px;
+    height: 28px;
+}
+.menu-search:focus, .menu-search:active {
+    width: 300px;
+    height: 30px;
+    transition: width 1s ease-out;
+    position: absolute;
+    top:40px;
     box-shadow:0 0 5px #ffffff;
     border-radius: 5px;
+    box-sizing: border-box;
+    color: #ffffff;
+  }
+.menu-bag:hover, .menu-search-lbl:hover{
+    fill:#c7b299;
 }
-.menu-bag:active, .menu-search:active{
+.menu-bag:active{
     box-shadow:0 0 10px #ffffff;
     border-radius: 5px;
 }
