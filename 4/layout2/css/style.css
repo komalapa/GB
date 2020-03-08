@@ -243,12 +243,9 @@ body {
     justify-content: space-between;
     text-align: center;
 }
-.features-item {
-    width: 266px;
-}
 .features-item-link {
     display: block;
-    width: 100%;
+    width: 266px;
     height: 100%;
     text-decoration: none;
     outline: none;
