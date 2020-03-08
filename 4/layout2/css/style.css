@@ -275,26 +275,6 @@ body {
     fill: #646464;
     display: block;
 }
-.features-item-icon-web {
-    /*width: 49px;
-    height: 49px;*/
-    background-image: url("../img/icon_10681.png");
-}
-.features-item-icon-dev {
-    /*width: 44px;
-    height: 40px;*/
-    background-image: url("../img/icon_10692.png");
-}
-.features-item-icon-custom {
-    /*width: 44px;
-    height: 44px;*/
-    background-image: url("../img/icon_10703.png");
-}
-.features-item-icon-market {
-    /*width: 52px;
-    height: 36px;*/
-    background-image: url("../img/icon_10714.png");
-}
 .features-item-title {
     font-size: 22px;
     line-height: 1.2;
