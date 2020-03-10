@@ -405,3 +405,195 @@ body {
 .adv-purchase:active {
     border: 2px solid #615855;
 }
+.projects{
+    width: 100%;
+    min-height: 700px;
+    background-color: #ffffff;
+    padding: 80px 375px 80px 375px;
+    box-sizing: border-box;
+}
+.projects-title{
+    display:block;
+    width: 100%;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #555555;
+}
+.projects-dscr{
+    display: block;
+    margin:24px auto 0;
+    width: 757px;
+    font-family: Montserrat;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+    color: #8c8c8c;
+    text-align: center;
+}
+.projects-tags{
+    display: flex;
+    justify-content: center;
+    margin:40px 0 0 0
+}
+.projects-tags-item{
+    min-width: 70px;
+    padding:0 20px;
+    margin: 0 10px 0 0;
+    height: 32px;
+    border: 1.0px solid #ebebeb;
+    border-radius: 3.0px;
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 32px;
+    font-weight: 300;
+    color: #8c8c8c;
+    background-color: transparent;
+    outline: none;
+}
+.projects-tags-item:last-child{
+    margin: 0;
+}
+.projects-tags-item:hover, .projects-tags-item-active{
+    background-color: #998675;
+    color: #ffffff;   
+}
+.projects-tags-item:active{
+    box-shadow: 0 0 10px #000000;
+}
+.projects-displayed{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin:0;
+    padding:40px 0;
+}
+.projects-displayed-item{
+    margin:0 30px 30px 0;
+    width: 370px;
+    text-decoration: none;
+    position: relative;
+}
+.projects-displayed-item:nth-child(3n){
+    margin: 0 0 30px 0;
+}
+.projects-displayed-item:nth-last-child(3),.projects-displayed-item:nth-last-child(2), .projects-displayed-item:nth-last-child(1){
+    margin-bottom: 0;
+}
+.projects-displayed-item-img{
+    display: block;
+    width: 370px;
+    height: 237px;
+    background-color: #8c8c8c;
+}
+.projects-displayed-item-link{
+    display: none;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background-color: transparent;
+    fill: #ffffff;
+    position: absolute;
+    top:106px;
+    left:144px;
+    outline: none;
+    padding: 0;
+}
+.projects-displayed-item-search{
+    display: none;
+    width: 29px;
+    height: 27px;
+    border: none;
+    background-color: transparent;
+    fill: #ffffff;
+    position: absolute;
+    top:106px;
+    right:144px;
+    outline:none;
+    padding: 0;
+}
+.projects-displayed-item-link:hover,.projects-displayed-item-search:hover{
+    fill: #c7b299;
+}
+.projects-displayed-item-link:active,.projects-displayed-item-search:active{
+    box-shadow: 0 0 10px #ffffff;
+}
+.projects-displayed-item-dscr-wrp{
+    padding:30px 27px 27px 27px;
+    box-sizing: border-box;
+    background-color: #fbfaf8;
+    margin: 0;
+    position: relative;
+}
+.projects-displayed-item-dscr-wrp:before{
+    content: '';
+    width: 30px;
+    height: 10px;
+    display: block;
+    box-sizing: border-box;
+    border:15px solid;
+    border-color: transparent transparent #fbfaf8 transparent;
+    position: absolute;
+    top: -30px;
+    left: 19px;
+}
+.projects-displayed-item-title{
+    display: block;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #c7b299;
+}
+.projects-displayed-item-type{
+    display: block;
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 300;
+    color: #d1d1d1;
+    margin:14px 0 0 0;
+}
+.projects-displayed-item:hover .projects-displayed-item-dscr-wrp{
+    background-color: #362f2d;
+}
+.projects-displayed-item:hover .projects-displayed-item-dscr-wrp:before{
+    border-color:transparent transparent #362f2d transparent;
+}
+.projects-displayed-item:hover .projects-displayed-item-title{
+    color: #ffffff;
+}
+.projects-displayed-item:hover .projects-displayed-item-type{
+    color: #c7b299;
+}
+.projects-displayed-item:hover .projects-displayed-item-img{
+    filter: brightness(50%);;
+}
+.projects-displayed-item:hover .projects-displayed-item-link,.projects-displayed-item:hover .projects-displayed-item-search{
+    display: block;
+}
+.projects-displayed-item:active{
+    box-shadow: 0 0 10px #000000;
+}
+.projects-display-btn{
+    width: 170px;
+    height: 50px;
+    background-color: #998675;
+    border-radius: 3.0px;
+    font-size: 14px;
+    line-height: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    outline: none;
+}
+.projects-display-btn:hover{
+    color: #d1d1d1;
+}
+.projects-display-btn:active{
+    box-shadow: 0 0 10px #000000;
+}
