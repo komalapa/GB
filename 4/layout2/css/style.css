@@ -602,18 +602,23 @@ body {
     padding: 0;
     position: relative;
 }
+.video-controls-wrp{
+    width: 100%;
+    padding: 0;
+    position: absolute;
+    top: 210px;
+}
 .video-play{
+    display: block;
     width: 100px;
     height: 100px;
+    margin: 0 auto;
     text-align: center;
     box-sizing: border-box;
     border-radius: 50%;
     border-color: transparent;
     background-color: rgba(0, 0, 0, 0.2);;
     fill:#ffffff;
-    position: absolute;
-    top: 210px;
-    left:911px;
     outline: none;
 }
 .video-play:hover{
@@ -624,13 +629,13 @@ body {
 }
 .video-title{
     display: block;
-    position: absolute;
-    top: 354px;
-    left:768px;
+    width: 100%;
+    text-align: center;
     font-size: 30px;
     line-height: 1.2;
     font-weight: 500;
     color: #ffffff;
+    margin: 44px 0 29px 0;
 }
 .video-dscr{
     font-family: Montserrat, Arial, sans-serif;
@@ -639,10 +644,19 @@ body {
     font-weight: 300;
     color: #ffffff;
     display: block;
+    margin: 0 auto;
     width: 552px;
     text-align: center;
     padding: 0;
-    position: absolute;
-    top: 405px;
-    left:685px;
+}
+.video-duration{
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 40px 0 0 0;
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #c7b299;
 }
