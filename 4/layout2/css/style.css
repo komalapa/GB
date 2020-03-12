@@ -448,7 +448,7 @@ body {
 
 .adv-purchase {
     width: 170px;
-    height: 50px;
+    min-height: 50px;
     background-color: #998675;
     border-radius: 3.0px;
     text-align: center;
@@ -678,7 +678,7 @@ body {
 
 .projects-display-btn {
     width: 170px;
-    height: 50px;
+    min-height: 50px;
     background-color: #998675;
     border-radius: 3.0px;
     font-size: 14px;
@@ -790,7 +790,7 @@ body {
 .mobile-about {
     display: block;
     width: 657px;
-    padding: 31px 0 0 29px;
+    padding: 31px 0 50px 29px;
 }
 
 .mobile-about-title {
