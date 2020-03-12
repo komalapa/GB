@@ -1173,7 +1173,8 @@ body {
     color: #555555;
     margin: 0;
 }
-.main-footer-waxom-text{
+
+.main-footer-waxom-text {
     margin-top: 29px;
 }
 
@@ -1234,7 +1235,8 @@ body {
     text-align: left;
     margin-bottom: 30px;
 }
-.main-footer-post{
+
+.main-footer-post {
     display: block;
     margin: 0;
     padding: 0 0 17px 0;
@@ -1243,87 +1245,152 @@ body {
     text-decoration: none;
     border-bottom: 2px solid #252525;
 }
-.main-footer-post-text{
+
+.main-footer-post-text {
     margin-top: 10px;
 }
-.main-footer-post-date{
+
+.main-footer-post-date {
     font-family: Montserrat, Arial, sans-serif;
     font-size: 12px;
     line-height: 12px;
     font-weight: 300;
     color: #363636;
-    
+
 }
+
 .main-footer-post:hover .main-footer-post-date,
-.main-footer-post-active .main-footer-post-date{
+.main-footer-post-active .main-footer-post-date {
     color: #ffffff;
 }
-.main-footer-post:hover .main-footer-post-text,.main-footer-post:hover .main-footer-twit-text,
-.main-footer-post-active .main-footer-post-text{
+
+.main-footer-post:hover .main-footer-post-text,
+.main-footer-post:hover .main-footer-twit-text,
+.main-footer-post-active .main-footer-post-text {
     color: #c7b299;
 }
-.main-footer-twits{
+
+.main-footer-twits {
     width: 265px;
     padding: 0;
     margin: 13px 33px 0 0;
 }
 
-.twit-name{
+.twit-name {
     font-size: 14px;
     line-height: 20px;
     font-weight: 300;
     color: #00bff3;
 }
-.main-footer-post-link{
+
+.main-footer-post-link {
     font-weight: 300;
     color: #555555;
     text-decoration: none;
 }
-.main-footer-post-link:hover{
+
+.main-footer-post-link:hover {
     color: #c7b299;
     text-decoration: underline;
 }
-.main-footer-post-link:active{
+
+.main-footer-post-link:active {
     color: #ffffff;
 }
-.main-footer-post:hover .main-footer-post-link{
+
+.main-footer-post:hover .main-footer-post-link {
     color: #c7b299;
 }
-.main-footer-twit{
+
+.main-footer-twit {
     padding: 15px 0 21px 0;
 }
-.main-footer-dribble{
+
+.main-footer-dribble {
     width: 286px;
     padding: 0;
     margin: 13px 0 0 0;
 }
-.main-footer-dribble-wrp{
+
+.main-footer-dribble-wrp {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
-.main-footer-dribble-link{
+
+.main-footer-dribble-link {
     display: block;
     padding: 0;
     text-decoration: none;
     box-sizing: border-box;
 }
-.main-footer-dribble-link:nth-child(1){
-    margin:0 10px 10px 0;
+
+.main-footer-dribble-link:nth-child(1) {
+    margin: 0 10px 10px 0;
 }
-.main-footer-dribble-link:nth-child(2){
-    margin:0 0 10px 0;
+
+.main-footer-dribble-link:nth-child(2) {
+    margin: 0 0 10px 0;
 }
-.main-footer-dribble-link:nth-child(3){
-    margin:0 10px 0 0;
+
+.main-footer-dribble-link:nth-child(3) {
+    margin: 0 10px 0 0;
 }
-.main-footer-dribble-link:nth-child(4){
+
+.main-footer-dribble-link:nth-child(4) {
     margin: 0;
 }
-.main-footer-dribble-link:hover{
+
+.main-footer-dribble-link:hover {
     filter: hue-rotate(100deg);
 }
-.main-footer-dribble-link:active{
-    filter:grayscale();
+
+.main-footer-dribble-link:active {
+    filter: grayscale(100%);
+}
+
+.rights {
+    width: 100%;
+    min-height: 111px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #111111;
+    padding: 0 375px 0 375px;
+    box-sizing: border-box;
+}
+
+.rights-copyrights,
+.rights-designer,
+.rights-link {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 300;
+    color: #555555;
+    text-decoration: none;
+}
+
+.rights-owner {
+    color: #959595;
+    text-decoration: none;
+}
+
+.footer-navigation {
+    color: #252525;
+}
+
+.rights-link:hover,
+.rights-link-active,
+.rights-owner:hover {
+    color: #c7b299;
+}
+
+.rights-designer {
+    color: #555555;
+}
+
+.rights-designer-link {
+    color: #959595;
 }
