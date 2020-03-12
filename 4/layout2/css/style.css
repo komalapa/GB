@@ -10,6 +10,7 @@ body {
     background-color: #464440;
     background-image: url("../img/bg_photo_11949.png");
     background-repeat: no-repeat;
+    background-size: cover;
     /*25% пагинация "убегает" с фона*/
     box-sizing: border-box;
     padding: 40px 0 0 0;
@@ -265,12 +266,12 @@ body {
     margin: 0;
 }
 
-.header-pagination-link:hover {
+.header-pagination-link:hover, .header-pagination-link-active {
     display: block;
     background-color: transparent;
     opacity: 1;
-    border: 2px solid #ffffff;
-    transform: scale(1.2);
+    border: 1px solid #d3c1ad;;
+    transform: scale(1.5);
 }
 
 .features {
