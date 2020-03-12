@@ -187,6 +187,7 @@ body {
     line-height: 1.2;
     font-weight: 500;
     margin: 285px 0 0 0;
+    padding: 0 40px;
 }
 
 .header-carousel-bigtitle {
@@ -202,14 +203,15 @@ body {
     font-size: 16px;
     line-height: 24px;
     font-weight: 300;
-    margin: 19px 0 0 0;
+    margin: 19px auto 0;
     display: block;
     width: 575px;
 }
 
 .header-carousel-bth {
-    width: 170px;
-    height: 53px;
+    min-width: 170px;
+    max-width: 800px;
+    min-height: 53px;
     background-color: #998675;
     border: none;
     border-radius: 5px;
@@ -219,7 +221,7 @@ body {
     font-weight: 800;
     outline: none;
     box-sizing: border-box;
-    margin: 50px 0 0 0;
+    margin: 50px 0 50px 0;
     color: #ffffff;
 }
 
@@ -234,14 +236,13 @@ body {
 
 .header-pagination {
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: center;
     align-content: center;
-    width: 91px;
+    min-width: 91px;
     height: 11px;
     position: absolute;
     bottom: 40px;
-    left: 915px;
-
 }
 
 .header-pagination-link {
@@ -251,7 +252,7 @@ body {
     background-color: #ffffff;
     opacity: 0.5;
     border-radius: 50%;
-    margin: 0 9px 0 0;
+    margin: 0 10px 0 0;
     border: 2px solid transparent;
     box-sizing: border-box;
     outline: none;
