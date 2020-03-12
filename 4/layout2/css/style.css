@@ -1083,3 +1083,34 @@ body {
     box-shadow: 0 0 10px #c7b299;
     border-radius: 50%;
 }
+.clients{
+    width: 100%;
+    min-height: 489px;
+    background-color: #191919;
+    background-image: url('../img/background_8766.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 140px 400px 140px 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+}
+.clients-link{
+    text-decoration: none;
+    display: flex;
+    width: 210px;
+    height: 210px;
+    align-content: center;
+}
+.clients-link:hover{
+    filter: brightness(75%);
+}
+.clients-link:active{
+    filter: brightness(50%);
+}
+.clients-logo{
+    display: block;
+    margin: auto 0;
+}
