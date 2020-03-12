@@ -924,7 +924,7 @@ body {
     box-sizing: border-box;
     padding: 0 580px 0 583px;
     text-align: center;
-    max-width: 0 0 40px 0;
+    margin:0;
 }
 .posts-item{
     width:370px;
