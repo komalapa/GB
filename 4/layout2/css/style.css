@@ -1893,7 +1893,8 @@ body {
 .rights-designer-link {
     color: #959595;
 }
-@media (max-width : 300px){
+
+@media (min-width : 300px){
     body{
         width: 100%;
         margin: 0;
@@ -1903,10 +1904,12 @@ body {
         min-height: 0;
         padding: 20px 0 0 0;
         display: block;
+        box-sizing: border-box;
     }
     .logo-menu-wrp{
         width: 100%;
         padding: 2%;
+        box-sizing: border-box;
     }
     .menu{
         display: block;
@@ -1990,6 +1993,9 @@ body {
         display: none;
     }
     .features{
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 0;
 
     }
     .screenshots{
@@ -1999,23 +2005,33 @@ body {
         display: none;
     }
     .projects{
-
+        display: none;/**/
     }
     .video{
         display: none;
     }
     .mobile{
-
+        display: none;/**/
     }
     .statistic{
         flex-direction: column;
         padding: 40px 0;
+        box-sizing: border-box;
     }
     .statistic-item{
         margin: 0 auto 20px;
     }
     .statistic-item:last-child{
         margin: 0 auto;
+    }
+    .posts{
+        display: none;/**/
+    }
+    .clients{
+        display: none;/**/
+    }
+    .main-footer{
+        display: none;
     }
     footer{
         display: none;
