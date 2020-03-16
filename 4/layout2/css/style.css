@@ -1893,3 +1893,38 @@ body {
 .rights-designer-link {
     color: #959595;
 }
+@media (min-width : 300px){
+    body{
+        width: 100%;
+        margin: 0;
+    }
+    .header{
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+    .logo-menu-wrp{
+        width: 100%;
+        padding: 0;
+    }
+    .menu{
+        display: block;
+    }
+    .menu-list{
+        display: block;
+    }
+    
+    
+    .header-carousel{
+        display: none;
+    }
+    .header-pagination{
+        display: none;
+    }
+    main{
+        display: none;
+    }
+    footer{
+        display: none;
+    }
+}
