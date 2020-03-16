@@ -1900,12 +1900,13 @@ body {
     }
     .header{
         width: 100%;
+        min-height: 0;
+        padding-bottom: 50px;
         display: block;
-        padding: 0;
     }
     .logo-menu-wrp{
         width: 100%;
-        padding: 0;
+        padding: 2%;
     }
     .menu{
         display: block;
@@ -1913,7 +1914,18 @@ body {
     .menu-list{
         display: block;
     }
-    
+    .menu-bag{
+        display:inline;
+        margin: 0 20px 0 40px;
+    }
+    .menu-search-form{
+        display: inline;     
+    }
+    .menu-search-lbl {
+        fill: #ffffff;
+        position: absolute;
+        top: -5px;
+    }
     
     .header-carousel{
         display: none;
