@@ -2072,7 +2072,7 @@ body {
         width: 100%;
         padding: 0 10px;
     }
-    .posts-item{
+    .posts-item, .posts-item:nth-child(3n+2){
         margin: 10px auto 0;
     }
     .posts-arrows{
