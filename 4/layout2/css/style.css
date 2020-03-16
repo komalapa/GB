@@ -1893,7 +1893,7 @@ body {
 .rights-designer-link {
     color: #959595;
 }
-@media (min-width : 300px){
+@media (max-width : 300px){
     body{
         width: 100%;
         margin: 0;
@@ -1989,8 +1989,33 @@ body {
     .header-pagination{
         display: none;
     }
-    main{
+    .features{
+
+    }
+    .screenshots{
         display: none;
+    }
+    .adv{
+        display: none;
+    }
+    .projects{
+
+    }
+    .video{
+        display: none;
+    }
+    .mobile{
+
+    }
+    .statistic{
+        flex-direction: column;
+        padding: 40px 0;
+    }
+    .statistic-item{
+        margin: 0 auto 20px;
+    }
+    .statistic-item:last-child{
+        margin: 0 auto;
     }
     footer{
         display: none;
