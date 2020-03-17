@@ -2079,12 +2079,21 @@ body {
         margin-bottom: 0;
     }
     .clients{
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         padding: 40px 0;
         box-sizing: border-box;
     }
-    .clients-link{
-        margin: 10px auto 0;
+    .clients-link, .clients-link:last-child{
+        margin: 5vw;
+        width: 40vw;
+        height: 40vw;
+        padding: 0;
+    }
+    .clients-logo{
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto 0;
     }
     .main-footer{
         display: none;
