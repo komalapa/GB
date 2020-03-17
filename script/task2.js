@@ -1,3 +1,5 @@
+"use strict";
+
 /*
 //1
 
@@ -107,4 +109,28 @@ function calc(a,b,operation){
             return null;
     }
 }
-console.log ("№6 калькулятор: calc(5,6,\"sub\") = " + calc(5,6,"sub"));   
+console.log ("№6 калькулятор: calc(5,6,\"sub\") = " + calc(5,6,"sub"));  
+
+//7 
+//null и 0 не равны. Для null и undefined приведение типов не выполняется, они равны только друг другу. Оба значения используются как "нет значения", а 0 - это просто число.
+
+//8
+function power (val, pow){
+    if (pow>1){
+        return (val*power(val,(pow-1)))
+    }else if (pow == 0){
+        return 1;
+    } else if (pow == 1){
+        return val
+    } else if (pow<0){
+        return (1/(val*power(val,(((-1)*pow)-1)))) ;
+    }
+}
+console.log ("№8 степень: power(2,3) = " + power(2,3));
+console.log ("№8 степень: power(2,-3) = " + power(2,-3));
+console.log ("№8 степень: power(2,0) = " + power(2,0));
+console.log ("№8 степень: power(2,1) = " + power(2,1));
+
+//9 к false приводятся: undefined, null, числа 0 и NaN,  пустая строка, других вариантов не нашла
+
+//10 к числу
