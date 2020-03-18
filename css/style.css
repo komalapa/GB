@@ -965,7 +965,7 @@ body {
 }
 
 .adv-purchase:active {
-    border: 2px solid #615855;
+    box-shadow: 0 0 10px #ffffff;
 }
 
 .projects {
