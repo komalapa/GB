@@ -546,7 +546,9 @@ body {
     display: flex;
     align-items: center;
 }
-
+.burger-menu{
+    display: none;
+}
 .menu-list {
     display: flex;
     list-style-type: none;
