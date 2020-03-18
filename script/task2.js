@@ -112,7 +112,17 @@ function calc(a,b,operation){
 console.log ("№6 калькулятор: calc(5,6,\"sub\") = " + calc(5,6,"sub"));  
 
 //7 
-//null и 0 не равны. Для null и undefined приведение типов не выполняется, они равны только друг другу. Оба значения используются как "нет значения", а 0 - это просто число.
+//null и 0 не равны. Для null и undefined приведение типов не выполняется, они равны только друг другу. Оба значения используются как "нет значения", а 0 - это просто число. null = 0 только при явном преобразовании типа.
+//консоль
+/*
+if (Number(null)==0){console.log('ok')}else {console.log('no')}
+VM451:1 ok
+undefined
+if (null==0){console.log('ok')}else {console.log('no')}
+VM477:1 no
+undefined
+/*
+
 
 //8
 function power (val, pow){
