@@ -8,12 +8,19 @@ function rle(raw){
         if (raw[i]==curSimbol){
             counter++
         } else {
-            code = code + counter+ raw[i];
+            if (counter>1){
+                code = code + counter+ raw[i];
+            } else {
+                code = code + raw[i];
+            }
             counter = 1;
             curSimbol = raw[i];
         }
     }
-    return code.slice(1);//delete first "1"
+    if (counter>1){
+        code = code + counter;
+    }
+    return code;
 }
 function unrle(code){
 
