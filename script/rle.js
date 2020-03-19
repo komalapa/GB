@@ -21,4 +21,4 @@ function unrle(code){
 
 let input="AAAAAAAAAAAABAAAAAAAAAAAABBBAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA";
 input="rrrtttyyyr";
-console.log(rle(input));
+console.log(input+" >>RLE>> "+rle(input));
