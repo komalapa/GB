@@ -39,22 +39,23 @@ function comparison (a, b) {
 
      result = true;
     }
-    if (Array.isArray(a)&&Array.isArray(b)) {
-        if (a.length==b.length){    
-            result=true;
-            for (let i=0; i<a.length;i++){
-                if (a[i]!=b[i]) result = false;
-            }
-        }
-    }
+    //if (Array.isArray(a)&&Array.isArray(b)) {
+    //    if (a.length==b.length){    
+    //        result=true;
+    //        for (let i=0; i<a.length;i++){
+    //            if (!comparison(a[i],b[i])) result = false;
+    //        }
+    //    }
+    //}
+    //сравнение массивов и объектов одинаково
     if (typeof(a)=="object"&&typeof(b)=="object") {
             result=true;
-            console.log("OBJECT")
+            //console.log("OBJECT")
             for (let i in a ){
-                if (a[i]!=b[i]) result = false;
+                if (!comparison(a[i],b[i])) result = false;
             }
             for (let i in b ){
-                if (a[i]!=b[i]) result = false;
+                if (!comparison(a[i],b[i])) result = false;
             }  
     }
     return result
