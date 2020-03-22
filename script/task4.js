@@ -47,14 +47,14 @@ function simple(maxNmb=100){
     let simpleFlag=true;
     while (i<=maxNmb){
         simpleFlag=true;
-        for (let j=0; j<simpleNmbs.length; j++){
-            console.log(i + " % " + simpleNmbs[j] +" = "+ i%simpleNmbs[j]);
-            if (simpleNmbs[j]<=(i/2)){
+        for (let j=0; simpleNmbs[j]<=(i/2); j++){
+            //проверка перенесена в for вместо j<simpleNmbs.length
+            //if (simpleNmbs[j]<=(i/2)){
                 if (i%simpleNmbs[j]==0){
                     simpleFlag=false;
                     break;
                 }            
-            }
+            //}
         }
         if (simpleFlag){
             simpleNmbs.push(i++);
