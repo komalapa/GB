@@ -21,20 +21,47 @@ function showFruct(){
     console.log (`color: ${this.color}
     form: ${this.form}`)
 }
-function newFruct(name,color,form,isTasty){
-    let outputObj={
-        name,
-        color,
-        form,
-        isTasty,
-    }
-    outputObj.show=showFruct;
-    return outputObj;
-};
-let apple = newFruct('apple','green','sphere', true);
+function Fruct(name,color,form,isTasty){
+    this.name=name,
+    this.color=color,
+    this.form=form,
+    this.isTasty=isTasty,
+    this.show=showFruct   
+}
+let apple = new Fruct('apple','green','sphere', true);
 apple.show();
-//3
+
+//3 - пока не поняла задание как здесь применить рекурсию
 console.log("------ 3 ------");
+function comparison (a, b) {
+    let result = false;
+    if (a === b){
+
+     result = true;
+    }
+    if (Array.isArray(a)&&Array.isArray(b)) {
+        if (a.length==b.length){    
+            result=true;
+            for (let i=0; i<a.length;i++){
+                if (a[i]!=b[i]) result = false;
+            }
+        }
+    }
+    if (typeof(a)=="object"&&typeof(b)=="object") {
+            result=true;
+            console.log("OBJECT")
+            for (let i in a ){
+                if (a[i]!=b[i]) result = false;
+            }
+            for (let i in b ){
+                if (a[i]!=b[i]) result = false;
+            }  
+    }
+    return result
+  }
+
+
+
 
 //"долг" простые числа
 console.log("---------- простые ----------");
