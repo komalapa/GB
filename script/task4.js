@@ -65,8 +65,11 @@ function comparison(a, b) {
     return result
 }
 
-
-
+console.log("comparison(1,2) = "+comparison(1,2));
+console.log("comparison([1,2],[1,2]) = "+comparison([1,2],[1,2]));
+console.log("comparison([1,2,3],[1,2]) = "+comparison([1,2,3],[1,2]));
+console.log("comparison({'q':'w','s':'d','h':'t'},{'q':'w','s':'d'}) = "+comparison({'q':'w','s':'d','h':'t'},{'q':'w','s':'d'}));
+console.log("comparison({'q':'w','s':'d'},{'q':'w','s':'d'}) = "+comparison({'q':'w','s':'d'},{'q':'w','s':'d'}));
 
 //"долг" простые числа
 console.log("---------- простые ----------");
