@@ -7,14 +7,14 @@ function simple(){
     let simpleFlag=true;
     while (i<=100){
         simpleFlag=true;
-        for (let j=2; j<i/2;j++){
+        for (let j=2; j<=i/2;j++){
             if (i%j==0){
                 simpleFlag=false
                 break;
             }
         }
         if (simpleFlag){
-            console.log(i++);
+            console.log(i);
         }
         i++;
     }
