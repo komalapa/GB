@@ -7,11 +7,13 @@ function generateField(color1 = "white", color2 = "black") {
         row.className = "row";
         for (let j = 0; j < 8; j++) {
             let cell = document.createElement("div");
-            cell.className = "cell";
+            //cell.className = "cell";
             if (i % 2 == j % 2) {
                 cell.style = `background-color : ${color1}`;
+                cell.className = "cell cell-color1";
             } else {
                 cell.style = `background-color : ${color2}`;
+                cell.className = "cell cell-color2";
             }
 
             row.appendChild(cell);
@@ -22,6 +24,7 @@ function generateField(color1 = "white", color2 = "black") {
 }
 
 function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue", "blue", "violet", "white", "grey", "black"]) {
+    let colorFlag=true;
     let carousel = document.getElementById("carousel");
     let choosen = document.createElement("div");
     choosen.className = "carousel-choosen";
@@ -36,6 +39,16 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
         item.style = `background-color : ${colors[i]}`;
         item.onclick = function () {
             choosen.style = `background-color : ${colors[i]}`;
+            let cells={};
+            if (colorFlag) {
+                cells=document.getElementsByClassName("cell-color1");
+            } else {
+                cells=document.getElementsByClassName("cell-color2");
+            }
+            colorFlag=!colorFlag;
+            for (let j=0; j<cells.length; j++){
+                cells[j].style=`background-color : ${colors[i]}`;
+            }
         }
         itemsList.appendChild(item);
     }
