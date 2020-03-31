@@ -1,4 +1,24 @@
 function generateField(color1 = "white", color2 = "black") {
+    const figurs = {
+        black: {
+            king: '&#9818',
+            rook: '&#9820',
+            bishop: '&#9821',
+            queen: '&#9819',
+            knight: '&#9822',
+            pawn: '&#9823',
+      
+        },
+        white: {
+            king: '&#9812',
+            rook: '&#9814',
+            bishop: '&#9815',
+            queen: '&#9813',
+            knight: '&#9816',
+            pawn: '&#9817',
+        }
+      };
+      
     //добавляет 8 div - строк в каждом 8 div клеток
     let field = document.getElementById("chess");
     //console.log(field);
@@ -9,11 +29,15 @@ function generateField(color1 = "white", color2 = "black") {
             let cell = document.createElement("div");
             //cell.className = "cell";
             if (i % 2 == j % 2) {
-                cell.style = `background-color : ${color1}`;
+                cell.style.backgroundColor = `${color1}`;
+                cell.style.color="black";
                 cell.className = "cell cell-color1";
-            } else {
-                cell.style = `background-color : ${color2}`;
+                cell.innerHTML = figurs.black.queen;
+                } else {
+                cell.style.backgroundColor = `${color2}`;
+                cell.style.color="white";
                 cell.className = "cell cell-color2";
+                cell.innerHTML = figurs.white.king;
             }
 
             row.appendChild(cell);
@@ -84,7 +108,14 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
             }
             colorFlag=!colorFlag;
             for (let j=0; j<cells.length; j++){
-                cells[j].style=`background-color : ${colors[i]}`;
+                cells[j].style.backgroundColor=`${colors[i]}`;
+                if (cells[j].style.color == cells[j].style.backgroundColor) {
+                    if (cells[j].style.color=="white"){ cells[j].style.color="wheat";}
+                    else if (cells[j].style.color=="black") { cells[j].style.color="blue";}
+                } else {
+                    if (cells[j].style.color=="wheat"){ cells[j].style.color="white";}
+                    else if (cells[j].style.color=="blue")  { cells[j].style.color="black";}
+                }
             }
         }
         itemsList.appendChild(item);
