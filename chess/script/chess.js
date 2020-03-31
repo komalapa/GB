@@ -29,6 +29,11 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
     let choosen = document.createElement("div");
     choosen.className = "carousel-choosen";
     carousel.appendChild(choosen);
+    let listWrp = document.createElement("div");
+    listWrp.className = "carousel-list-wrp";
+    let arrowLeft = document.createElement("div");
+    arrowLeft.className = "carousel-arrow carousel-arrow-left";
+    listWrp.appendChild(arrowLeft);
     let itemsList = document.createElement("ul");
     itemsList.className = "carousel-colors-list";
 
@@ -52,10 +57,16 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
         }
         itemsList.appendChild(item);
     }
-    carousel.appendChild(itemsList);
+    listWrp.appendChild(itemsList);
+    let arrowRight = document.createElement("div");
+    arrowRight.className = "carousel-arrow carousel-arrow-right";
+    listWrp.appendChild(arrowRight);
+    carousel.appendChild(listWrp);
 }
 
-window.onload = function () {
+function preparePage(){
     createCarousel();
     generateField("green", "yellow");
 }
+
+window.onload = preparePage;
