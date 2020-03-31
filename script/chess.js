@@ -1,6 +1,6 @@
 function generateField(color1 = "white", color2 = "black") {
     //добавляет 8 div - строк в каждом 8 div клеток
-    let field = document.getElementById("chess-field");
+    let field = document.getElementById("chess");
     //console.log(field);
     for (let i = 0; i < 8; i++) {
         let row = document.createElement("div");
