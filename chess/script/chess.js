@@ -23,6 +23,36 @@ function generateField(color1 = "white", color2 = "black") {
 
 }
 
+function arrowOnClick(isLeft,colors,visibleColorsStart,visibleColorsCount){
+    for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//выкл старый набор
+        let index=i;
+        if (index>= colors.length){
+            index = index - colors.length
+        }
+        document.getElementById(`color${index}`).style.display="none";
+    }
+    if (isLeft){
+        visibleColorsStart--;
+        if (visibleColorsStart<0){
+            visibleColorsStart+=colors.length;
+        }
+    } else {
+        visibleColorsStart++;
+        if (visibleColorsStart>=colors.length){
+            visibleColorsStart-=colors.length;
+        }
+    }
+    //console.log("start"+visibleColorsStart);
+    for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//вкл новый набор
+        let index=i;
+        if (index>= colors.length){
+            index = index - colors.length
+        }
+        document.getElementById(`color${index}`).style.display="block";
+    }
+    return visibleColorsStart;
+}
+
 function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue", "blue", "violet", "white", "grey", "black"]) {
     let colorFlag=true;
     let visibleColorsCount=3;
@@ -35,26 +65,8 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
     listWrp.className = "carousel-list-wrp";
     let arrowLeft = document.createElement("div");
     arrowLeft.className = "carousel-arrow carousel-arrow-left";
-    arrowLeft.onclick= function(){ 
-        for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//выкл старый набор
-            let index=i;
-            if (index>= colors.length){
-                index = index - colors.length
-            }
-            document.getElementById(`color${index}`).style.display="none";
-        }
-        visibleColorsStart--;
-        if (visibleColorsStart<0){
-            visibleColorsStart+=colors.length;
-        }
-        //console.log("start"+visibleColorsStart);
-        for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//вкл новый набор
-            let index=i;
-            if (index>= colors.length){
-                index = index - colors.length
-            }
-            document.getElementById(`color${index}`).style.display="block";
-        }
+    arrowLeft.onclick= function () {
+        visibleColorsStart = arrowOnClick(true,colors,visibleColorsStart,visibleColorsCount);
     }
     listWrp.appendChild(arrowLeft);
     let itemsList = document.createElement("ul");
@@ -83,26 +95,8 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
     listWrp.appendChild(itemsList);
     let arrowRight = document.createElement("div");
     arrowRight.className = "carousel-arrow carousel-arrow-right";
-    arrowRight.onclick= function(){ 
-        for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//выкл старый набор
-            let index=i;
-            if (index>= colors.length){
-                index = index - colors.length
-            }
-            document.getElementById(`color${index}`).style.display="none";
-        }
-        visibleColorsStart++;
-        if (visibleColorsStart>=colors.length){
-            visibleColorsStart-=colors.length;
-        }
-        //console.log("start"+visibleColorsStart);
-        for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//вкл новый набор
-            let index=i;
-            if (index>= colors.length){
-                index = index - colors.length
-            }
-            document.getElementById(`color${index}`).style.display="block";
-        }
+    arrowRight.onclick= function () {
+        visibleColorsStart = arrowOnClick(false,colors,visibleColorsStart,visibleColorsCount);
     }
     listWrp.appendChild(arrowRight);
     carousel.appendChild(listWrp);
