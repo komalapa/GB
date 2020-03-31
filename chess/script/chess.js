@@ -27,6 +27,13 @@ function generateField(color1 = "white", color2 = "black") {
         row.className = "row";
         for (let j = 0; j < 8; j++) {
             let cell = document.createElement("div");
+            cell.onclick= function(){
+                if (cell.classList.contains("cell-marked")){
+                    cell.classList.remove("cell-marked");
+                } else {
+                    cell.classList.add("cell-marked");
+                }
+            };
             //cell.className = "cell";
             if (i % 2 == j % 2) {
                 cell.style.backgroundColor = `${color1}`;
