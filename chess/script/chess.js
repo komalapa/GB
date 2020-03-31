@@ -24,6 +24,9 @@ function generateField(color1 = "white", color2 = "black") {
 }
 
 function arrowOnClick(isLeft,colors,visibleColorsStart,visibleColorsCount){
+    if (((visibleColorsStart<1)&&isLeft)||((visibleColorsStart>=colors.length-visibleColorsCount)&&!isLeft)) {
+        return visibleColorsStart;
+    }
     for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//выкл старый набор
         let index=i;
         if (index>= colors.length){
@@ -33,14 +36,8 @@ function arrowOnClick(isLeft,colors,visibleColorsStart,visibleColorsCount){
     }
     if (isLeft){
         visibleColorsStart--;
-        if (visibleColorsStart<0){
-            visibleColorsStart+=colors.length;
-        }
     } else {
         visibleColorsStart++;
-        if (visibleColorsStart>=colors.length){
-            visibleColorsStart-=colors.length;
-        }
     }
     //console.log("start"+visibleColorsStart);
     for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//вкл новый набор
