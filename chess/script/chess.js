@@ -88,6 +88,25 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
     let carousel = document.getElementById("carousel");
     let choosen = document.createElement("div");
     choosen.className = "carousel-choosen";
+    let cell1 = document.createElement("div");
+    cell1.style.backgroundColor = `black`;
+    cell1.className = "cell cell-color1-example";
+    cell1.id="cell-color1-example";
+    choosen.appendChild(cell1);
+    let cell2 = document.createElement("div");
+    cell2.style.backgroundColor = `white`;
+    cell2.className = "cell cell-color2-example";
+    cell2.id="cell-color2-example";
+    choosen.appendChild(cell2);
+    choosen.onclick=function(){
+        let chessCells1=document.getElementsByClassName("cell-color1");
+        let chessCells2=document.getElementsByClassName("cell-color2");
+        console.log (document.getElementsByClassName("cell-color1-example"));
+        for (let i=0; i<chessCells1.length;i++){
+            chessCells1[i].style.backgroundColor=document.getElementsByClassName("cell-color1-example")[0].style.backgroundColor;
+            chessCells2[i].style.backgroundColor=document.getElementsByClassName("cell-color2-example")[0].style.backgroundColor;
+        }
+    }
     carousel.appendChild(choosen);
     let listWrp = document.createElement("div");
     listWrp.className = "carousel-list-wrp";
@@ -109,9 +128,9 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
             choosen.style = `background-color : ${colors[i]}`;
             let cells={};
             if (colorFlag) {
-                cells=document.getElementsByClassName("cell-color1");
+                cells=document.getElementsByClassName("cell-color1-example");
             } else {
-                cells=document.getElementsByClassName("cell-color2");
+                cells=document.getElementsByClassName("cell-color2-example");
             }
             colorFlag=!colorFlag;
             for (let j=0; j<cells.length; j++){

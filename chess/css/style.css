@@ -9,9 +9,10 @@
     justify-content: center;
 }
 .carousel-choosen{
-    width: 200px;
-    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
     border:1px solid green;
+    display: flex;
 } 
 .carousel-colors-list{
     list-style: none;
