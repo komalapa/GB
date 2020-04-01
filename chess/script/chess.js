@@ -60,18 +60,12 @@ function arrowOnClick(isLeft,colors,visibleColorsStart,visibleColorsCount){
     }
     for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//выкл старый набор
         let index=i;
-        if (index>= colors.length){
-            index = index - colors.length
-        }
+        index = (index>= colors.length) ? index - colors.length : index;
         document.getElementById(`color${index}`).style.display="none";
     }
-    if (isLeft){
-        visibleColorsStart--;
-    } else {
-        visibleColorsStart++;
-    }
-    //console.log("start"+visibleColorsStart);
-    for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//вкл новый набор
+
+    visibleColorsStart = isLeft ? visibleColorsStart-1 : visibleColorsStart+1;
+   for (let i=visibleColorsStart;i<visibleColorsStart+visibleColorsCount;i++){//вкл новый набор
         let index=i;
         if (index>= colors.length){
             index = index - colors.length
@@ -105,10 +99,28 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
     choosen.onclick=function(){
         let chessCells1=document.getElementsByClassName("cell-color1");
         let chessCells2=document.getElementsByClassName("cell-color2");
-        console.log (document.getElementsByClassName("cell-color1-example"));
         for (let i=0; i<chessCells1.length;i++){
             chessCells1[i].style.backgroundColor=document.getElementsByClassName("cell-color1-example")[0].style.backgroundColor;
             chessCells2[i].style.backgroundColor=document.getElementsByClassName("cell-color2-example")[0].style.backgroundColor;
+            if (chessCells1[i].style.color == chessCells1[i].style.backgroundColor) {
+                if (chessCells1[i].style.color=="white"){ 
+                    chessCells1[i].style.color="wheat"; 
+                } else if (chessCells1[i].style.color=="black") { 
+                    chessCells1[i].style.color="blue";
+                }
+            } else {
+                if ((chessCells1[i].style.color=="wheat")&&(chessCells1[i].style.backgroundColor!="white")){ 
+                    chessCells1[i].style.color="white";
+                } else if ((chessCells1[i].style.color=="blue")&&(chessCells1[i].style.backgroundColor!="black"))  { chessCells1[i].style.color="black";
+                }
+            }
+            if (chessCells2[i].style.color == chessCells2[i].style.backgroundColor) {
+                if (chessCells2[i].style.color=="white"){ chessCells2[i].style.color="wheat";}
+                else if (chessCells2[i].style.color=="black") { chessCells2[i].style.color="blue";}
+            } else {
+                if ((chessCells2[i].style.color=="wheat")&&(chessCells2[i].style.backgroundColor!="white")){ chessCells2[i].style.color="white";}
+                else if ((chessCells2[i].style.color=="blue")&&(chessCells2[i].style.backgroundColor!="black"))  { chessCells2[i].style.color="black";}
+            }
         }
     }
     carousel.appendChild(choosen);
@@ -139,13 +151,6 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
             colorFlag=!colorFlag;
             for (let j=0; j<cells.length; j++){
                 cells[j].style.backgroundColor=`${colors[i]}`;
-                if (cells[j].style.color == cells[j].style.backgroundColor) {
-                    if (cells[j].style.color=="white"){ cells[j].style.color="wheat";}
-                    else if (cells[j].style.color=="black") { cells[j].style.color="blue";}
-                } else {
-                    if (cells[j].style.color=="wheat"){ cells[j].style.color="white";}
-                    else if (cells[j].style.color=="blue")  { cells[j].style.color="black";}
-                }
             }
         }
         itemsList.appendChild(item);
