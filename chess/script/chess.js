@@ -21,7 +21,6 @@ function generateField(color1 = "white", color2 = "black") {
       
     //добавляет 8 div - строк в каждом 8 div клеток
     let field = document.getElementById("chess");
-    //console.log(field);
     for (let i = 0; i < 8; i++) {
         let row = document.createElement("div");
         row.className = "row";
@@ -34,7 +33,6 @@ function generateField(color1 = "white", color2 = "black") {
                     cell.classList.add("cell-marked");
                 }
             };
-            //cell.className = "cell";
             if (i % 2 == j % 2) {
                 cell.style.backgroundColor = `${color1}`;
                 cell.style.color="black";
