@@ -98,6 +98,10 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
     cell2.className = "cell cell-color2-example";
     cell2.id="cell-color2-example";
     choosen.appendChild(cell2);
+    let cell3 = cell1.cloneNode();
+    let cell4 = cell2.cloneNode();
+    choosen.appendChild(cell4);
+    choosen.appendChild(cell3);
     choosen.onclick=function(){
         let chessCells1=document.getElementsByClassName("cell-color1");
         let chessCells2=document.getElementsByClassName("cell-color2");
