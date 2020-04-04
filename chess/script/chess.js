@@ -1,3 +1,12 @@
+const figurs = {
+    king: '&#9818',
+    rook: '&#9820',
+    bishop: '&#9821',
+    queen: '&#9819',
+    knight: '&#9822',
+    pawn: '&#9823',
+};
+
 function highlightFigure(cell) {
     if (cell.style.color == cell.style.backgroundColor) {
         if (cell.style.backgroundColor == "black") {
@@ -27,8 +36,16 @@ function markCell(cell, figureBuffer) {
             let lastCell = document.getElementById(figureBuffer.cellId);
             lastCell.classList.remove("cell-marked");
             if (figureBuffer.color == cell.style.color) {
-                cell.classList.add("cell-marked");
-                figureBuffer = cellToBuff(cell);
+                //разрешаю рокировку
+                if ((figureBuffer.figure.charCodeAt()==figurs.king.slice(2))&&(cell.innerHTML.charCodeAt()==figurs.rook.slice(2))||(figureBuffer.figure.charCodeAt()==figurs.rook.slice(2))&&(cell.innerHTML.charCodeAt()==figurs.king.slice(2))){
+                    lastCell.innerHTML=cell.innerHTML;
+                    cell.innerHTML=figureBuffer.figure;
+                    lastCell.classList.remove("cell-marked");
+                    figureBuffer={};
+                } else {
+                    cell.classList.add("cell-marked");
+                    figureBuffer = cellToBuff(cell);
+                }
             } else {
                 cell.style.color = figureBuffer.color;
                 cell.innerHTML = figureBuffer.figure;
@@ -52,14 +69,6 @@ function markCell(cell, figureBuffer) {
 }
 
 function generateField(color1 = "white", color2 = "black") {
-    const figurs = {
-        king: '&#9818',
-        rook: '&#9820',
-        bishop: '&#9821',
-        queen: '&#9819',
-        knight: '&#9822',
-        pawn: '&#9823',
-    };
     //добавляет 8 div - строк в каждом 8 div клеток
     let field = document.getElementById("chess");
     let figureBuffer = {};
