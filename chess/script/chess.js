@@ -60,7 +60,6 @@ function generateField(color1 = "white", color2 = "black") {
         knight: '&#9822',
         pawn: '&#9823',
     };
-
     //добавляет 8 div - строк в каждом 8 div клеток
     let field = document.getElementById("chess");
     let figureBuffer = {};
@@ -129,6 +128,7 @@ function arrowOnClick(isLeft, colors, visibleColorsStart, visibleColorsCount) {
         }
         document.getElementById(`color${index}`).style.display = "block";
     }
+    //"отключение" стрелок на краях
     if (visibleColorsStart==0) {
         document.getElementsByClassName("carousel-arrow-left")[0].style.opacity="0.1";
     } else {
