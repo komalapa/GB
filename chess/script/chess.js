@@ -1,22 +1,11 @@
 function generateField(color1 = "white", color2 = "black") {
     const figurs = {
-        black: {
             king: '&#9818',
             rook: '&#9820',
             bishop: '&#9821',
             queen: '&#9819',
             knight: '&#9822',
             pawn: '&#9823',
-      
-        },
-        white: {
-            king: '&#9812',
-            rook: '&#9814',
-            bishop: '&#9815',
-            queen: '&#9813',
-            knight: '&#9816',
-            pawn: '&#9817',
-        }
       };
       
     //добавляет 8 div - строк в каждом 8 div клеток
@@ -35,16 +24,33 @@ function generateField(color1 = "white", color2 = "black") {
             };
             if (i % 2 == j % 2) {
                 cell.style.backgroundColor = `${color1}`;
-                cell.style.color="black";
                 cell.className = "cell cell-color1";
-                cell.innerHTML = figurs.black.queen;
                 } else {
                 cell.style.backgroundColor = `${color2}`;
-                cell.style.color="white";
                 cell.className = "cell cell-color2";
-                cell.innerHTML = figurs.white.king;
             }
-
+            if ((i==1)||(i==0)){
+                cell.style.color="black";
+            } else if ((i==6)||(i==7)){
+                cell.style.color="white";
+            } 
+            if((i==1)||(i==6)){    
+                cell.innerHTML=figurs.pawn;
+            } else if ((i==0)||(i==7)){
+                if ((j==0)||(j==7)){
+                    cell.innerHTML=figurs.rook;
+                } else if ((j==1)||(j==6)) {
+                    cell.innerHTML=figurs.knight;
+                } else if ((j==2)||(j==5)){
+                    cell.innerHTML=figurs.bishop;
+                } else if (((i==0)&&(j==3))||((i==7)&&(j==4))){
+                    cell.innerHTML=figurs.queen;
+                } else if (((i==0)&&(j==4))||((i==7)&&(j==3))){
+                    cell.innerHTML=figurs.king;
+                }
+            }
+            let cellId=8*i+(j+1);//+1 для человеческой нумерации с 1
+            cell.id=`cell${cellId}`;
             row.appendChild(cell);
         }
         field.appendChild(row);
