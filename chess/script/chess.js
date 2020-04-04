@@ -10,6 +10,7 @@ function generateField(color1 = "white", color2 = "black") {
       
     //добавляет 8 div - строк в каждом 8 div клеток
     let field = document.getElementById("chess");
+    let figureBuffer={};
     for (let i = 0; i < 8; i++) {
         let row = document.createElement("div");
         row.className = "row";
@@ -18,9 +19,44 @@ function generateField(color1 = "white", color2 = "black") {
             cell.onclick= function(){
                 if (cell.classList.contains("cell-marked")){
                     cell.classList.remove("cell-marked");
-                } else {
-                    cell.classList.add("cell-marked");
+                    figureBuffer={};
+                } else if (cell.innerText) {        //выделять пустые клетки бессмысленно если буфер пустой
+                    if (figureBuffer.cellId){
+                        let lastCell = document.getElementById(figureBuffer.cellId);
+                            lastCell.classList.remove("cell-marked");
+                        if (figureBuffer.color==cell.style.color){
+                            cell.classList.add("cell-marked");
+                            figureBuffer.cellId=cell.id;
+                            figureBuffer.figure=cell.innerHTML; //innerText не работает с кодами
+                            figureBuffer.color=cell.style.color;
+                            console.log(figureBuffer);
+                        } else {
+                            cell.style.color=figureBuffer.color;
+                            cell.innerHTML=figureBuffer.figure;
+                            lastCell.innerHTML="";
+                            figureBuffer={};
+                            console.log(figureBuffer);
+                        }
+                    } else {
+                        cell.classList.add("cell-marked");
+                        figureBuffer.cellId=cell.id;
+                        figureBuffer.figure=cell.innerHTML; //innerText не работает с кодами
+                        figureBuffer.color=cell.style.color;
+                        console.log(figureBuffer);
+                    }
+                } else if ((!cell.innerText)&&(figureBuffer.cellId)){
+                    cell.style.color=figureBuffer.color;
+                    cell.innerHTML=figureBuffer.figure;
+                    let lastCell = document.getElementById(figureBuffer.cellId);
+                    lastCell.classList.remove("cell-marked");
+                    lastCell.innerHTML="";
+                    figureBuffer={};
+                    console.log(figureBuffer);
+
                 }
+                    
+                
+                console.log(figureBuffer);
             };
             if (i % 2 == j % 2) {
                 cell.style.backgroundColor = `${color1}`;
