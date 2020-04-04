@@ -1,3 +1,27 @@
+function highlightFigure(cell){
+    if (cell.style.color == cell.style.backgroundColor) {
+        if (cell.style.backgroundColor=="black"){
+            cell.style.textShadow="0 0 5px white";
+        } else if (cell.style.backgroundColor=="white"){
+            cell.style.textShadow="0 0 10px gray";
+        }
+    } else {
+        cell.style.textShadow="none";
+    }
+}
+
+function cellToBuff(cell){
+    let buff={};
+    buff.cellId=cell.id;
+    buff.figure=cell.innerHTML; //innerText не работает с кодами
+    buff.color=cell.style.color;
+    return buff;
+}
+
+function markCell(cell, figureBuffer){
+    
+}
+
 function generateField(color1 = "white", color2 = "black") {
     const figurs = {
             king: '&#9818',
@@ -26,23 +50,19 @@ function generateField(color1 = "white", color2 = "black") {
                             lastCell.classList.remove("cell-marked");
                         if (figureBuffer.color==cell.style.color){
                             cell.classList.add("cell-marked");
-                            figureBuffer.cellId=cell.id;
-                            figureBuffer.figure=cell.innerHTML; //innerText не работает с кодами
-                            figureBuffer.color=cell.style.color;
-                            console.log(figureBuffer);
+                            figureBuffer=cellToBuff(cell);
+                            //console.log(figureBuffer);
                         } else {
                             cell.style.color=figureBuffer.color;
                             cell.innerHTML=figureBuffer.figure;
                             lastCell.innerHTML="";
                             figureBuffer={};
-                            console.log(figureBuffer);
+                            //console.log(figureBuffer);
                         }
                     } else {
                         cell.classList.add("cell-marked");
-                        figureBuffer.cellId=cell.id;
-                        figureBuffer.figure=cell.innerHTML; //innerText не работает с кодами
-                        figureBuffer.color=cell.style.color;
-                        console.log(figureBuffer);
+                        figureBuffer=cellToBuff(cell);
+                        //console.log(figureBuffer);
                     }
                 } else if ((!cell.innerText)&&(figureBuffer.cellId)){
                     cell.style.color=figureBuffer.color;
@@ -51,19 +71,12 @@ function generateField(color1 = "white", color2 = "black") {
                     lastCell.classList.remove("cell-marked");
                     lastCell.innerHTML="";
                     figureBuffer={};
-                    console.log(figureBuffer);
+                    //console.log(figureBuffer);
                 }
                     
-                if (cell.style.color == cell.style.backgroundColor) {
-                    if (cell.style.backgroundColor=="black"){
-                        cell.style.textShadow="0 0 5px white";
-                    } else if (cell.style.backgroundColor=="white"){
-                        cell.style.textShadow="0 0 10px gray";
-                    }
-                } else {
-                    cell.style.textShadow="none";
-                }
-                console.log(figureBuffer);
+                
+                highlightFigure(cell);
+                //console.log(figureBuffer);
             };
             if (i % 2 == j % 2) {
                 cell.style.backgroundColor = `${color1}`;
@@ -149,24 +162,10 @@ function createCarousel(colors = ["red", "orange", "yellow", "green", "lightblue
         for (let i=0; i<chessCells1.length;i++){
             chessCells1[i].style.backgroundColor=document.getElementsByClassName("cell-color1-example")[0].style.backgroundColor;
             chessCells2[i].style.backgroundColor=document.getElementsByClassName("cell-color2-example")[0].style.backgroundColor;
-            if (chessCells1[i].style.color == chessCells1[i].style.backgroundColor) {
-                if (chessCells1[i].style.backgroundColor=="black"){
-                    chessCells1[i].style.textShadow="0 0 5px white";
-                } else if (chessCells1[i].style.backgroundColor=="white"){
-                    chessCells1[i].style.textShadow="0 0 10px gray";
-                }
-            } else {
-                chessCells1[i].style.textShadow="none";
-            }
-            if (chessCells2[i].style.color == chessCells2[i].style.backgroundColor) {
-                if (chessCells2[i].style.backgroundColor=="black"){
-                    chessCells2[i].style.textShadow="0 0 5px white";
-                } else if (chessCells2[i].style.backgroundColor=="white"){
-                    chessCells2[i].style.textShadow="0 0 10px gray";
-                }
-            } else {
-                chessCells2[i].style.textShadow="none";
-            }
+            
+            highlightFigure(chessCells1[i]);
+            highlightFigure(chessCells2[i]);
+
         }
     }
     carousel.appendChild(choosen);
