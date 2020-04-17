@@ -670,3 +670,50 @@ header{
     margin-left: 15px;
     
 }
+.footer-links{
+    padding:42px 189px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #3ec1b6;
+}
+.footer-links-list-title{
+    font-family: 'Bebas Neue';
+    font-size: 27px;
+    line-height: 25px;
+    font-weight: 800;
+    color: #ffffff;
+}
+.footer-links-list ul{
+    list-style: none;
+    padding:0;
+    margin:0;
+    margin-top: 20px;
+}
+.footer-links-list a{
+    font-family: 'Open Sans';
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #ffffff;
+    text-decoration: none;
+}
+.copyrights{
+    font-family: 'Open Sans';
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+    padding:15px 0;
+    box-sizing: border-box;
+    background-color: #2da89b;
+}
+.copyrights p{
+    margin: 0;
+    padding:0;
+}
+.copyrights a{
+    text-decoration: none;
+    font-weight: 600;
+    color: #ffffff;
+}
