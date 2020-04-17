@@ -397,6 +397,12 @@ body{
     width: 1280px;
     margin:0 auto;
 }
+li a:hover{
+    font-style: italic;
+}
+li a:active{
+    text-shadow: #afafaf 15px 0 3px;
+}
 header{
     widows: 100%;
     min-height: 84px;
@@ -413,6 +419,13 @@ header{
     line-height: 37px;
     font-weight: 400;
     color: #3cc3b5;
+    text-decoration: none;
+}
+.logo:hover{
+    text-shadow: #afafaf 5px 0 5px;
+}
+.logo:active{
+    text-shadow: #afafaf 5px 0 0px;
 }
 .search{
     position: relative;
@@ -422,6 +435,10 @@ header{
     height: 31px;
     background-color: #ffffff;
     border: 1.0px solid #e1e1e1;
+    padding-left: 5px;
+    padding-right:46px;
+    box-sizing: border-box;
+    color:#3cc3b5;
 }
 .search-btn{
     background-color: #ffffff;
@@ -429,10 +446,26 @@ header{
     position: absolute;
     top:2px;
     right:1px;
+    fill:#e3e3e3;
+    outline:none;
+}
+.search-btn:hover svg{
+    fill:#3cc395;
+}
+.search-btn:active svg{
+    fill:#afafaf;
 }
 .cart{
     display: flex;
     align-items: flex-end;
+    padding:5px 10px;
+    fill:#3cc3b5;
+}
+.cart:hover{
+    fill:#2da89b;
+}
+.cart:active{
+    fill: #afafaf;
 }
 .cart-sum{
     font-family: 'Bebas Neue';
@@ -455,7 +488,7 @@ header{
     padding: 0;
     justify-content: space-between;
 }
-.menu-list li{
+.menu-list li a{
     font-family: 'Bebas Neue';
     font-size: 21px;
     line-height: 19px;
@@ -464,12 +497,13 @@ header{
     padding: 0 20px;
     border-left: 2px solid white;
     text-transform: uppercase;
+    text-decoration: none;
 }
-.menu-list li:first-child{
+.menu-list li:first-child a{
     padding-left: 0;
     border-left: none;
 }
-.menu-list li:last-child{
+.menu-list li:last-child a{
     padding-right: 0;
 }
 .actions{
@@ -525,6 +559,12 @@ header{
     border-radius: 5px;
     margin-top: 26px;
 }
+.actions-dscr a:hover{
+    box-shadow: 0px 0px 10px 0px #ffffff;
+}
+.actions-dscr a:active{
+    box-shadow: 0px 0px 10px 0px #2da89b;
+}
 .pagination{
     width: 100%;
     display: flex;
@@ -538,6 +578,12 @@ header{
     border-radius: 50%;
     margin-right: 10px;
 }
+.pagination div:hover{
+    box-shadow: 0px 0px 5px 0px #ffffff;
+}
+.pagination div:active{
+    box-shadow: 0px 0px 5px 0px #afafaf;
+}
 .pagination div:last-child{
     margin-right: 0;
 }
@@ -548,21 +594,28 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding:21px 0;
+    padding:21px 33px;
+    box-sizing: border-box;
 }
 .popular .left-arrow{
-    margin-left: 33px;
+    fill: #dbdbdb;
     margin-right: 67px;
 }
 .popular .right-arrow{
-    margin-right: 33px;
+    fill: #dbdbdb;
     margin-left: 67px;
+}
+.popular .left-arrow:hover,.popular .right-arrow:hover{
+    fill:#2da89b;
+}
+.popular .left-arrow:active,.popular .right-arrow:active{
+    fill: #afafaf;
 }
 .popular-item{
     width: 340px;
     display: flex;
     justify-content: space-around;
-    padding-right: 60px;
+    padding-right: 30px;
     border-right: 1px solid rgba(175, 175, 175, 0.3);
 }
 .popular-item .img-wrp{
@@ -602,6 +655,13 @@ header{
     color: #ffffff;
     text-decoration: none;
     border-radius: 3px;
+    border: none;
+}
+.btn:hover{
+    box-shadow: 0px 0px 5px 0px #3cc395;
+}
+.btn:active{
+    box-shadow: 0px 0px 5px 0px #afafaf;
 }
 .popular-item-more{
     margin-top: 20px;
