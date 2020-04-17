@@ -25,7 +25,7 @@ const goods = [{
         img: "img/product6.png"
     },
 ];
-const renderGoodsItem = (title, price, img) => {
+const renderGoodsItem = (title="not found", price=0, img="img/empty.png") => {
     return `<div class="goods-item">
                     <div class="img-wrp"><img src="${img}" alt="shoes"></div>
                     <span class="goods-item-title">${title}</span>
@@ -38,6 +38,7 @@ const renderGoodsItem = (title, price, img) => {
 };
 const renderGoodsList = (list) => {
     let goodsList = list.map(item => renderGoodsItem(item.title, item.price, item.img));
+    goodsList.push(renderGoodsItem());
     document.querySelector('.goods-list').innerHTML = goodsList.join('');
 }
 renderGoodsList(goods);
