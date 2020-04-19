@@ -796,7 +796,7 @@ header {
     margin: 0 auto 10px;
 }
 
-.goods-item:nth-of-type(3n) {
+.goods-item:nth-of-type(3n),.goods-item:last-of-type {
     margin-right: 0;
 }
 

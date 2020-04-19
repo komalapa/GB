@@ -30,7 +30,7 @@ const renderGoodsItem = (title="not found", price=0, img="img/empty.png") => `<d
                     <span class="goods-item-title">${title}</span>
                     <div class="goods-item-buy-wrp">  
                         <span class="goods-item-price">$${price}</span>
-                        <button href="#" class="goods-item-buy btn">bUY NOW</button>
+                        <button class="goods-item-buy btn">bUY NOW</button>
                     </div>  
                 </div>  
 `
