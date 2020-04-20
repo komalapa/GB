@@ -113,3 +113,44 @@ class MyGoodsList {
 const myList = new MyGoodsList();
 myList.fetchGoods();
 myList.render();
+
+class Cart {
+    constructor() {
+        this.orderList = [];
+        this.sum = 0;
+        this.finSum=0;
+      }
+    addItem(item){
+        this.orderList.push(item);
+        this.sum+=item.price;
+    }
+    deleteItem(item){
+        if (this.orderList.indexOf(item)>=0){
+            this.orderList.splice(this.orderList.indexOf(item),1);
+            this.sum-=item.price;
+        }
+    }
+    sale (sum, prcnt){
+        if (this.sum > sum) {this.finSum=this.sum*(1-prcnt/100);}
+        else {
+            {this.finSum=this.sum}
+        }
+    }
+    consoleLogList(){
+        this.orderList.forEach(item=>console.log(item))
+    }
+}
+
+const cart = new Cart();
+let item = new GoodsItem('test item', 120, 'img.jpg');
+cart.addItem(item);
+item= new GoodsItem('title',333,"img")
+cart.addItem(item);
+console.log("cart: ");
+cart.consoleLogList();
+cart.sale(200,10)
+console.log("sum: "+cart.sum)
+console.log("finSum: "+cart.finSum)
+cart.deleteItem(item)
+console.log("cart (delete item): ");
+cart.consoleLogList();
