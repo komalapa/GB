@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hamburger</title>
+    <script>
+        class Hamburger {
+            constructor(size, stuffing) {
+                this.size=size;
+                this.stuffing=stuffing;
+                this.toppings=[];
+                this.price=0;
+                this.cal=0;
+                
+                this.calculateCalories();
+                this.calculatePrice();
+            }
+            addTopping(topping) {    // Добавить добавку 
+                this.toppings.push(topping);
+                this.calculateCalories();
+                this.calculatePrice();
+            }
+            removeTopping(topping) { // Убрать добавку 
+                if (this.toppings.indexOf(topping)>=0){
+                    this.toppings.splice(this.toppings.indexOf(topping),1);
+                }
+                this.calculateCalories();
+                this.calculatePrice();
+            }
+            
+            getToppings(topping) {   // Получить список добавок 
+                return this.toppings
+            }
+            getSize() {              // Узнать размер гамбургера 
+                return this.size
+            }
+            getStuffing() {          // Узнать начинку гамбургера 
+                return this.stuffing
+            }
+            calculatePrice() {       // Узнать цену 
+                this.sum=0;
+                this.cal=0;
+                if (this.size == "big") {
+                    this.sum+=100;
+                    this.cal+=40;
+                } else if (this.size == "small") {
+                    this.sum+=50;
+                    this.cal+=20;
+                }
+                if (this.stuffing == 'cheese'){
+                    this.sum+=10;
+                    this.cal+=20;
+                } else if (this.stuffing == 'salad'){
+                    this.sum+=20;
+                    this.cal+=5;
+                }  else if (this.stuffing == 'potato'){
+                    this.sum+=15;
+                    this.cal+=10;
+                }
+                this.toppings.forEach(topping => {
+                    if (topping=="spice"){
+                        this.sum+=15;
+                        this.cal+=0; 
+                    } else if (topping=="mayonnaise"){
+                        this.sum+=20;
+                        this.cal+=5; 
+                    }
+                })
+            }
+            calculateCalories() {    // Узнать калорийность 
+                this.sum=0;
+                this.cal=0;
+                if (this.size == "big") {
+                    this.sum+=100;
+                    this.cal+=40;
+                } else if (this.size == "small") {
+                    this.sum+=50;
+                    this.cal+=20;
+                }
+                if (this.stuffing == 'cheese'){
+                    this.sum+=10;
+                    this.cal+=20;
+                } else if (this.stuffing == 'salad'){
+                    this.sum+=20;
+                    this.cal+=5;
+                }  else if (this.stuffing == 'potato'){
+                    this.sum+=15;
+                    this.cal+=10;
+                }
+                this.toppings.forEach(topping => {
+                    if (topping=="spice"){
+                        this.sum+=15;
+                        this.cal+=0; 
+                    } else if (topping=="mayonnaise"){
+                        this.sum+=20;
+                        this.cal+=5; 
+                    }
+                })
+            }
+}
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
