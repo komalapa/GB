@@ -58,6 +58,13 @@ class GoodsList {
         });
         document.querySelector('.goods-list').innerHTML = listHtml;
       }
+    sumAll(){
+        let sum = 0;
+        this.goods.forEach(item => {
+            sum+= item.price;
+            });
+        return sum;
+    }
 }
 
 class MyGoodsList {
@@ -104,6 +111,13 @@ class MyGoodsList {
         });
         document.querySelector('.goods-list').innerHTML = listHtml;
       }
+    sumAll(){
+        let sum = 0;
+        this.goods.forEach(item => {
+            sum+= item.price;
+            });
+        return sum;
+    }
 }
 
 //const list = new GoodsList();
