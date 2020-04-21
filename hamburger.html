@@ -36,31 +36,31 @@
                 return this.stuffing
             }
             calculatePriceAndCalories() {       // Узнать цену и каллорийность
-                this.sum=0;
+                this.price=0;
                 this.cal=0;
                 if (this.size == "big") {
-                    this.sum+=100;
+                    this.price+=100;
                     this.cal+=40;
                 } else if (this.size == "small") {
-                    this.sum+=50;
+                    this.price+=50;
                     this.cal+=20;
                 }
                 if (this.stuffing == 'cheese'){
-                    this.sum+=10;
+                    this.price+=10;
                     this.cal+=20;
                 } else if (this.stuffing == 'salad'){
-                    this.sum+=20;
+                    this.price+=20;
                     this.cal+=5;
                 }  else if (this.stuffing == 'potato'){
-                    this.sum+=15;
+                    this.price+=15;
                     this.cal+=10;
                 }
                 this.toppings.forEach(topping => {
                     if (topping=="spice"){
-                        this.sum+=15;
+                        this.price+=15;
                         this.cal+=0; 
                     } else if (topping=="mayonnaise"){
-                        this.sum+=20;
+                        this.price+=20;
                         this.cal+=5; 
                     }
                 })
