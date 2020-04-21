@@ -1,0 +1,201 @@
+@font-face {
+    font-family: 'Playfair Display';
+    src: local('Playfair Display Black'), local('PlayfairDisplay-Black'), url('../fonts/playfair/Playfairdisplayblack.woff2') format('woff2'), url('../fonts/playfair/Playfairdisplayblack.woff') format('woff'), url('../fonts/playfair/Playfairdisplayblack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), local('Roboto-Regular'), url('../fonts/roboto/Roboto.woff2') format('woff2'), url('../fonts/roboto/Roboto.woff') format('woff'), url('../fonts/roboto/Roboto.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoBold';
+    src: local('Roboto Bold'), local('RobotoBold'), url('../fonts/roboto/Robotobold.woff2') format('woff2'), url('../fonts/roboto/Robotobold.woff') format('woff'), url('../fonts/roboto/Robotobold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+body{
+    background-color: #F7F7F7;
+    width: 1440px;
+    margin:0 auto;
+}
+header{
+    width:100%;
+    background-color: #fff;
+    padding:60px 0 1px 0;
+}
+h1, .main-title{
+    text-align: center;
+    font-family: PlayfairDisplay-Black;
+    font-size: 35px;
+    line-height: 47px;
+    letter-spacing: 1px;
+    margin:0;  
+}
+.menu ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 46px 135px;
+    padding: 0;
+}
+.menu a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Roboto;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 2px;
+    color:#000;
+}
+.adv{
+    width:100%;
+    min-height: 464px;
+    box-sizing: border-box;
+    background: url(../img/Hotel-11.jpg) no-repeat;
+    color:#fff;
+    padding: 46px 0;
+}
+.adv-icon{
+    display: block;
+    text-align: center;
+    
+}
+.adv-title{
+    display: block;
+    font-family: Roboto;
+    font-size: 72px;
+    line-height: 84px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 31px ;
+    text-align: center;
+}
+.adv-text{
+    width: 456px;
+    margin:135px auto 0; /*уменьшила на 4px из-за отступов шрифта*/
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
+.reviews{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding:44px 137px 50px 135px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+h2{
+    display: block;
+    width:100%;
+    font-family: RobotoBold;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.reviews-item{
+    text-decoration: none;
+    color:#000;
+    display: block;
+    width: 370px;
+}
+.reviews-item:hover h3, .reviews-item-active h3{
+    color:#FF7931;
+}
+h3{
+    font-family: PlayfairDisplay-Black;
+    font-size: 23px;
+    line-height: 31px;
+    margin: 0;
+}
+.reviews-item h3{
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 11px;
+}
+.reviews-item p{
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 150%;
+    margin:0;
+}
+.theatre{
+    overflow: hidden;
+}
+.round-wrp{
+    width: 707px;
+    height: 707px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: -75px auto -74px;
+    padding: 108px 0 112px 0;
+    box-sizing: border-box;
+}
+.theatre h2{
+    margin-bottom: 35px;
+}
+.theatre h3{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.theatre p{
+    margin: 0 auto 24px;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    width: 370px;
+
+}
+.theatre p:after{
+    content: '';
+    display: block;
+    width: 100px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 24px auto 0;
+}
+
+.theatre p:last-of-type:after{
+    border-color:transparent;
+}
+
+.theatre-link{
+    display: block;
+    width: 170px;
+    height: 47px;
+    position: relative;
+    background-color: #FF7931;
+    font-family: RobotoBold;
+    font-size: 12px;
+    line-height: 47px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:#fff;
+    text-decoration: none;
+    padding-left: 30px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+.theatre-link:after{
+    content: '';
+    display: block;
+    width: 24px;
+    height: 25px;
+    background: url(../img/Arrow\ forward.svg) no-repeat;
+    position: absolute;
+    top:11px;
+    right: 29px;
+}
