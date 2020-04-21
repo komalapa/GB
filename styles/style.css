@@ -50,6 +50,9 @@ h1, .main-title{
     letter-spacing: 2px;
     color:#000;
 }
+.menu a:hover{
+    color:#FF7931;
+}
 .adv{
     width:100%;
     min-height: 464px;
@@ -60,8 +63,10 @@ h1, .main-title{
 }
 .adv-icon{
     display: block;
-    text-align: center;
-    
+    text-align: center; 
+}
+.adv-icon:hover{
+    opacity: 0.9;
 }
 .adv-title{
     display: block;
@@ -198,4 +203,46 @@ h3{
     position: absolute;
     top:11px;
     right: 29px;
+}
+.theatre-link:hover{
+    opacity: 0.9;
+}
+footer{
+    padding: 25px 0 48px 0;
+    background-color: #575757;
+    color: #fff;
+}
+footer .menu a{
+    color: #fff;
+}
+
+footer .menu ul{
+    border-bottom: 1px solid rgba(256,256,256,0.4);
+    padding: 0 0 46px 0;
+    margin-bottom: 42px;
+}
+.socials{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.socials a{
+    display: block;
+    width: 47px;
+    height: 47px;
+    background-color: #fff;
+    text-align: center;
+    margin-right: 14px;
+    padding-top: 12px;
+    box-sizing: border-box;
+    
+}
+.socials svg{
+    fill:#575757;
+}
+.socials a:last-of-type{
+    margin-right: 0;
+}
+.socials a:hover svg{
+    fill:#FF7931;
 }
