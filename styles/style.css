@@ -63,7 +63,7 @@ h1,
     color: #FF7931;
 }
 
-.adv {
+.info {
     width: 100%;
     min-height: 464px;
     box-sizing: border-box;
@@ -72,16 +72,16 @@ h1,
     padding: 46px 0;
 }
 
-.adv-icon {
+.info-icon {
     display: block;
     text-align: center;
 }
 
-.adv-icon:hover {
+.info-icon:hover {
     opacity: 0.9;
 }
 
-.adv-title {
+.info-title {
     display: block;
     font-family: Roboto;
     font-size: 72px;
@@ -93,7 +93,7 @@ h1,
     text-align: center;
 }
 
-.adv-text {
+.info-text {
     width: 456px;
     margin: 135px auto 0;
     /*уменьшила на 4px из-за отступов шрифта*/
