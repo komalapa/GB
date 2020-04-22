@@ -242,6 +242,8 @@ footer {
     padding: 25px 0 48px 0;
     background-color: #575757;
     color: #fff;
+    position: relative;
+    border-top: 52px solid #fff;
 }
 
 footer .menu a {
