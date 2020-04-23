@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hamburger</title>
     <script>
+
         class Hamburger {
             constructor(size, stuffing) {
                 this.size=size;
@@ -12,9 +13,45 @@
                 this.toppings=[];
                 this.price=0;
                 this.cal=0;
-                
+                this.priceList={};
+                this.calsList={};
+                this.fetchPrice();
+                this.fetchCals();
                 this.calculatePriceAndCalories()
             }
+            fetchPrice(){
+                let priceList={
+                    "size":{
+                        "big": 100,
+                        "small":50
+                    }, "stuffing":{
+                        "cheese":10, 
+                        "salad":20, 
+                        "potato":15
+                    },"topping":{
+                        "spice":15,
+                        "mayonnaise":20
+                    }
+                }
+                this.priceList=priceList;
+            }
+            fetchCals(){
+                let calsList={
+                    "size":{
+                        "big": 40,
+                        "small":20
+                    }, "stuffing":{
+                        "cheese":20, 
+                        "salad":5, 
+                        "potato":10
+                    },"topping":{
+                        "spice":0,
+                        "mayonnaise":5
+                    }
+                }
+                this.calsList=calsList;
+            }
+
             addTopping(topping) {    // Добавить добавку 
                 this.toppings.push(topping);
                 this.calculatePriceAndCalories()
@@ -38,32 +75,14 @@
             calculatePriceAndCalories() {       // Узнать цену и каллорийность
                 this.price=0;
                 this.cal=0;
-                if (this.size == "big") {
-                    this.price+=100;
-                    this.cal+=40;
-                } else if (this.size == "small") {
-                    this.price+=50;
-                    this.cal+=20;
-                }
-                if (this.stuffing == 'cheese'){
-                    this.price+=10;
-                    this.cal+=20;
-                } else if (this.stuffing == 'salad'){
-                    this.price+=20;
-                    this.cal+=5;
-                }  else if (this.stuffing == 'potato'){
-                    this.price+=15;
-                    this.cal+=10;
-                }
-                this.toppings.forEach(topping => {
-                    if (topping=="spice"){
-                        this.price+=15;
-                        this.cal+=0; 
-                    } else if (topping=="mayonnaise"){
-                        this.price+=20;
-                        this.cal+=5; 
-                    }
-                })
+                
+                this.price+=this.priceList["size"][this.size];
+                this.price+=this.priceList["stuffing"][this.stuffing];
+                this.toppings.forEach(topping => { this.price+=this.priceList["topping"][topping]})
+
+                this.cal+=this.calsList["size"][this.size];
+                this.cal+=this.calsList["stuffing"][this.stuffing];
+                this.toppings.forEach(topping => { this.cal+=this.calsList["topping"][topping]})
             }
             
 }
