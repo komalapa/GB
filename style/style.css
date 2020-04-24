@@ -754,8 +754,28 @@ header {
     margin-top: 20px;
     width: 59px;
 }
-
-.goods-title {
+.cart-wrp .goods-item-buy{
+    display: none;
+}
+.cart-wrp .goods-item{
+    position: relative;
+}
+.cart-wrp .cart-delete{
+    position: absolute;
+    top:20px;
+    right: 10px;
+    color: #3cc395;
+    font-size: 20px;
+    border: none;
+    background-color: transparent;
+}
+.cart-wrp .cart-delete:hover{
+    color:teal;
+}
+.goods .cart-delete{
+    display: none;
+}
+.goods-title, .cart-title {
     display: block;
     width: 100%;
     background-color: #3cc0b5;
@@ -768,7 +788,7 @@ header {
     box-sizing: border-box;
 }
 
-.goods-list {
+.goods-list, .cart-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

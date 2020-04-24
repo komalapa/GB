@@ -4,6 +4,7 @@ class GoodsItem {
       this.title = title;
       this.price = price;
       this.img = img;
+      this.countInCart=0;
     }
     render() {
       return `<div class="goods-item">
@@ -12,64 +13,16 @@ class GoodsItem {
                 <div class="goods-item-buy-wrp">  
                     <span class="goods-item-price">$${this.price}</span>
                     <button class="goods-item-buy btn">bUY NOW</button>
+                    <button class="cart-delete">&#10008;</button>
                 </div>  
-            </div> ` ;
+            </div> ` ;// у кнопки cart-delete убрала  onclick="cart.deleteItem(new GoodsItem('${this.title}',${this.price},'${this.img}')) т.к. в таком случае не работает поиск в корзине indexOf т.к. это уже другой объект. Кнопки пока не работают. 
     }
   }
 
 class GoodsList {
     constructor() {
       this.goods = [];
-    }
-    fetchGoods() {
-      this.goods = [{
-                        title: 'BRANDED SHOE',
-                        price: 150,
-                        img: "img/product1.png"
-                    },
-                    {
-                        title: 'BRANDED T-SHIRT',
-                        price: 50,
-                        img: "img/product2.png"
-                    }, {
-                        title: 'BRANDED T-SHIRT',
-                        price: 20,
-                        img: "img/product3.png"
-                    }, {
-                        title: 'BRANDED THING',
-                        price: 300,
-                        img: "img/product4.png"
-                    }, {
-                        title: 'BRANDED BAG',
-                        price: 400,
-                        img: "img/product5.png"
-                    }, {
-                        title: 'BRANDED BREECHES',
-                        price: 150,
-                        img: "img/product6.png"
-                    },
-                    ];
-    }
-    render() {
-        let listHtml = '';
-        this.goods.forEach(item => {
-          const goodItem = new GoodsItem(item.title, item.price, item.img);
-          listHtml += goodItem.render();
-        });
-        document.querySelector('.goods-list').innerHTML = listHtml;
-      }
-    sumAll(){
-        let sum = 0;
-        this.goods.forEach(item => {
-            sum+= item.price;
-            });
-        return sum;
-    }
-}
-
-class MyGoodsList {
-    constructor() {
-      this.goods = [];
+      this.fetchGoods();
     }
     fetchGoods() {
         const goodsInput=[{
@@ -120,13 +73,9 @@ class MyGoodsList {
     }
 }
 
-//const list = new GoodsList();
+const list = new GoodsList();
 //list.fetchGoods();
-//list.render();
-
-const myList = new MyGoodsList();
-myList.fetchGoods();
-myList.render();
+list.render();
 
 class Cart {
     constructor() {
@@ -135,14 +84,28 @@ class Cart {
         this.finSum=0;
       }
     addItem(item){
-        this.orderList.push(item);
+        if (this.orderList.indexOf(item)>=0){ //Если есть в списке, просто увеличиваем количество
+            this.orderList[this.orderList.indexOf(item)].countInCart++
+        } else {
+            console.log(item)
+            item.countInCart++;
+            this.orderList.push(item);
+        }
         this.sum+=item.price;
+        this.renderCartList();
     }
     deleteItem(item){
-        if (this.orderList.indexOf(item)>=0){
-            this.orderList.splice(this.orderList.indexOf(item),1);
+        console.log("delete ",item)
+        if (item.countInCart>1){
+            this.orderList[this.orderList.indexOf(item)].countInCart--;
             this.sum-=item.price;
+        } else {
+            if (this.orderList.indexOf(item)>=0){
+                this.orderList.splice(this.orderList.indexOf(item),1);
+                this.sum-=item.price;
+            }
         }
+        this.renderCartList();
     }
     sale (sum, prcnt){
         if (this.sum > sum) {this.finSum=this.sum*(1-prcnt/100);}
@@ -153,18 +116,29 @@ class Cart {
     consoleLogList(){
         this.orderList.forEach(item=>console.log(item))
     }
+    renderCartList(){
+        let listHtml = '';
+        this.orderList.forEach(item => {
+          listHtml += item.render();
+        });
+        document.querySelector('.cart-list').innerHTML = listHtml;
+      
+    }
 }
 
 const cart = new Cart();
-let item = new GoodsItem('test item', 120, 'img.jpg');
-cart.addItem(item);
-item= new GoodsItem('title',333,"img")
-cart.addItem(item);
-console.log("cart: ");
-cart.consoleLogList();
-cart.sale(200,10)
-console.log("sum: "+cart.sum)
-console.log("finSum: "+cart.finSum)
-cart.deleteItem(item)
-console.log("cart (delete item): ");
-cart.consoleLogList();
+cart.addItem(list.goods[1]);
+cart.addItem(list.goods[2]);
+cart.renderCartList();
+// let item = new GoodsItem('test item', 120, 'img.jpg');
+// cart.addItem(item);
+// item= new GoodsItem('title',333,"img")
+// cart.addItem(item);
+// console.log("cart: ");
+// cart.consoleLogList();
+// cart.sale(200,10)
+// console.log("sum: "+cart.sum)
+// console.log("finSum: "+cart.finSum)
+// cart.deleteItem(item)
+// console.log("cart (delete item): ");
+// cart.consoleLogList();
