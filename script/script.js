@@ -58,21 +58,21 @@ class GoodsList {
                     const goodsItem = new GoodsItem(item.title, item.price, item.img);
                     this.goods.push(goodsItem)
                 });
-                console.log(this.goods)
+                //console.log(this.goods)
                 if (this.goods) {
                     resolve();
-                    console.log("true")
+                    //console.log("true")
                 } else {
                     reject()
                 }
-            }, 3000);
+            }, 0);//}, 3000);
             
         })
         return promise;
         
     }
     render() {
-        console.log("render")
+        //console.log("render")
         let listHtml = '';
         this.goods.forEach(item => {
           listHtml += item.render();
@@ -98,7 +98,7 @@ class Cart {
         if (this.orderList.indexOf(item)>=0){ //Если есть в списке, просто увеличиваем количество
             this.orderList[this.orderList.indexOf(item)].countInCart++
         } else {
-            console.log(item)
+            //console.log(item)
             item.countInCart++;
             this.orderList.push(item);
         }
@@ -106,7 +106,7 @@ class Cart {
         this.renderCartList();
     }
     deleteItem(item){
-        console.log("delete ",item)
+        //console.log("delete ",item)
         if (item.countInCart>1){
             this.orderList[this.orderList.indexOf(item)].countInCart--;
             this.sum-=item.price;
