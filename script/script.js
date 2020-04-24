@@ -22,42 +22,57 @@ class GoodsItem {
 class GoodsList {
     constructor() {
       this.goods = [];
-      this.fetchGoods();
     }
     fetchGoods() {
         const goodsInput=[{
-                        title: 'BRANDED SHOE',
-                        price: 150,
-                        img: "img/product1.png"
-                    },
-                    {
-                        title: 'BRANDED T-SHIRT',
-                        price: 50,
-                        img: "img/product2.png"
-                    }, {
-                        title: 'BRANDED T-SHIRT',
-                        price: 20,
-                        img: "img/product3.png"
-                    }, {
-                        title: 'BRANDED THING',
-                        price: 300,
-                        img: "img/product4.png"
-                    }, {
-                        title: 'BRANDED BAG',
-                        price: 400,
-                        img: "img/product5.png"
-                    }, {
-                        title: 'BRANDED BREECHES',
-                        price: 150,
-                        img: "img/product6.png"
-                    }];
-            goodsInput.forEach(item => {
-                const goodsItem = new GoodsItem(item.title, item.price, item.img);
-                this.goods.push(goodsItem)
+            title: 'BRANDED SHOE',
+            price: 150,
+            img: "img/product1.png"
+        },
+        {
+            title: 'BRANDED T-SHIRT',
+            price: 50,
+            img: "img/product2.png"
+        }, {
+            title: 'BRANDED T-SHIRT',
+            price: 20,
+            img: "img/product3.png"
+        }, {
+            title: 'BRANDED THING',
+            price: 300,
+            img: "img/product4.png"
+        }, {
+            title: 'BRANDED BAG',
+            price: 400,
+            img: "img/product5.png"
+        }, {
+            title: 'BRANDED BREECHES',
+            price: 150,
+            img: "img/product6.png"
+        }];
+        
+        const promise= new Promise((resolve, reject)=>
+        {
+            setTimeout(() => {
+                goodsInput.forEach(item => {
+                    const goodsItem = new GoodsItem(item.title, item.price, item.img);
+                    this.goods.push(goodsItem)
                 });
+                console.log(this.goods)
+                if (this.goods) {
+                    resolve();
+                    console.log("true")
+                } else {
+                    reject()
+                }
+            }, 3000);
+            
+        })
+        return promise;
         
     }
     render() {
+        console.log("render")
         let listHtml = '';
         this.goods.forEach(item => {
           listHtml += item.render();
@@ -72,10 +87,6 @@ class GoodsList {
         return sum;
     }
 }
-
-const list = new GoodsList();
-//list.fetchGoods();
-list.render();
 
 class Cart {
     constructor() {
@@ -126,10 +137,19 @@ class Cart {
     }
 }
 
-const cart = new Cart();
-cart.addItem(list.goods[1]);
-cart.addItem(list.goods[2]);
-cart.renderCartList();
+
+const list = new GoodsList();
+
+list.fetchGoods()
+    .then(()=>{
+        list.render();
+        const cart = new Cart();
+        cart.addItem(list.goods[1]);
+        cart.addItem(list.goods[2]);
+        cart.renderCartList();
+    })
+    .catch(()=>console.log("empty"))
+
 // let item = new GoodsItem('test item', 120, 'img.jpg');
 // cart.addItem(item);
 // item= new GoodsItem('title',333,"img")
