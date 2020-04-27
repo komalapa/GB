@@ -29,12 +29,20 @@ function verifyName(mode){
         verFlag=false
         //console.log('false');
         element.classList.add("red-border")
-        alert ('Ошибка заполнения поля!')   
+       // alert ('Ошибка заполнения поля!')   
     }
+    return verFlag;
 }
 function verifier(event){
-   // event.preventDefault();
+    //console.log(event)
+    event.preventDefault();
     verifyName("name");
     verifyName("phone");
     verifyName("email");
+    if (verifyName("name")&&verifyName("phone")&&verifyName("email")){
+        alert("Готово!")
+    } else {
+        alert("В форме есть ошибки.\nПроверьте, пожалуйста")    
+    }
+    
 }

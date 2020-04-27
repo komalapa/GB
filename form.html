@@ -8,13 +8,13 @@
     <title>Form</title>
 </head>
 <body>
-    <div class="main-form" action="" onsubmit="verifyName()">
+    <form class="main-form" action="#" onsubmit="verifier(event)">
         <label for="name">Имя <input type="text" name="name" id="name"></label>
         <label for="phone">Телефон <input type="text" name="phone" id="phone"></label>
         <label for="email">e-mail <input type="text" name="email" id="email"></label>
         <label for="sometext">Текст <input type="text" name="sometext" id="sometext"></label>
-       <!-- <button type="submit">Проверить</button>-->
-        <button onclick="verifier()">Проверить</button>
-    </div>
+       <button type="submit">Проверить</button>
+        <!-- <button onclick="verifier()">Проверить</button> -->
+    </form>
 </body>
 </html>
