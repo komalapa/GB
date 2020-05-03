@@ -591,3 +591,19 @@ div.map{
 .socials svg{
     fill:#061B28;
 }
+footer{
+    width: 100%;
+    background-color: #061B28;
+    padding:45px 98px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+.copyrights, .policy{
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #FCFCFC;
+    display: block;
+}
