@@ -490,19 +490,19 @@ article p{
     display: flex;
     width: 100%;
 }
-form {
+.writeus-form {
     padding:75px 60px 0 98px;
     background-color: #061B28;
     display: block;
     width: 683px;
     box-sizing: border-box;
 }
-form h2{
+.writeus-form h2{
     color: #FCFCFC;
     margin-bottom: 35px;
 }
 
-form p{
+.writeus-form p{
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     line-height: 150%;
@@ -510,7 +510,7 @@ form p{
     color: #FCFCFC;
     margin:0 0 10px 0;
 }
-form input{
+.writeus-form input{
     border:none;
     border-bottom: 1px solid #45545E;
     background-color: transparent;
@@ -520,7 +520,7 @@ form input{
     width: 525px;
     margin-top: 20px;
 }
-form button{
+.writeus-form button{
     border:none;
     width: 525px;
     height: 50px;
@@ -547,4 +547,47 @@ form button{
     width: 683px;
     height: 690px;
     background: url(../img/form.jpg) no-repeat;
+}
+.our-contacts{
+    width: 100%;
+    padding:140px 98px;
+    display: flex;
+}
+div.map{
+    width: 600px;
+    height: 457px;
+}
+.contacts-list{
+    margin-left: 70px;
+    width: 305px;
+}
+.contacts-list h2{
+    margin-bottom: 60px;
+    line-height: 0.8;
+}
+.contacts-list span{
+    display: block;
+}
+.contact-type{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #061B28;
+    margin-bottom: 15px;
+    line-height: 0.8;
+}
+.contact-info{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.4;
+    color: #061B28;
+    margin-bottom: 35px;
+}
+.socials{
+    text-decoration: none;
+    margin-right: 33px;
+    
+}
+.socials svg{
+    fill:#061B28;
 }
