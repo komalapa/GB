@@ -66,7 +66,8 @@ table{border-collapse:collapse;border-spacing:0}
 body{
     width: 1366px;
     font-family: 'Roboto', sans-serif;
-    
+    margin: 0 auto;
+    background-color:#FCFCFC;
 }
 header{
     width:100%;
@@ -177,4 +178,90 @@ h1{
     display: 45px;
     text-decoration: none;
     margin: 50px auto;
+}
+.tours{
+    width: 100%;
+    padding: 140px 0 0 98px;
+    display: flex;
+    overflow: hidden;
+    
+}
+.tours-dscr{
+    width: 472px;
+}
+h2{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 115%;
+    /* or 60px */
+    color: #061B28;
+    margin: 0;
+}
+.tours p{
+    font-family: 'Roboto', sans-serif ;
+    font-size: 18px;
+    line-height: 150%;
+    /* or 27px */
+    color: #061B28;
+    width: 350px;
+}
+.tours-map{
+    width: 815px;
+    height: 375px;
+    background: url(../img/map.png) no-repeat;
+    margin-top: 83px;
+    position: relative;
+}
+.tours-map-item{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 150%;
+    /* or 21px */
+    color: #061B28;
+    text-decoration: none;
+    position: absolute;
+}
+.tours-map-item::before{
+    content: '';
+    background: url(../img/map-marker.svg);
+    display: inline-block;
+    width: 13px;
+    height: 16px;
+    margin-left: 5px;
+    position: absolute;
+    top:2px;
+    left:-22px
+}
+.map-denaly{
+    top:21px;
+    left:50px
+}
+.map-orisaba{
+    top:139px;
+    left:100px
+}
+.map-katopakhy{
+    top:205px;
+    left:158px
+}
+.map-akonkagua{
+    top:305px;
+    left:190px
+}
+.map-matterhorn{
+    top:63px;
+    left:364px
+}
+.map-elbrus{
+    top:76px;
+    left:466px
+}
+.map-everest{
+    top:131px;
+    left:590px
+}
+.map-kilimandjaro{
+    top:208px;
+    left:459px
 }
