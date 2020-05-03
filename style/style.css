@@ -265,3 +265,142 @@ h2{
     top:208px;
     left:459px
 }
+
+.popular-tours{
+    width: 100%;
+    padding:140px 98px 130px 98px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.popular-tours h2{
+    text-align: center;
+    width: 100%;
+}
+.popular-tours-wrp{
+    display: flex;
+}
+.popular-tours-item{
+    position: relative;
+    width: 370px;
+    height: 326px;
+    background: linear-gradient(180deg, rgba(249, 249, 250, 0) 0%, rgba(249, 249, 250, 0.9) 100%), url(../img/beluha.jpg) no-repeat;
+    padding:190px 0 38px 40px;
+    box-sizing: border-box;
+    margin: 80px 30px 40px 0;
+}
+.popular-tours-item:last-of-type{
+    margin-right: 0;
+}
+.popular-tours .tours-map-item{
+    top:39px;
+    left:40px;
+}
+
+.popular-tours-item-mark{
+    position: absolute;
+    top:41px;
+    right: 40px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    background-color: rgba(252, 252, 252, 0.4);
+}
+.popular-tours-item-dscr{
+    display: flex;
+    flex-wrap: wrap;
+}
+h3{
+    font-family: 'Oswald',sans-serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 115%;
+    /* or 30px */
+    color: #061B28;
+    width: 100%;
+    margin: 0;
+}
+
+.popular-tours-item-info{
+    padding:0 10px;
+    margin: 25px 0;
+    border-left: 1px solid #061B28;
+}
+.popular-tours-item-info:first-of-type{
+    border: none;
+    padding-left: 0;
+}
+.popular-tours-item-level{
+    width: 100%;
+    padding-left: 15px;
+    position: relative;
+}
+.middle:before{
+    position: absolute;
+    display: block;
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border-right: 2px solid #061B28;
+    border-top: 2px solid #061B28;
+    border-left: 2px solid #FCFCFC;
+    border-bottom: 2px solid #FCFCFC;
+    transform: rotate(45deg);
+    left:-2px;
+    top:3px;
+    box-sizing: border-box;
+}
+.arrow-btn{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #E6E8EA;
+    border:none;
+    margin-left:25px
+}
+.russia{
+    width:100%;
+    background:url(../img/russia.jpg) no-repeat;
+    padding: 100px 268px;
+    box-sizing: border-box;
+}
+.russia h2{
+    text-align: center;
+    color: #FCFCFC;
+    line-height: 85%;
+}
+.russia p{
+    width: 243px;
+    margin: 23px auto 0;
+    color: #FCFCFC;
+    text-align: center;
+}
+.russia table{
+    margin: 37px auto 0;
+}
+.russia tr{
+    border-bottom: 1px solid #45545E;
+    box-sizing: border-box;
+}
+.russia th{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 80%;
+    color: #A7AEB4;
+    padding:15px 50px;    
+}
+.russia td{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 80%;
+    color: #FCFCFC;
+    padding:25px 50px;
+}
+.russia-more{
+    margin-bottom: 0;
+}
