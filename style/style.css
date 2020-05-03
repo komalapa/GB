@@ -404,3 +404,85 @@ h3{
 .russia-more{
     margin-bottom: 0;
 }
+.blog{
+    width: 100%;
+    padding:140px 98px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.blog h2{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 80px;
+}
+.post-list{
+    width: 400px;
+}
+.post-list-item{
+    margin: 0;
+    border-bottom: 1px solid #061B28;
+    padding: 26px 30px;
+    display: block;
+    text-decoration: none;
+}
+.blog time{
+    font-family: 'Roboto',sans-serif;
+    font-size: 14px;
+    color: #626F77;
+}
+.post-list p{
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 140%;
+    color: #061B28;
+    margin: 15px 0 0 0;
+}
+.post-list-item:hover, .post-list .active{
+    color: #FCFCFC;
+    background-color: #061B28;
+}
+.post-list-item:hover p, .post-list .active p{
+    color: #FCFCFC;
+}
+.post-list-more{
+    background: #EC5118;
+    display: block;
+    width: 400px;
+    height: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 50px;
+    /* or 22px */
+    color: #FCFCFC;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 30px;
+}
+article{
+    width: 700px;
+    margin-left: 70px;
+}
+.article-image{
+    width: 700px;
+    height: 287px;
+    background: url(../img/article.jpg) no-repeat;
+    background-position: 0% 90%;
+    margin-bottom: 40px;
+}
+h4{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 140%;
+    color: #061B28;
+    margin: 20px 0 35px 0;
+}
+article p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    /* or 24px */
+    color: #061B28;
+    margin: 24px 0 0 0;
+}
