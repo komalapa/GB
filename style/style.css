@@ -150,7 +150,12 @@ form.search input:focus{
     justify-content: center;
     align-items: center;
 }
-
+.header-button svg{
+    stroke: #FCFCFC;
+}
+.header-button:hover svg{
+    stroke: #EC5118;;
+}
 .search-btn{
     margin-right: 30px;
 }
@@ -290,6 +295,9 @@ h2{
     box-sizing: border-box;
     margin: 80px 30px 40px 0;
 }
+.popular-tours-item:hover{
+    filter: contrast(1.1);
+}
 .popular-tours-item:last-of-type{
     margin-right: 0;
 }
@@ -308,6 +316,12 @@ h2{
     outline: none;
     border: none;
     background-color: rgba(252, 252, 252, 0.4);
+}
+.popular-tours-item-mark svg{
+    fill: #EC5118;
+}
+.popular-tours-item-mark:hover svg{
+    fill: #061B28;
 }
 .popular-tours-item-dscr{
     display: flex;
@@ -361,6 +375,12 @@ h3{
     background-color: #E6E8EA;
     border:none;
     margin-left:25px
+}
+.arrow-btn svg{
+    stroke:#061B28;
+}
+.arrow-btn:hover svg{
+    stroke:#EC5118;
 }
 .russia{
     width:100%;
@@ -606,4 +626,10 @@ footer{
     font-size: 12px;
     color: #FCFCFC;
     display: block;
+}
+.hover:hover{
+    font-style: italic;
+}
+a:hover svg{
+    fill:#EC5118;
 }
