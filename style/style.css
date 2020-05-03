@@ -187,6 +187,7 @@ h1{
 .tours{
     width: 100%;
     padding: 140px 0 0 98px;
+    box-sizing: border-box;
     display: flex;
     overflow: hidden;
     
@@ -597,6 +598,7 @@ article p{
 .our-contacts{
     width: 100%;
     padding:140px 98px;
+    box-sizing: border-box;
     display: flex;
 }
 div.map{
