@@ -452,6 +452,7 @@ h3{
 .blog{
     width: 100%;
     padding:140px 98px;
+    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
 }
