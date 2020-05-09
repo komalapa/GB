@@ -519,7 +519,7 @@ header {
     fill: #afafaf;
 }
 
-.cart-sum {
+.cart-sum, .not-found-msg {
     font-family: 'Bebas Neue';
     font-size: 33px;
     line-height: 1;
@@ -527,7 +527,11 @@ header {
     color: #a1a1a1;
     margin-left: 17px;
 }
-
+.not-found-msg{
+    display: block;
+    text-align: center;
+    margin: 75px auto;
+}
 .menu {
     width: 100%;
     background-color: #4ccfc1;
@@ -826,14 +830,23 @@ header {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    flex-wrap: wrap;
 }
 
-.goods-item-price {
+.goods-item-price, .goods-item-in-cart {
     font-family: 'Bebas Neue';
     font-size: 27px;
     line-height: 25px;
     font-weight: 800;
     color: #afafaf;
+}
+.goods-item-in-cart{
+    width: 100%;
+}
+.goods-item-in-cart svg{
+    fill:#afafaf;
+    height: 20px;
+    margin-top: 10px;
 }
 
 .goods .goods-item-title,
