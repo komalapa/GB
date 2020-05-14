@@ -1,10 +1,11 @@
 
 class GoodsItem {
-    constructor(title, price,img) {
+    constructor(title, price,img,art) {
       this.title = title;
       this.price = price;
       this.img = img;
       this.countInCart=0;
+      this.art=art;
     }
     render() {
       return `<div class="goods-item">
@@ -28,28 +29,34 @@ class GoodsList {
         const goodsInput=[{
             title: 'BRANDED SHOE',
             price: 150,
-            img: "img/product1.png"
+            img: "img/product1.png",
+            art:1
         },
         {
             title: 'BRANDED T-SHIRT',
             price: 50,
-            img: "img/product2.png"
+            img: "img/product2.png",
+            art:2
         }, {
             title: 'BRANDED T-SHIRT',
             price: 20,
-            img: "img/product3.png"
+            img: "img/product3.png",
+            art:3
         }, {
             title: 'BRANDED THING',
             price: 300,
-            img: "img/product4.png"
+            img: "img/product4.png",
+            art:4
         }, {
             title: 'BRANDED BAG',
             price: 400,
-            img: "img/product5.png"
+            img: "img/product5.png",
+            art:5
         }, {
             title: 'BRANDED BREECHES',
             price: 150,
-            img: "img/product6.png"
+            img: "img/product6.png",
+            art:6
         }];
         
         const promise= new Promise((resolve, reject)=>
@@ -153,16 +160,26 @@ const shoppyApp = new Vue({
         },
     methods:{
         filter: function(){
-            this.filteredGoods=[]
-            this.goodsList.goods.forEach(item => {
-                if (item.title.toLowerCase().indexOf(this.searchLine.toLowerCase())>=0){
-                    this.filteredGoods.push(item);
-                }
-              });
+            this.filteredGoods= this.goodsList.goods.filter(item =>(item.title.toLowerCase().indexOf(this.searchLine.toLowerCase())>=0));
         }
+    },
+    components:{
+        goodsItem: Vue.component('goods-item', {
+            props: ['good','cart'],
+            template: 
+            `<div class="goods-item">
+                <div class="img-wrp"><img v-bind:src="good.img" alt="shoes"></div>
+                <span class="goods-item-title">{{good.title}}</span>
+                <div class="goods-item-buy-wrp">
+                    <span class="goods-item-price">\${{good.price}}</span>
+                    <button class="goods-item-buy btn" v-on:click.prevent="cart.addItem(good)">bUY NOW</button>
+                </div>
+                <button class="cart-delete" v-on:click.prevent="cart.deleteItem(good)">&#10008;</button>
+            </div>`
+          })
     },
     mounted: function(){
         this.filteredGoods=this.goodsList.goods;
     }
   });
-console.log(shoppyApp);
+

@@ -62,7 +62,8 @@
                     </span>
                 </span>
                 <div class="cart-list">
-                    <div v-for="good in cart.orderList" class="goods-item">
+                    <goods-item v-for="good in cart.orderList" :key="good.art" :good="good" :cart="cart"></goods-item>
+                    <!-- <div v-for="good in cart.orderList" class="goods-item">
                         <div class="img-wrp"><img v-bind:src="good.img" alt="shoes"></div>
                         <span class="goods-item-title">{{good.title}}</span>
                         <div class="goods-item-buy-wrp">
@@ -72,22 +73,22 @@
                             </div>
                             <button class="cart-delete" v-on:click.prevent="cart.deleteItem(good)">&#10008;</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <section class="goods">
                 <span class="goods-title">FEATURED goods</span>
                 <span class="not-found-msg" v-if="!filteredGoods.length">Нет данных</span>
                 <div v-else="!filteredGoods.length" class="goods-list">
-
-                    <div v-for="good in filteredGoods" class="goods-item">
+                    <goods-item v-for="good in filteredGoods" :key="good.art" :good="good" :cart="cart"></goods-item>
+                    <!-- <div v-for="good in filteredGoods" class="goods-item">
                         <div class="img-wrp"><img v-bind:src="good.img" alt="shoes"></div>
                         <span class="goods-item-title">{{good.title}}</span>
                         <div class="goods-item-buy-wrp">
                             <span class="goods-item-price">${{good.price}}</span>
                             <button class="goods-item-buy btn" v-on:click.prevent="cart.addItem(good)">bUY NOW</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
 
