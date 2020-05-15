@@ -1,7 +1,7 @@
 <template>
   <form action="#" class="search" v-on:submit.prevent="search">
                 <input type="text" id="search-input" v-bind:value="this.searchLine"
-                v-on:input="\$emit('input', $event.target.value)">
+                v-on:input="$emit('input', $event.target.value)">
                 <button v-on:click="search" class="search-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22"
                         height="22" viewBox="0 0 26 26">
