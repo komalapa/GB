@@ -1,28 +1,1165 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <div class="wrp" id="shoppy-app">
+        <!-- <div class="error-not-connected" v-if="!goodsList.goods.length">Внимание! Отсутствует соединение с сервером</div> 
+        <connection-error  v-bind:goodslist="goodsList">Внимание! Отсутствует соединение с сервером</connection-error>-->
+        <header>
+            <a href="#" class="logo">Shoppy</a>
+            <SearchForm @submit.prevent="filter()" v-model="searchLine"></SearchForm>
+        </header>
+        <nav class="menu">
+            <ul class="menu-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sale</a></li>
+                <li><a href="#">Handbags</a></li>
+                <li><a href="#">Wallets</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Mens Store</a></li>
+                <li><a href="#">Shoes</a></li>
+                <li><a href="#">Vintage</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+        </nav>
+        <main>
+            <CartSection v-bind:cart="cart" v-bind:is-visible-cart="isVisibleCart"></CartSection>
+            
+            <GoodsSection v-bind:cart="cart" v-bind:filtered-goods="filteredGoods"></GoodsSection>
+
+
+        </main>
+        <footer>
+
+            <section class="copyrights">
+                <p>Copyright &copy; 2013 <a href="http://psd-html-css.ru/templates/psd-shablon-internet-magazina"> Css
+                        Author</a></p>
+            </section>
+        </footer>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+class GoodsItem {
+    constructor(title, price, img, art) {
+      this.title = title;
+      this.price = price;
+      this.img = img;
+      this.countInCart=0;
+      console.log("art ");
+      this.art = art;
+    }
+    render() {
+      return `<div class="goods-item">
+                <div class="img-wrp"><img src="${this.img}" alt="shoes"></div>
+                <span class="goods-item-title">${this.title}</span>
+                <div class="goods-item-buy-wrp">  
+                    <span class="goods-item-price">$${this.price}</span>
+                    <button class="goods-item-buy btn">bUY NOW</button>
+                    <button class="cart-delete">&#10008;</button>
+                </div>  
+            </div> ` ;
+    }
+  }
 
+class GoodsList {
+    constructor() {
+      
+      this.goods = [];
+      console.log(this.goods);
+      this.fetchGoods();
+    }
+    fetchGoods() {
+        const goodsInput=[{
+            title: 'BRANDED SHOE',
+            price: 150,
+            img: "img/product1.png",
+            art: 1,
+        },
+        {
+            title: 'BRANDED T-SHIRT',
+            price: 50,
+            img: "img/product2.png",
+            art: 2,
+        }, {
+            title: 'BRANDED T-SHIRT',
+            price: 20,
+            img: "img/product3.png",
+            art: 3,
+        }, {
+            title: 'BRANDED THING',
+            price: 300,
+            img: "img/product4.png",
+            art: 4,
+        }, {
+            title: 'BRANDED BAG',
+            price: 400,
+            img: "img/product5.png",
+            art: 5,
+        }, {
+            title: 'BRANDED BREECHES',
+            price: 150,
+            img: "img/product6.png",
+            art: 6,
+        }];
+        
+        const promise= new Promise((resolve, reject)=>
+        {
+            setTimeout(() => {
+                goodsInput.forEach(item => {
+                    const goodsItem = new GoodsItem(item.title, item.price, item.img, item.art);
+                    this.goods.push(goodsItem)
+                });
+                //console.log(this.goods)
+                if (this.goods) {
+                    resolve();
+                    //console.log("true")
+                } else {
+                    reject()
+                }
+            }, 0);//}, 3000);
+            
+        })
+        return promise;
+        
+    }
+    render() {
+        //console.log("render")
+        let listHtml = '';
+        this.goods.forEach(item => {
+          listHtml += item.render();
+        });
+        document.querySelector('.goods-list').innerHTML = listHtml;
+      }
+    sumAll(){
+        let sum = 0;
+        this.goods.forEach(item => {
+            sum+= item.price;
+            });
+        return sum;
+    }
+}
+
+class Cart {
+    constructor() {
+        this.orderList = [];
+        this.sum = 0;
+        this.finSum=0;
+      }
+    addItem(item){
+        if (this.orderList.indexOf(item)>=0){ //Если есть в списке, просто увеличиваем количество
+            this.orderList[this.orderList.indexOf(item)].countInCart++
+        } else {
+            //console.log(item)
+            item.countInCart++;
+            this.orderList.push(item);
+        }
+        this.sum+=item.price;
+        //this.renderCartList();
+    }
+    deleteItem(item){
+        //console.log("delete ",item)
+        if (item.countInCart>1){
+            this.orderList[this.orderList.indexOf(item)].countInCart--;
+            this.sum-=item.price;
+        } else {
+            if (this.orderList.indexOf(item)>=0){
+                this.orderList.splice(this.orderList.indexOf(item),1);
+                this.sum-=item.price;
+            }
+        }
+        //this.renderCartList();
+    }
+    sale (sum, prcnt){
+        if (this.sum > sum) {this.finSum=this.sum*(1-prcnt/100);}
+        else {
+            {this.finSum=this.sum}
+        }
+    }
+    consoleLogList(){
+        this.orderList.forEach(item=>console.log(item))
+    }
+    renderCartList(){
+        let listHtml = '';
+        this.orderList.forEach(item => {
+          listHtml += item.render();
+        });
+        document.querySelector('.cart-list').innerHTML = listHtml;  
+    }
+}
+
+
+import CartSection from './components/CartSection.vue'
+//import ConnectionError from './components/ConnectionError.vue'
+import GoodsSection from './components/GoodsSection.vue'
+import SearchForm from './components/SearchForm.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    SearchForm,
+    GoodsSection,
+//    ConnectionError,
+    CartSection
+  },
+  data:function () {
+     return  {
+        goodsList: new GoodsList(),
+        filteredGoods: [],
+        searchLine: '',
+        cart: new Cart(),
+      }},
+  computed: {
+        isVisibleCart: function () {
+          return Boolean(this.cart.orderList.length);
+        }
+        },
+    methods:{
+        filter: function(){
+            this.filteredGoods= this.goodsList.goods.filter(item =>(item.title.toLowerCase().indexOf(this.searchLine.toLowerCase())>=0));
+        }
+    },
+    mounted: function(){
+        this.filteredGoods=this.goodsList.goods;
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+html {
+    line-height: 1.15;
+    /* 1 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
+}
+
+/* Sections
+     ========================================================================== */
+
+/**
+   * Remove the margin in all browsers.
+   */
+
+body {
+    margin: 0;
+}
+
+/**
+   * Render the `main` element consistently in IE.
+   */
+
+main {
+    display: block;
+}
+
+/**
+   * Correct the font size and margin on `h1` elements within `section` and
+   * `article` contexts in Chrome, Firefox, and Safari.
+   */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+/* Grouping content
+     ========================================================================== */
+
+/**
+   * 1. Add the correct box sizing in Firefox.
+   * 2. Show the overflow in Edge and IE.
+   */
+
+hr {
+    box-sizing: content-box;
+    /* 1 */
+    height: 0;
+    /* 1 */
+    overflow: visible;
+    /* 2 */
+}
+
+/**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+
+pre {
+    font-family: monospace, monospace;
+    /* 1 */
+    font-size: 1em;
+    /* 2 */
+}
+
+/* Text-level semantics
+     ========================================================================== */
+
+/**
+   * Remove the gray background on active links in IE 10.
+   */
+
+a {
+    background-color: transparent;
+}
+
+/**
+   * 1. Remove the bottom border in Chrome 57-
+   * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+   */
+
+abbr[title] {
+    border-bottom: none;
+    /* 1 */
+    text-decoration: underline;
+    /* 2 */
+    text-decoration: underline dotted;
+    /* 2 */
+}
+
+/**
+   * Add the correct font weight in Chrome, Edge, and Safari.
+   */
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+/**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+
+code,
+kbd,
+samp {
+    font-family: monospace, monospace;
+    /* 1 */
+    font-size: 1em;
+    /* 2 */
+}
+
+/**
+   * Add the correct font size in all browsers.
+   */
+
+small {
+    font-size: 80%;
+}
+
+/**
+   * Prevent `sub` and `sup` elements from affecting the line height in
+   * all browsers.
+   */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+/* Embedded content
+     ========================================================================== */
+
+/**
+   * Remove the border on images inside links in IE 10.
+   */
+
+img {
+    border-style: none;
+}
+
+/* Forms
+     ========================================================================== */
+
+/**
+   * 1. Change the font styles in all browsers.
+   * 2. Remove the margin in Firefox and Safari.
+   */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    /* 1 */
+    font-size: 100%;
+    /* 1 */
+    line-height: 1.15;
+    /* 1 */
+    margin: 0;
+    /* 2 */
+}
+
+/**
+   * Show the overflow in IE.
+   * 1. Show the overflow in Edge.
+   */
+
+button,
+input {
+    /* 1 */
+    overflow: visible;
+}
+
+/**
+   * Remove the inheritance of text transform in Edge, Firefox, and IE.
+   * 1. Remove the inheritance of text transform in Firefox.
+   */
+
+button,
+select {
+    /* 1 */
+    text-transform: none;
+}
+
+/**
+   * Correct the inability to style clickable types in iOS and Safari.
+   */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+/**
+   * Remove the inner border and padding in Firefox.
+   */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+/**
+   * Restore the focus styles unset by the previous rule.
+   */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+/**
+   * Correct the padding in Firefox.
+   */
+
+fieldset {
+    padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+   * 1. Correct the text wrapping in Edge and IE.
+   * 2. Correct the color inheritance from `fieldset` elements in IE.
+   * 3. Remove the padding so developers are not caught out when they zero out
+   *    `fieldset` elements in all browsers.
+   */
+
+legend {
+    box-sizing: border-box;
+    /* 1 */
+    color: inherit;
+    /* 2 */
+    display: table;
+    /* 1 */
+    max-width: 100%;
+    /* 1 */
+    padding: 0;
+    /* 3 */
+    white-space: normal;
+    /* 1 */
+}
+
+/**
+   * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+   */
+
+progress {
+    vertical-align: baseline;
+}
+
+/**
+   * Remove the default vertical scrollbar in IE 10+.
+   */
+
+textarea {
+    overflow: auto;
+}
+
+/**
+   * 1. Add the correct box sizing in IE 10.
+   * 2. Remove the padding in IE 10.
+   */
+
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box;
+    /* 1 */
+    padding: 0;
+    /* 2 */
+}
+
+/**
+   * Correct the cursor style of increment and decrement buttons in Chrome.
+   */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+/**
+   * 1. Correct the odd appearance in Chrome and Safari.
+   * 2. Correct the outline style in Safari.
+   */
+
+[type="search"] {
+    -webkit-appearance: textfield;
+    /* 1 */
+    outline-offset: -2px;
+    /* 2 */
+}
+
+/**
+   * Remove the inner padding in Chrome and Safari on macOS.
+   */
+
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+   * 1. Correct the inability to style clickable types in iOS and Safari.
+   * 2. Change font properties to `inherit` in Safari.
+   */
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    /* 1 */
+    font: inherit;
+    /* 2 */
+}
+
+/* Interactive
+     ========================================================================== */
+
+/*
+   * Add the correct display in Edge, IE 10+, and Firefox.
+   */
+
+details {
+    display: block;
+}
+
+/*
+   * Add the correct display in all browsers.
+   */
+
+summary {
+    display: list-item;
+}
+
+/* Misc
+     ========================================================================== */
+
+/**
+   * Add the correct display in IE 10+.
+   */
+
+template {
+    display: none;
+}
+
+/**
+   * Add the correct display in IE 10.
+   */
+
+[hidden] {
+    display: none;
+}
+
+/*FONTS*/
+@font-face {
+    font-family: 'Lobster';
+    src: local('Lobster'),url('../fonts/lobster.woff2') format('woff2'), url('../fonts/lobster.woff') format('woff'), url('../fonts/lobster.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: local('Bebas Neue Thin'), local('BebasNeue-Thin'), url('../fonts/bebasneuethin.woff2') format('woff2'), url('../fonts/bebasneuethin.woff') format('woff'), url('../fonts/bebasneuethin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: local('Bebas Neue Light'), local('BebasNeue-Light'), url('../fonts/bebasneuelight.woff2') format('woff2'), url('../fonts/bebasneuelight.woff') format('woff'), url('../fonts/bebasneuelight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: local('Bebas Neue Book'), local('BebasNeueBook'), url('../fonts/bebasneuebook.woff2') format('woff2'), url('../fonts/bebasneuebook.woff') format('woff'), url('../fonts/bebasneuebook.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: local('Bebas Neue Regular'), local('BebasNeueRegular'), url('../fonts/bebasneueregular.woff2') format('woff2'), url('../fonts/bebasneueregular.woff') format('woff'), url('../fonts/bebasneueregular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: local('Bebas Neue Bold'), local('BebasNeueBold'), url('../fonts/bebasneuebold.woff2') format('woff2'), url('../fonts/bebasneuebold.woff') format('woff'), url('../fonts/bebasneuebold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans'), local('OpenSans'), url('../fonts/opensans.woff2') format('woff2'), url('../fonts/opensans.woff') format('woff'), url('../fonts/opensans.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*STYLES*/
+
+body {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+li a:hover {
+    font-style: italic;
+}
+
+li a:active {
+    text-shadow: #afafaf 15px 0 3px;
+}
+.error-not-connected{
+    width: 100%;
+    color:red;
+    background-color: #3cc3b5;
+    
+    padding: 20px 10px;
+    opacity: 0.5;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+header {
+    width: 100%;
+    min-height: 84px;
+    padding: 20px 150px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-family: Lobster;
+    font-size: 49px;
+    line-height: 37px;
+    font-weight: 400;
+    color: #3cc3b5;
+    text-decoration: none;
+}
+
+.logo:hover {
+    text-shadow: #afafaf 5px 0 5px;
+}
+
+.logo:active {
+    text-shadow: #afafaf 5px 0 0px;
+}
+
+.search {
+    position: relative;
+}
+
+#search-input {
+    width: 434px;
+    height: 31px;
+    background-color: #ffffff;
+    border: 1.0px solid #3cc3b5;
+    padding-left: 5px;
+    padding-right: 46px;
+    box-sizing: border-box;
+    color: #3cc3b5;
+}
+
+.search-btn {
+    background-color: #ffffff;
+    border: none;
+    position: absolute;
+    top: 2px;
+    right: 1px;
+    fill: #e3e3e3;
+    outline: none;
+}
+
+.search-btn:hover svg {
+    fill: #3cc395;
+}
+
+.search-btn:active svg {
+    fill: #afafaf;
+}
+
+.cart {
+    display: flex;
+    align-items: flex-end;
+    padding: 5px 10px;
+    fill:  white;
+    color:white;
+}
+
+.cart:hover {
+    /* fill: #2da89b;
+    color: #2da89b; */
+    opacity: 0.7;
+}
+
+.cart:active {
+    /* fill: #afafaf;
+    color: #afafaf; */
+    opacity: 0.5;
+}
+
+.cart-sum, .not-found-msg {
+    font-family: 'Bebas Neue';
+    font-size: 33px;
+    line-height: 1;
+    font-weight: bold;
+    /* color: white; */
+    margin-left: 17px;
+}
+.not-found-msg{
+    display: block;
+    text-align: center;
+    margin: 75px auto;
+    color: #afafaf;
+}
+.menu {
+    width: 100%;
+    background-color: #4ccfc1;
+    padding: 10px 150px;
+    box-sizing: border-box;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+}
+
+.menu-list li a {
+    font-family: 'Bebas Neue';
+    font-size: 21px;
+    line-height: 19px;
+    font-weight: 400;
+    color: #ffffff;
+    padding: 0 20px;
+    border-left: 2px solid white;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.menu-list li:first-child a {
+    padding-left: 0;
+    border-left: none;
+}
+
+.menu-list li:last-child a {
+    padding-right: 0;
+}
+
+.actions {
+    width: 100%;
+    padding: 64px 293px 35px 206px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #3ec1b6;
+}
+
+.actions-img {
+    width: 278px;
+    height: 325px;
+    background: #3ec1b6 url('../img/layer_1_18.png') no-repeat;
+}
+
+.actions-dscr {
+    width: 402px;
+    color: #ffffff;
+    margin-left: 100px;
+    padding-top: 15px;
+}
+
+.actions-dscr-title {
+    display: block;
+    width: 310px;
+    font-family: 'Bebas Neue';
+    font-size: 61px;
+    line-height: 54px;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.actions-dscr p {
+    font-family: 'Open Sans';
+    font-size: 17px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.actions-dscr a {
+    display: block;
+    width: 141px;
+    font-family: 'Bebas Neue';
+    font-size: 27px;
+    line-height: 19px;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+    border: 3px solid #ffffff;
+    padding: 10px 25px 8px 25px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-top: 26px;
+}
+
+.actions-dscr a:hover {
+    box-shadow: 0px 0px 10px 0px #ffffff;
+}
+
+.actions-dscr a:active {
+    box-shadow: 0px 0px 10px 0px #2da89b;
+}
+
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 53px;
+}
+
+.pagination div {
+    width: 9px;
+    height: 9px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.pagination div:hover {
+    box-shadow: 0px 0px 5px 0px #ffffff;
+}
+
+.pagination div:active {
+    box-shadow: 0px 0px 5px 0px #afafaf;
+}
+
+.pagination div:last-child {
+    margin-right: 0;
+}
+
+.pagination div.active {
+    opacity: 0.5;
+}
+
+.popular {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 21px 33px;
+    box-sizing: border-box;
+}
+
+.popular .left-arrow {
+    fill: #dbdbdb;
+    margin-right: 67px;
+}
+
+.popular .right-arrow {
+    fill: #dbdbdb;
+    margin-left: 67px;
+}
+
+.popular .left-arrow:hover,
+.popular .right-arrow:hover {
+    fill: #2da89b;
+}
+
+.popular .left-arrow:active,
+.popular .right-arrow:active {
+    fill: #afafaf;
+}
+
+.popular-item {
+    width: 340px;
+    display: flex;
+    justify-content: space-around;
+    padding-right: 30px;
+    border-right: 1px solid rgba(175, 175, 175, 0.3);
+}
+
+.popular-item .img-wrp {
+    width: 217px;
+    height: 151px;
+    text-align: center;
+}
+
+.popular-item:nth-last-child(2) {
+    border-right: none;
+}
+
+.popular-item-dscr {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+}
+
+.popular-item-title,
+.goods-item-title {
+    font-family: 'Bebas Neue';
+    font-size: 27px;
+    line-height: 25px;
+    font-weight: 800;
+    color: #afafaf;
+    margin-top: 32px;
+}
+
+.btn {
+    display: inline-block;
+
+    min-height: 32px;
+    background-color: #3cc395;
+
+    text-align: center;
+    padding: 9px 10px 5px 10px;
+    box-sizing: border-box;
+    font-family: "Bebas Neue";
+    font-size: 19px;
+    line-height: 1;
+    font-weight: 400;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none;
+}
+
+.btn:hover {
+    box-shadow: 0px 0px 5px 0px #3cc395;
+}
+
+.btn:active {
+    box-shadow: 0px 0px 5px 0px #afafaf;
+}
+
+.popular-item-more {
+    margin-top: 20px;
+    width: 59px;
+}
+.cart-wrp .goods-item-buy{
+    display: none;
+}
+.cart-wrp .goods-item{
+    position: relative;
+}
+.cart-wrp .cart-delete{
+    position: absolute;
+    top:20px;
+    right: 10px;
+    color: #3cc395;
+    font-size: 20px;
+    border: none;
+    background-color: transparent;
+}
+.cart-wrp .cart-delete:hover{
+    color:teal;
+}
+.goods .cart-delete{
+    display: none;
+}
+.goods-title, .cart-title {
+    display: block;
+    width: 100%;
+    background-color: #3cc0b5;
+    font-family: 'Bebas Neue';
+    font-size: 31px;
+    line-height: 1;
+    font-weight: 800;
+    color: #ffffff;
+    padding: 24px 186px 16px 186px;
+    box-sizing: border-box;
+}
+
+.goods-list, .cart-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 205px 73px 205px;
+
+}
+
+.goods-item {
+    /*display: flex;*/
+    width: 253px;
+    min-height: 155px;
+    /*flex-direction: column;
+    align-items: center;*/
+    border-bottom: 5px solid #3cc395;
+    padding-top: 70px;
+    padding-bottom: 35px;
+    text-align: center;
+    margin-right: 53px;
+}
+
+.goods-item .img-wrp {
+    width: 190px;
+    height: 131px;
+    text-align: center;
+    margin: 0 auto 10px;
+}
+
+.goods-item:nth-of-type(3n),.goods-item:last-of-type {
+    margin-right: 0;
+}
+
+.goods-item-buy-wrp {
+    margin-top: 15px;
+    vertical-align: baseline;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.goods-item-price, .goods-item-in-cart {
+    font-family: 'Bebas Neue';
+    font-size: 27px;
+    line-height: 25px;
+    font-weight: 800;
+    color: #afafaf;
+}
+.goods-item-in-cart{
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+.goods .goods-item-title,
+.goods .goods-item-buy {
+    margin-top: 0;
+}
+
+.goods-item-buy {
+    width: 72px;
+    margin-left: 15px;
+
+}
+.goods .goods-item-in-cart{
+    display: none;
+}
+
+.footer-links {
+    padding: 42px 189px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #3ec1b6;
+}
+
+.footer-links-list-title {
+    font-family: 'Bebas Neue';
+    font-size: 27px;
+    line-height: 25px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.footer-links-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.footer-links-list a {
+    font-family: 'Open Sans';
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.copyrights {
+    font-family: 'Open Sans';
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 0;
+    box-sizing: border-box;
+    background-color: #2da89b;
+}
+
+.copyrights p {
+    margin: 0;
+    padding: 0;
+}
+
+.copyrights a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.copyrights a:hover {
+    font-style: italic;
+}
+
+.copyrights a:active {
+    color: #afafaf;
 }
 </style>

@@ -235,20 +235,9 @@ const shoppyApp = new Vue({
             </section>`
       }),
       connectionErr: Vue.component('connection-error', {
-        props: ['goods'],
+        props: ['goodsList'],
         template: 
-        `<div class="goods-item">
-            <div class="img-wrp"><img v-bind:src="good.img" alt="shoes"></div>
-            <span class="goods-item-title">{{good.title}}</span>
-            <div class="goods-item-buy-wrp">
-                <span class="goods-item-price">\${{good.price}}</span>
-                <button class="goods-item-buy btn" v-on:click.prevent="cart.addItem(good)">bUY NOW</button>
-            </div>
-            <div class="goods-item-in-cart">
-                            Qty: {{good.countInCart}}
-                        </div>
-            <button class="cart-delete" v-on:click.prevent="cart.deleteItem(good)">&#10008;</button>
-        </div>`
+        `<div class="error-not-connected" v-if="!goodsList.goods.length"><slot></slot></div>`
       }),
     },
     mounted: function(){

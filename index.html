@@ -14,7 +14,8 @@
 
 <body>
     <div class="wrp" id="shoppy-app">
-        <div class="error-not-connected" v-if="!goodsList.goods.length">Внимание! Отсутствует соединение с сервером</div>
+        <!-- <div class="error-not-connected" v-if="!goodsList.goods.length">Внимание! Отсутствует соединение с сервером</div> -->
+        <connection-error v-bind:goods-list="goodsList">Внимание! Отсутствует соединение с сервером</connection-error>
         <header>
             <a href="#" class="logo">Shoppy</a>
             <search-form @submit.prevent="filter()" v-model="searchLine"></search-form>
