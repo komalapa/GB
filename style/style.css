@@ -442,7 +442,17 @@ li a:hover {
 li a:active {
     text-shadow: #afafaf 15px 0 3px;
 }
+.error-not-connected{
+    width: 100%;
+    color:red;
+    background-color: #3cc3b5;
+    
+    padding: 20px 10px;
+    opacity: 0.5;
+    box-sizing: border-box;
+    text-align: center;
 
+}
 header {
     width: 100%;
     min-height: 84px;
