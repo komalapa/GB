@@ -862,6 +862,9 @@ header {
     margin-left: 15px;
 
 }
+.goods .goods-item-in-cart{
+    display: none;
+}
 
 .footer-links {
     padding: 42px 189px;
