@@ -2,7 +2,7 @@
  <section class="goods">
                 <span class="goods-title">FEATURED goods</span>
                 <span class="not-found-msg" v-if="!filteredGoods.length">Нет данных</span>
-                <div v-if="!filteredGoods.length" class="goods-list">
+                <div v-if="filteredGoods.length" class="goods-list">
                     <GoodsItemRender v-for="good in filteredGoods" :key="good.art" :good="good" :cart="cart"></GoodsItemRender>
                 </div>
             </section>
@@ -19,6 +19,7 @@ export default {
   components:{
       GoodsItemRender
   }
+
 }
 </script>
 

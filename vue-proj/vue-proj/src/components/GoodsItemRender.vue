@@ -3,7 +3,7 @@
                 <div class="img-wrp"><img v-bind:src="good.img" alt="shoes"></div>
                 <span class="goods-item-title">{{good.title}}</span>
                 <div class="goods-item-buy-wrp">
-                    <span class="goods-item-price">\${{good.price}}</span>
+                    <span class="goods-item-price">${{good.price}}</span>
                     <button class="goods-item-buy btn" v-on:click.prevent="cart.addItem(good)">bUY NOW</button>
                 </div>
                 <div class="goods-item-in-cart">

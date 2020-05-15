@@ -1,7 +1,7 @@
 <template>
   <div class="wrp" id="shoppy-app">
-        <!-- <div class="error-not-connected" v-if="!goodsList.goods.length">Внимание! Отсутствует соединение с сервером</div> 
-        <connection-error  v-bind:goodslist="goodsList">Внимание! Отсутствует соединение с сервером</connection-error>-->
+        <!-- <div class="error-not-connected" v-if="!goodsList.goods.length">Внимание! Отсутствует соединение с сервером</div>--> 
+        <connection-error  v-bind:gl="goodsList">Внимание! Отсутствует соединение с сервером</connection-error>
         <header>
             <a href="#" class="logo">Shoppy</a>
             <SearchForm @submit.prevent="filter()" v-model="searchLine"></SearchForm>
@@ -21,9 +21,9 @@
             </ul>
         </nav>
         <main>
-            <CartSection v-bind:cart="cart" v-bind:is-visible-cart="isVisibleCart"></CartSection>
+            <CartSection v-bind:cart="cart" v-bind:isVisibleCart="isVisibleCart"></CartSection>
             
-            <GoodsSection v-bind:cart="cart" v-bind:filtered-goods="filteredGoods"></GoodsSection>
+            <GoodsSection v-bind:cart="cart" v-bind:filteredGoods="filteredGoods"></GoodsSection>
 
 
         </main>
@@ -188,7 +188,7 @@ class Cart {
 
 
 import CartSection from './components/CartSection.vue'
-//import ConnectionError from './components/ConnectionError.vue'
+import ConnectionError from './components/ConnectionError.vue'
 import GoodsSection from './components/GoodsSection.vue'
 import SearchForm from './components/SearchForm.vue'
 export default {
@@ -196,7 +196,7 @@ export default {
   components: {
     SearchForm,
     GoodsSection,
-//    ConnectionError,
+    ConnectionError,
     CartSection
   },
   data:function () {

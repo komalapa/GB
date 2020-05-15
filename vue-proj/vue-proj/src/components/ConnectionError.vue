@@ -1,12 +1,12 @@
 <template>
-  <div class="error-not-connected" v-if="!goodslist.goods.length"><slot></slot></div>
+  <div class="error-not-connected" v-if="!gl.goods.length"><slot></slot></div>
 </template>
 
 <script>
 export default {
   name: 'ConnectionError',
   props: {
-    goodlist: Object
+    gl: Object,
   }
 
 }
