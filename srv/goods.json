@@ -1,0 +1,38 @@
+[
+    {
+       "title":"BRANDED SHOE",
+       "price":150,
+       "img":"img/product1.png",
+       "art":"art1"
+    },
+    {
+       "title":"BRANDED T-SHIRT",
+       "price":50,
+       "img":"img/product2.png",
+       "art":"art2"
+    },
+    {
+       "title":"BRANDED T-SHIRT",
+       "price":20,
+       "img":"img/product3.png",
+       "art":"art3"
+    },
+    {
+       "title":"BRANDED THING",
+       "price":300,
+       "img":"img/product4.png",
+       "art":"art4"
+    },
+    {
+       "title":"BRANDED BAG",
+       "price":400,
+       "img":"img/product5.png",
+       "art":"art5"
+    },
+    {
+       "title":"BRANDED BREECHES",
+       "price":150,
+       "img":"img/product6.png",
+       "art":"art6"
+    }
+ ]
