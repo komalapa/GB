@@ -1,6 +1,13 @@
+// "/catalog" возвращает весь каталог
+// "/cart/user" возвращает корзину пользователя
+// "/add/user/art" добавит товар в корзину
+
+
+
 const fs = require('fs');
 const express = require('express');
 const server = express();
+
 
 server.listen(3000, () => {
     console.log('server is running on port 3000!');
@@ -10,9 +17,10 @@ server.listen(3000, () => {
 
 const pathGoods = "goods.json"
 const pathCart = "cart.json"
+const logPath = "stats.json"
 
 console.log("START");
-// "/catalog" выдает весь каталог
+// "/catalog" возвращает весь каталог
 function sendCatalog(path) {
     fs.promises.readFile(path, 'utf8')
         .then(result => {
@@ -58,6 +66,7 @@ function addToCart(path) { //, user, art){
                     .then(wrResult => {
                         //console.log("done" + wrResult);
                         res.send("DONE");
+                        fs.promises.appendFile(logPath, `{"add": {"user": "${req.params.user}", "art": "${req.params.art}", "time": "${Date()}"}}, `, 'utf8')
                     })
                     .catch(wrError => {console.log(wrError)
                         res.send("DENY");
@@ -66,7 +75,7 @@ function addToCart(path) { //, user, art){
         })
         .catch(error => console.log(error));
 }
-
+// "/delete/user/art" добавитудалит товар из корзины
 function deleteFromCart(path) { //, user, art, count) {
     fs.promises.readFile(path, 'utf8', 'w+')
         .then(result => {
@@ -92,6 +101,7 @@ function deleteFromCart(path) { //, user, art, count) {
                             .catch(wrError => {
                                 console.log(wrError);
                             });
+                        fs.promises.appendFile(logPath, `{"delete": {"user": "${req.params.user}", "art": "${req.params.art}", "time": "${Date()}"}}, `, 'utf8')
                     } else {
                         res.send("DENY"); 
                     }
