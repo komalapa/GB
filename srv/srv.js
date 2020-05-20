@@ -7,6 +7,9 @@
 const fs = require('fs');
 const express = require('express');
 const server = express();
+var cors = require('cors');
+
+server.use(cors());
 
 
 server.listen(3000, () => {
