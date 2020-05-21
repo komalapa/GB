@@ -30,13 +30,14 @@ async function sendCatalog(path) {
     let prms = new Promise((resolve, reject) => {
         fs.promises.readFile(path, 'utf8')
             .then(result => {
-            //    console.log(result)
-            //return result;    
+                //    console.log(result)
+                //return result;    
                 resolve(result);
             })
-         .catch(error => {
-            console.log(error); 
-            reject=error});
+            .catch(error => {
+                console.log(error);
+                reject = error
+            });
     })
     return prms;
 }
@@ -55,79 +56,80 @@ function sendCart(path) {
         .catch(error => console.log(error));
 }
 // "/add/user/art" добавит товар в корзину
-function addToCart(path) { //, user, art){
-    fs.promises.readFile(path, 'utf8', 'w+')
-        .then(result => {
-            //console.log(result);
-            let cart = JSON.parse(result);
-            // console.log(cart["u123"]);
-            server.get('/add/:user/:art', (req, res) => {
-                //let cart=JSON.parse(result);
-
-                if (cart[req.params.user][req.params.art]) {
-                    cart[req.params.user][req.params.art]++
+async function addToCart(path, user, art) {
+    let prms = new Promise((resolve, reject) => {
+        fs.promises.readFile(path, 'utf8', 'w+')
+            .then(result => {
+                //console.log(result);
+                let cart = JSON.parse(result);
+                // console.log(cart["u123"]);
+                if (cart[user][art]) {
+                    cart[user][art]++
                 } else {
-                    cart[req.params.user][req.params.art] = 1
+                    cart[user][art] = 1
                 };
                 //console.log(cart[req.params.user]);
-                
 
-                console.log(cart);
+
+                //console.log(cart);
                 fs.promises.writeFile(path, JSON.stringify(cart), "utf8")
                     .then(wrResult => {
                         //console.log("done" + wrResult);
-                        res.send("DONE");
-                        fs.promises.appendFile(logPath, `{"add": {"user": "${req.params.user}", "art": "${req.params.art}", "time": "${Date()}"}}, `, 'utf8')
+                        resolve("DONE")
+                        fs.promises.appendFile(logPath, `{"add": {"user": "${user}", "art": "${art}", "time": "${Date()}"}}, `, 'utf8')
                     })
-                    .catch(wrError => {console.log(wrError)
-                        res.send("DENY");
+                    .catch(wrError => {
+                        console.log(wrError)
+                        reject("DENY");
                     });
             });
-        })
-        .catch(error => console.log(error));
+    })
+    return prms;
+
 }
 // "/delete/user/art" удалит товар из корзины
-function deleteFromCart(path) { //, user, art, count) {
-    fs.promises.readFile(path, 'utf8', 'w+')
+function deleteFromCart(path, user, art, count) {
+    let prms = new Promise((resolve, reject) => fs.promises.readFile(path, 'utf8', 'w+')
         .then(result => {
-                //console.log(result);
-                let cart = JSON.parse(result);
-                //console.log(cart["u123"]);
-                //console.log(cart[user])
-                server.get('/delete/:user/:art', (req, res) => {
-                    console.log("DELETE "+cart[req.params.user] +" art "+ [req.params.art])
-                    if (cart[req.params.user][req.params.art]) {
-                        cart[req.params.user][req.params.art]--;
-                        console.log("DELETE "+cart[req.params.user][req.params.art])
-                        if (cart[req.params.user][req.params.art] == 0) {
-                            delete(cart[req.params.user][req.params.art]);
-                           
-                        } 
-                        
-                        console.log(JSON.stringify.cart);
-                        fs.promises.writeFile(path, JSON.stringify(cart), "utf8")
-                            .then(wrResult => {
-                                console.log("done" + wrResult)
-                                res.send("DONE");  
-                            })
-                            .catch(wrError => {
-                                console.log(wrError);
-                            });
-                        fs.promises.appendFile(logPath, `{"delete": {"user": "${req.params.user}", "art": "${req.params.art}", "time": "${Date()}"}}, `, 'utf8')
-                    } else {
-                        res.send("DENY"); 
-                    }
-                })
-            })
+            //console.log(result);
+            let cart = JSON.parse(result);
+            //console.log(cart["u123"]);
+            //console.log(cart[user])
+            if (cart[user][art]) {
+                cart[user][art]--;
+                console.log("DELETE " + cart[user][art])
+                if (cart[user][art] == 0) {
+                    delete(cart[user][art]);
+                }
 
-            .catch(error => console.log(error));
-        }
-    
-        server.get('/catalog', (req, res) => {
-            sendCatalog(pathGoods).then(data => res.send(data))
-            
-        });
+                //console.log(JSON.stringify.cart);
+                fs.promises.writeFile(path, JSON.stringify(cart), "utf8")
+                    .then(wrResult => {
+                        console.log("done" + wrResult)
+                        resolve("DONE");
+                    })
+                    .catch(wrError => {
+                        console.log(wrError);
+                    });
+                fs.promises.appendFile(logPath, `{"delete": {"user": "${user}", "art": "${art}", "time": "${Date()}"}}, `, 'utf8')
+            } else {
+                reject("DENY");
+            }
+        
+    }))
+    return prms;
+}
 
-    // sendCart(pathCart);
-    // addToCart(pathCart); //,"u123","art5");
-    // deleteFromCart(pathCart); //,"u123","art6")
+server.get('/catalog', (req, res) => {
+    sendCatalog(pathGoods).then(data => res.send(data))
+
+});
+server.get('/add/:user/:art', (req, res) => {
+    addToCart(pathCart, req.params.user, req.params.art).then(data => res.send(data)).catch(data => res.send(data))
+});
+server.get('/delete/:user/:art', (req, res) => {
+    deleteFromCart(pathCart, req.params.user, req.params.art).then(data => res.send(data)).catch(data => res.send(data))
+});
+// sendCart(pathCart);
+// addToCart(pathCart); //,"u123","art5");
+// deleteFromCart(pathCart); //,"u123","art6")
