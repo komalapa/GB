@@ -30,8 +30,7 @@ async function sendCatalog(path) {
     let prms = new Promise((resolve, reject) => {
         fs.promises.readFile(path, 'utf8')
             .then(result => {
-                //    console.log(result)
-                //return result;    
+                //    console.log(result)   
                 resolve(result);
             })
             .catch(error => {
@@ -48,8 +47,7 @@ async function sendCart(path, user) {
     let prms = new Promise((resolve, reject) => { 
         fs.promises.readFile(path, 'utf8')
         .then(result => {
-            console.log(result)
-            
+            //console.log(result)
                 let cart = JSON.parse(result);
                 resolve(JSON.stringify(cart[user]));
             
@@ -100,7 +98,7 @@ function deleteFromCart(path, user, art, count) {
             //console.log(cart[user])
             if (cart[user][art]) {
                 cart[user][art]--;
-                console.log("DELETE " + cart[user][art])
+//                console.log("DELETE " + cart[user][art])
                 if (cart[user][art] == 0) {
                     delete(cart[user][art]);
                 }

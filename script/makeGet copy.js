@@ -1,4 +1,4 @@
-const url="http://192.168.1.44:3000/catalog";
+const url1="http://192.168.1.44:3000/catalog";
 const requestType={
     goodsList: "/catalogData.json", cart: "/getBasket.json", add: "/addToBasket.json", delete: "/deleteFromBasket.json"
 }
@@ -75,7 +75,7 @@ function errorCB(data){
 // makeGETRequest(url+requestType["add"]).then((data)=>successCB("add: "+data)).catch( ()=>errorCB())
 // makeGETRequest(url+requestType["delete"]).then((data)=>successCB("delete: "+data)).catch( ()=>errorCB())
 
-makeGETRequest(url).then((data)=>successCB("cart: "+data)).catch( ()=>errorCB())
+makeGETRequest(url1).then((data)=>successCB("cart: "+data)).catch( ()=>errorCB())
 
 // function testPromice(time){
 //     let flag = false;

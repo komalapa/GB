@@ -38,6 +38,51 @@
 </template>
 
 <script>
+const urlCatalog="http://192.168.1.44:3000/catalog";
+//const urlCart="http://192.168.1.44:3000/cart/user";
+const urlCartAdd="http://192.168.1.44:3000/add/u123/";
+const urlCartDel="http://192.168.1.44:3000/delete/u123/";
+
+async function makeGETRequest(url) {
+    let xhr = new XMLHttpRequest();
+  
+    // if (window.XMLHttpRequest) {
+    //   xhr = new XMLHttpRequest();
+    // } else if (window.ActiveXObject) { 
+    //   xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    // }
+    const promice = new Promise ((resolve,reject) =>
+        {
+               // console.log("ready")
+                //xhr.open('GET', url, true);
+                xhr.onreadystatechange = function () {
+                   // console.log ("ready state ", xhr.readyState)
+                    if (xhr.readyState === 4)  {
+                        if (xhr.status==200){ 
+                            console.log("state200")
+                            resolve(xhr.responseText);
+                        } else {
+                        console.log("state!200"+ reject)
+                        errorCB();
+                        }
+                    }
+                }               
+        }
+    );
+    console.log("open ",url)
+                xhr.open('GET', url, true);
+                //console.log("send")
+                xhr.send();
+    
+    return promice;
+
+  }
+// function successCB(data){
+//     console.log( data);
+// }
+function errorCB(data){
+    console.log("Something wrong"+data);
+}
 class GoodsItem {
     constructor(title, price, img, art) {
       this.title = title;
@@ -68,40 +113,12 @@ class GoodsList {
       this.fetchGoods();
     }
     fetchGoods() {
-        const goodsInput=[{
-            title: 'BRANDED SHOE',
-            price: 150,
-            img: "img/product1.png",
-            art: 1,
-        },
-        {
-            title: 'BRANDED T-SHIRT',
-            price: 50,
-            img: "img/product2.png",
-            art: 2,
-        }, {
-            title: 'BRANDED T-SHIRT',
-            price: 20,
-            img: "img/product3.png",
-            art: 3,
-        }, {
-            title: 'BRANDED THING',
-            price: 300,
-            img: "img/product4.png",
-            art: 4,
-        }, {
-            title: 'BRANDED BAG',
-            price: 400,
-            img: "img/product5.png",
-            art: 5,
-        }, {
-            title: 'BRANDED BREECHES',
-            price: 150,
-            img: "img/product6.png",
-            art: 6,
-        }];
-        
-        const promise= new Promise((resolve, reject)=>
+        let goodsInput;
+        makeGETRequest(urlCatalog).then((data)=>{
+            goodsInput=JSON.parse(data);
+            //console.log("DATA "+data);
+            //console.log("JSON.parse "+ goodsInput);
+                    const promise= new Promise((resolve, reject)=>
         {
             setTimeout(() => {
                 goodsInput.forEach(item => {
@@ -119,6 +136,58 @@ class GoodsList {
             
         })
         return promise;
+        }).catch( ()=>errorCB())
+        // const goodsInput=[{
+        //     title: 'BRANDED SHOE',
+        //     price: 150,
+        //     img: "img/product1.png",
+        //     art: 1,
+        // },
+        // {
+        //     title: 'BRANDED T-SHIRT',
+        //     price: 50,
+        //     img: "img/product2.png",
+        //     art: 2,
+        // }, {
+        //     title: 'BRANDED T-SHIRT',
+        //     price: 20,
+        //     img: "img/product3.png",
+        //     art: 3,
+        // }, {
+        //     title: 'BRANDED THING',
+        //     price: 300,
+        //     img: "img/product4.png",
+        //     art: 4,
+        // }, {
+        //     title: 'BRANDED BAG',
+        //     price: 400,
+        //     img: "img/product5.png",
+        //     art: 5,
+        // }, {
+        //     title: 'BRANDED BREECHES',
+        //     price: 150,
+        //     img: "img/product6.png",
+        //     art: 6,
+        // }];
+        
+        // const promise= new Promise((resolve, reject)=>
+        // {
+        //     setTimeout(() => {
+        //         goodsInput.forEach(item => {
+        //             const goodsItem = new GoodsItem(item.title, item.price, item.img, item.art);
+        //             this.goods.push(goodsItem)
+        //         });
+        //         //console.log(this.goods)
+        //         if (this.goods) {
+        //             resolve();
+        //             //console.log("true")
+        //         } else {
+        //             reject()
+        //         }
+        //     }, 0);//}, 3000);
+            
+        // })
+        // return promise;
         
     }
     render() {
@@ -146,13 +215,14 @@ class Cart {
       }
     addItem(item){
         if (this.orderList.indexOf(item)>=0){ //Если есть в списке, просто увеличиваем количество
-            this.orderList[this.orderList.indexOf(item)].countInCart++
+            this.orderList[this.orderList.indexOf(item)].countInCart++;
         } else {
             //console.log(item)
-            item.countInCart++;
+            item.countInCart=1;
             this.orderList.push(item);
         }
         this.sum+=item.price;
+        makeGETRequest(urlCartAdd+item.art).catch( ()=>errorCB());
         //this.renderCartList();
     }
     deleteItem(item){
@@ -166,6 +236,7 @@ class Cart {
                 this.sum-=item.price;
             }
         }
+        makeGETRequest(urlCartDel+item.art).catch( ()=>errorCB());
         //this.renderCartList();
     }
     sale (sum, prcnt){
