@@ -1,6 +1,7 @@
 // "/catalog" возвращает весь каталог
 // "/cart/user" возвращает корзину пользователя
 // "/add/user/art" добавит товар в корзину
+// "/delete/user/art" удалит товар из корзины
 
 
 
@@ -23,17 +24,24 @@ const pathCart = "cart.json"
 const logPath = "stats.json"
 
 console.log("START");
+
 // "/catalog" возвращает весь каталог
-function sendCatalog(path) {
-    fs.promises.readFile(path, 'utf8')
-        .then(result => {
-            //console.log(result)
-            server.get('/catalog', (req, res) => {
-                res.send(result);
-            });
-        })
-        .catch(error => console.log(error));
+async function sendCatalog(path) {
+    let prms = new Promise((resolve, reject) => {
+        fs.promises.readFile(path, 'utf8')
+            .then(result => {
+            //    console.log(result)
+            //return result;    
+                resolve(result);
+            })
+         .catch(error => {
+            console.log(error); 
+            reject=error});
+    })
+    return prms;
 }
+
+
 // "/cart/user" возвращает корзину пользователя
 function sendCart(path) {
     fs.promises.readFile(path, 'utf8', "w")
@@ -115,8 +123,11 @@ function deleteFromCart(path) { //, user, art, count) {
             .catch(error => console.log(error));
         }
     
+        server.get('/catalog', (req, res) => {
+            sendCatalog(pathGoods).then(data => res.send(data))
+            
+        });
 
-    sendCatalog(pathGoods);
-    sendCart(pathCart);
-    addToCart(pathCart); //,"u123","art5");
-    deleteFromCart(pathCart); //,"u123","art6")
+    // sendCart(pathCart);
+    // addToCart(pathCart); //,"u123","art5");
+    // deleteFromCart(pathCart); //,"u123","art6")
