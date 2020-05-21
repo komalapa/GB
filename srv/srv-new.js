@@ -44,16 +44,19 @@ async function sendCatalog(path) {
 
 
 // "/cart/user" возвращает корзину пользователя
-function sendCart(path) {
-    fs.promises.readFile(path, 'utf8', "w")
+async function sendCart(path, user) {
+    let prms = new Promise((resolve, reject) => { 
+        fs.promises.readFile(path, 'utf8')
         .then(result => {
-            //console.log(result)
-            server.get('/cart/:user', (req, res) => {
+            console.log(result)
+            
                 let cart = JSON.parse(result);
-                res.send(JSON.stringify(cart[req.params.user]));
-            });
+                resolve(JSON.stringify(cart[user]));
+            
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
+    })
+    return prms;
 }
 // "/add/user/art" добавит товар в корзину
 async function addToCart(path, user, art) {
@@ -130,6 +133,7 @@ server.get('/add/:user/:art', (req, res) => {
 server.get('/delete/:user/:art', (req, res) => {
     deleteFromCart(pathCart, req.params.user, req.params.art).then(data => res.send(data)).catch(data => res.send(data))
 });
-// sendCart(pathCart);
-// addToCart(pathCart); //,"u123","art5");
-// deleteFromCart(pathCart); //,"u123","art6")
+server.get('/cart/:user', (req, res) => {
+    sendCart(pathCart,req.params.user ).then(data => res.send(data))
+
+});
