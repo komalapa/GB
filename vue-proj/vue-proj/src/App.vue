@@ -39,7 +39,7 @@
 
 <script>
 const urlCatalog="http://192.168.1.44:3000/catalog";
-//const urlCart="http://192.168.1.44:3000/cart/user";
+const urlCart="http://192.168.1.44:3000/cart/u123";
 const urlCartAdd="http://192.168.1.44:3000/add/u123/";
 const urlCartDel="http://192.168.1.44:3000/delete/u123/";
 
@@ -59,17 +59,17 @@ async function makeGETRequest(url) {
                    // console.log ("ready state ", xhr.readyState)
                     if (xhr.readyState === 4)  {
                         if (xhr.status==200){ 
-                            console.log("state200")
+                            //console.log("state200")
                             resolve(xhr.responseText);
                         } else {
-                        console.log("state!200"+ reject)
-                        errorCB();
+                        //console.log("state!200"+ reject)
+                        errorCB(reject);
                         }
                     }
                 }               
         }
     );
-    console.log("open ",url)
+    //console.log("open ",url)
                 xhr.open('GET', url, true);
                 //console.log("send")
                 xhr.send();
@@ -89,7 +89,7 @@ class GoodsItem {
       this.price = price;
       this.img = img;
       this.countInCart=0;
-      console.log("art ");
+      //console.log("art ");
       this.art = art;
     }
     render() {
@@ -109,7 +109,7 @@ class GoodsList {
     constructor() {
       
       this.goods = [];
-      console.log(this.goods);
+      //console.log(this.goods);
       this.fetchGoods();
     }
     fetchGoods() {
@@ -213,6 +213,7 @@ class Cart {
         this.sum = 0;
         this.finSum=0;
       }
+    
     addItem(item){
         if (this.orderList.indexOf(item)>=0){ //Если есть в списке, просто увеличиваем количество
             this.orderList[this.orderList.indexOf(item)].countInCart++;
@@ -285,7 +286,40 @@ export default {
     methods:{
         filter: function(){
             this.filteredGoods= this.goodsList.goods.filter(item =>(item.title.toLowerCase().indexOf(this.searchLine.toLowerCase())>=0));
+        },
+        fetchCart: function(){
+            let cartInput;
+            makeGETRequest(urlCart).then((data)=>{
+            cartInput=JSON.parse(data);
+            console.log(data)
+            //console.log("DATA "+data);
+            //console.log("JSON.parse "+ cartInput);
+            if (cartInput){
+                
+                const promise= new Promise((resolve, reject)=>{
+                    setTimeout(() => {
+                        cartInput.forEach(item => {
+                            for(let i=0; i<item['count'];i++){
+                                this.addItem(new GoodsItem(item['title'], item['price'], item['img'], item['art']))}
+                    //const goodsItem = new GoodsItem(item.title, item.price, item.img, item.art);
+                    //this.goods.push(goodsItem)
+                        //console.log(item)
+                        });
+                    //console.log(this.goods)
+                        //if (this.goods) {
+                            resolve();
+                        //console.log("true")
+                        //} else {
+                            reject()
+                        //}
+                    }, 0);//}, 3000);    
+                })
+                return promise;
+            
         }
+        }).catch( ()=>errorCB())
+            
+    }
     },
     mounted: function(){
         this.filteredGoods=this.goodsList.goods;

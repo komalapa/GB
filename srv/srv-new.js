@@ -43,16 +43,48 @@ async function sendCatalog(path) {
 
 
 // "/cart/user" возвращает корзину пользователя
-async function sendCart(path, user) {
+async function sendCart(pthCart, pthGoods, user) {
+    let cartList=[]
     let prms = new Promise((resolve, reject) => { 
-        fs.promises.readFile(path, 'utf8')
-        .then(result => {
+        fs.promises.readFile(pthCart, 'utf8')
+        .then(resultCart => {
             //console.log(result)
-                let cart = JSON.parse(result);
-                resolve(JSON.stringify(cart[user]));
-            
+                let cart = JSON.parse(resultCart)[user];
+                fs.promises.readFile(pthGoods, 'utf8')
+                    .then(resultGoods => {
+                        //console.log(result)
+                        let goods = JSON.parse(resultGoods);
+                        //cart.keys().foreach(key => console.log(key+" -> "+cart[key]))
+                        // for(element in cart) {
+                        //     console.log(element.getKey())
+                        // };
+                        
+                        for (var key in cart) {
+                           // console.log(key);
+                           // console.log(cart[key]);
+                            goods.forEach(good=>{
+                                if (good.art==key){
+                                    good.count=cart[key]
+                                    cartList.push(good)
+                                }
+                            })
+                            console.log(cartList)
+                          }
+                          resolve(JSON.stringify(cartList));  
+                    })
+                .catch(error => {
+                    console.log(error);
+                    reject("");
+                })
+                
+                
+                
+                  
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error);
+            reject("")            
+        })
     })
     return prms;
 }
@@ -132,6 +164,6 @@ server.get('/delete/:user/:art', (req, res) => {
     deleteFromCart(pathCart, req.params.user, req.params.art).then(data => res.send(data)).catch(data => res.send(data))
 });
 server.get('/cart/:user', (req, res) => {
-    sendCart(pathCart,req.params.user ).then(data => res.send(data))
+    sendCart(pathCart, pathGoods, req.params.user ).then(data => res.send(data)).catch(data => res.send(data))
 
 });
