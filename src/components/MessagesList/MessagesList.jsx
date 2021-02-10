@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { useEffect }  from 'react';
 
 
 //components import
@@ -21,7 +21,7 @@ export default function MessageList(){
     const [isShowLikes, setIsShowLikes]=React.useState(true)
     const handleSend = () => {
         let newMessages=messages;
-        newMessages.push({name: 'Hercule', content: 'use your little grey cells',likes:5, id: (messages.length+1)});
+        newMessages.push({name: 'Harry', content: 'hi',likes:5, id: (messages.length+1)});
         setMessages([...newMessages])
     }  
     const handleLikesCounter = (id) =>((number)=>{
@@ -32,6 +32,15 @@ export default function MessageList(){
         let isShown=!isShowLikes;
         setIsShowLikes(isShown)
     }
+    useEffect(()=>{
+        let newMessages=messages;
+        if (newMessages[newMessages.length -1]["name"]!=="Hercule"){
+        setTimeout(() =>{
+            newMessages.push({name: 'Hercule', content: 'use your little grey cells mon ami',likes:5, id: (messages.length+1)});
+       setMessages([...newMessages])}, 1000);
+        }
+    })
+ 
     return (
     <>
         <ul>
