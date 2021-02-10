@@ -1,0 +1,22 @@
+div {
+    margin:10px;
+}
+button {
+    border: none;
+    background-color:transparent;
+    color: red;
+    outline: none;
+}
+.plus-btn{
+    color:green;
+}
+.show-btn{
+    color:grey;
+    font-size: 9px;
+}
+button:hover{
+    text-shadow:1px 1px 2px gray;
+}
+.likes{
+    margin: 0 20px;
+}

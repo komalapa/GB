@@ -13,14 +13,22 @@ module.exports = {
     module:{
         rules:[
             {
-                test: /\.(js)$/,
+                test: /\.(js|jsx)$/,
                 include: path.resolve(__dirname, 'src'),
                 loader: 'babel-loader',
                 options:{
                     presets:['@babel/env', '@babel/react']
                 }
+            },
+            {   
+                 test:  /\.css$/,
+                 include: path.resolve(__dirname, 'src'),
+                 use: ['style-loader','css-loader'],
             }
         ]
+    },
+    resolve: {
+        extensions: ['.jsx','.js']
     }
     
 }
