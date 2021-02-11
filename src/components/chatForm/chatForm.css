@@ -1,0 +1,9 @@
+.chat-form{
+    display: flex;
+    flex-direction: column;
+}
+.chat-form-name, .chat-form-content, .chat-form-submit{
+    width: 90%;
+    resize: none;
+    margin: 5px auto;
+}

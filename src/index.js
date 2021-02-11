@@ -2,11 +2,16 @@ import React, {createElement} from 'react';
 import ReactDom from 'react-dom';
 
 //components import
-    import MessagesList from './components/MessagesList/MessagesList';
+    import MessagesList from './components/MessageList/MessageList';
+    import {App} from './App'
     // import Counter from './components/counter/counter'
 //end components import
 
-
+// const messages= [
+//     {name: 'Ivan', content: 'hello', likes:5, id:0},
+//     {name: 'Oleg', content: 'hi', likes:5, id:1},
+//     {name: 'Lena', content: 'hello',likes:5, id:2},
+// ];
 
 
 
@@ -14,9 +19,7 @@ import ReactDom from 'react-dom';
 const mountPoint = document.getElementById('root')
 
 ReactDom.render(
-    <MessagesList />,
+    <App />,
     mountPoint
 )
-//ДЗ переписать счетчик на функцию
-//сделать ответ робота
-//прописать propTypes
+//ДЗ отправка по enter

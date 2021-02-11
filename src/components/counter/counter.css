@@ -1,22 +1,20 @@
-div {
-    margin:10px;
-}
-button {
+.likes button {
     border: none;
     background-color:transparent;
     color: red;
     outline: none;
 }
-.plus-btn{
+.likes .plus-btn{
     color:green;
 }
-.show-btn{
-    color:grey;
-    font-size: 9px;
-}
-button:hover{
+
+.likes button:hover{
     text-shadow:1px 1px 2px gray;
 }
 .likes{
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
     margin: 0 20px;
+    
 }
