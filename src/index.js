@@ -23,3 +23,4 @@ ReactDom.render(
     mountPoint
 )
 //ДЗ отправка по enter
+//добавить header и список чатов

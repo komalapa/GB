@@ -23,8 +23,14 @@ export const ChatForm = ({onSendMessage}) => {
         onSendMessage(newMessage)
         setInitialContent('');
     };
+    const handleKeyUp = (event) =>{
+        if (event.keyCode === 13) { // Enter
+            handleSubmit(event);
+        }
+     
+    }
     return(
-    <form onSubmit = {handleSubmit} className="chat-form">
+    <form onSubmit = {handleSubmit} onKeyUp={handleKeyUp} className="chat-form">
         <input
             name = "name"
             placeholder="Имя"

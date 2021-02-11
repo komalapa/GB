@@ -1,0 +1,22 @@
+.chat-list{
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    list-style:none;
+    justify-content: center;
+    box-sizing: border-box;
+    color:grey;
+    padding: 0;
+}
+
+.chat-list-item {
+    padding: 5px 10px;
+    margin:0 20px;
+    background-color: lemonchiffon;
+    border-radius: 5px;
+}
+
+.chat-list-item:hover{
+    color:lightgreen;
+    cursor: pointer;
+} 
