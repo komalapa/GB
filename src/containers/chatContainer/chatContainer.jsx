@@ -6,13 +6,14 @@ import {Chat} from '../../components/chat/chat'
 import { render } from 'react-dom';
 //end components import
 
-function usePrevious(value) {
-    const ref = React.useRef();
-    React.useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }
+////Не используется т.к. робот теперь запускается при отправке сообщения, а не при обновлении компонента 
+// function usePrevious(value) {
+//     const ref = React.useRef();
+//     React.useEffect(() => {
+//       ref.current = value;
+//     });
+//     return ref.current;
+//   }
 
 
 export const CONST_ROBOT_NAME = 'Hercule';
@@ -46,23 +47,37 @@ export const ChatContainer = (props) => {
         },
         
     })
-    const prevState = usePrevious(state)
+    ////Не используется т.к. робот теперь запускается при отправке сообщения, а не при обновлении компонента
     
-    React.useEffect(()=>{
-        //console.log(prevState)
-        if (!(prevState == undefined) && !( prevState.chats[id].chat.length ==  state.chats[id].chat.length)){ 
+    //const prevState = usePrevious(state)
+    
+    // React.useEffect(()=>{
+    //     //console.log(prevState)
+    //     if (!(prevState == undefined) && !( prevState.chats[id].chat.length ==  state.chats[id].chat.length)){ 
             
-        const {id} = props.match.params;
-        if ( state.chats[id].chat.length>0 && state.chats[id].chat[state.chats[id].chat.length -1]["name"]!=="Hercule"){
+    //     const {id} = props.match.params;
+    //     if ( state.chats[id].chat.length>0 && state.chats[id].chat[state.chats[id].chat.length -1]["name"]!=="Hercule"){
+    //         if (!robotTimeoutId){robotTimeoutId = setTimeout(() =>{
+    //             let newMessage= {name: CONST_ROBOT_NAME, content: 'O, ' + state.chats[id].chat[state.chats[id].chat.length -1]["name"]+', '+CONST_ROBOT_CONTENT,likes:5, id: null};
+    //             handleSendMessage(id)(newMessage);
+    //             robotTimeoutId = null;
+    //         }, 1000);
+    //     }
+    //     }
+    // }
+    // })
+    const handleRobot=(id, prevName)=>{
+        if (prevName!=="Hercule"){
             if (!robotTimeoutId){robotTimeoutId = setTimeout(() =>{
-                let newMessage= {name: CONST_ROBOT_NAME, content: 'O, ' + state.chats[id].chat[state.chats[id].chat.length -1]["name"]+', '+CONST_ROBOT_CONTENT,likes:5, id: null};
+                let newMessage= {name: CONST_ROBOT_NAME, content: 'O, ' + prevName+', '+CONST_ROBOT_CONTENT,likes:5, id: null};
                 handleSendMessage(id)(newMessage);
                 robotTimeoutId = null;
             }, 1000);
         }
         }
     }
-    })
+    
+
     const handleSendMessage = (id) => (message) =>{
         //message.id = (message.id == null) ? state.chat.length + 1 : message.id;
         if (message.id == null){
@@ -77,7 +92,7 @@ export const ChatContainer = (props) => {
                     chat : [...state.chats[id].chat, message]
                 }
             }
-        }))
+        }), handleRobot(id, message.name))
         
     } 
 
