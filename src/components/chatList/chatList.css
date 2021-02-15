@@ -16,7 +16,11 @@
     border-radius: 5px;
 }
 
-.chat-list-item:hover{
+.chat-list-item a{
+    text-decoration: none;
+    color:grey;
+}
+.chat-list-item:hover a{
     color:lightgreen;
     cursor: pointer;
 } 
