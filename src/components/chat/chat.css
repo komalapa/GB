@@ -6,3 +6,16 @@
     font-size: 20px;
     margin: 20px 0;
 }
+.create-chat-btn{
+    display: block;
+    margin: auto;
+    background-color: transparent;
+    border:5px solid lemonchiffon;
+    border-radius: 5px;
+    color: gray;
+    font-size: 20px;
+    outline: none;
+}
+.create-chat-btn:hover{
+    border-color: lightgreen;
+}

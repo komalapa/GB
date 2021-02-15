@@ -25,12 +25,13 @@ export const ChatForm = ({onSendMessage}) => {
     };
     const handleKeyUp = (event) =>{
         if (event.keyCode === 13) { // Enter
+            event.preventDefault();
             handleSubmit(event);
         }
      
     }
     return(
-    <form onSubmit = {handleSubmit} onKeyUp={handleKeyUp} className="chat-form">
+    <form onSubmit = {handleSubmit}  className="chat-form">
         <input
             name = "name"
             placeholder="Имя"
@@ -50,6 +51,7 @@ export const ChatForm = ({onSendMessage}) => {
             onChange ={setContent}
             // onChange ={(e) => setContent(e.target.value)}
             className="chat-form-content"
+            onKeyUp={handleKeyUp}//заменяем перевод строки на submit
         >
 
         </textarea>

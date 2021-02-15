@@ -67,12 +67,14 @@ export const ChatContainer = (props) => {
     // }
     // })
     const handleRobot=(id, prevName)=>{
-        if (prevName!=="Hercule"){
+        console.log(state.chats)
+        if (prevName!==CONST_ROBOT_NAME){
             if (!robotTimeoutId){robotTimeoutId = setTimeout(() =>{
                 let newMessage= {name: CONST_ROBOT_NAME, content: 'O, ' + prevName+', '+CONST_ROBOT_CONTENT,likes:5, id: null};
                 handleSendMessage(id)(newMessage);
                 robotTimeoutId = null;
-            }, 1000);
+          //      console.log(state)
+            }, 3000);
         }
         }
     }
@@ -83,6 +85,8 @@ export const ChatContainer = (props) => {
         if (message.id == null){
             message.id = +(new Date())//state.chat.length + 1
         }
+        if (state.chats[id]){
+        
         setState((state)=>({
             ...state,
             chats:{
@@ -93,8 +97,23 @@ export const ChatContainer = (props) => {
                 }
             }
         }), handleRobot(id, message.name))
-        
+    }
     } 
+    const handleAddChat = (id)=>()=>{
+        if (!state.chats[id]) {
+            setState((state)=>({
+                ...state,
+                chats:{
+                    ...state.chats,
+                    [id]: {
+                        name:"Chat"+id,
+                        chat : []
+                    }
+                }
+            }))
+        }
+
+    }
 
     const handleLike = (id, number) =>{
         let chat = state.chat.map(item => {if (item.id===id){item.likes = item.likes + (+number)}; return item});
@@ -104,7 +123,11 @@ export const ChatContainer = (props) => {
 
     const {id} = props.match.params;
     const messages = id && state.chats[id] ? state.chats[id].chat : null;
-    return <Chat chatMessages = {messages} onSendMessage = {handleSendMessage(id)} onLike={handleLike}/>
+    if (id) {
+        return <Chat chatMessages = {messages} onSendMessage = {handleSendMessage(id)} onCreateChat = {handleAddChat(id)} onLike={handleLike}/>
+    } else {
+        return <span className = "chat-not-found">Выбери чат</span>
+    }
 
 }
 

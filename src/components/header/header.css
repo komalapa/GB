@@ -7,4 +7,18 @@ header{
     color: lightgreen;
     background-color:lemonchiffon;
     padding: 10px 0;
+    position: relative;
+}
+.about-link, .chats-link {    
+    color: lightgreen;
+    text-decoration: none;  
+}
+.about-link{
+    position: absolute;
+    bottom:5px;
+    right: 10px;
+    font-size: 10px;
+}
+.about-link:hover, .chats-link:hover{
+    font-style: italic;
 }

@@ -9,11 +9,17 @@ import './chatList.css'
 
 
 
-export  const ChatList = ({chats})=> { 
+export  const ChatList = ({chats, addChatToList})=> { 
     const handleClick = (event) => {
         //alert("Выбран "+ event.target.innerText)
     }
-     
+    const handleAddChat = () =>{
+        let id = chats[chats.length -1].id +1;
+        if (!id) {id = +(new Date())}
+        addChatToList(id, "Chat"+id)
+    }
+
+    
     return (
     <>
         <ul className="chat-list">
@@ -23,7 +29,7 @@ export  const ChatList = ({chats})=> {
                 </Link>
                 </li>))}
         </ul>
-        
+        <span className="add-chat" onClick={handleAddChat}>+</span>
         
     </>
 )
