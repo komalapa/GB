@@ -2,9 +2,10 @@ import React from 'react';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import {Provider} from 'react-redux'
 //components import
-import ChatContainer from './containers/chatContainer/chatContainer'
+import ChatContainer from './containers/chatContainer'
 import {Header} from './components/header/header'
-import {ChatList} from './components/chatList/chatList'
+//import {ChatList} from './components/chatList/chatList'
+import ChatListContainer from './containers/chatListContainer'
 import { About } from './components/about/about';
 import { NotFound } from './components/notFound/notFound';
 //end components import
@@ -29,7 +30,7 @@ export const App = () => {
             <Switch>
                 <Route path = '/' exact><Redirect to="/chats" /></Route>
                 <Route path = '/chats'>
-                    <ChatList chats={chats} addChatToList={handleAddChat}/>
+                    <ChatListContainer />
                     <Switch>
                         <Route path = '/chats' exact><span className = "chat-not-found">Выбери чат</span></Route>
                         <Route path = '/chats/:id' exact component={ChatContainer}/>

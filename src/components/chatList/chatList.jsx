@@ -9,14 +9,15 @@ import './chatList.css'
 
 
 
-export  const ChatList = ({chats, addChatToList})=> { 
+export  const ChatList = ({chats, onCreateChat})=> { 
     const handleClick = (event) => {
         //alert("Выбран "+ event.target.innerText)
     }
     const handleAddChat = () =>{
-        let id = chats[chats.length -1].id +1;
+        let id = +chats[chats.length -1].id +1;
         if (!id) {id = +(new Date())}
-        addChatToList(id, "Chat"+id)
+        //console.log('id',id)
+        onCreateChat(id, "Chat"+id)
     }
 
     
@@ -35,5 +36,6 @@ export  const ChatList = ({chats, addChatToList})=> {
 )
 }
 ChatList.propTypes ={
-   chats: PropTypes.arrayOf(PropTypes.object).isRequired
+   chats: PropTypes.arrayOf(PropTypes.object).isRequired,
+   onCreateChat:PropTypes.func.isRequired
 }
