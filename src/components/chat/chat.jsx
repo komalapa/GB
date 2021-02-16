@@ -16,7 +16,6 @@ export const Chat = ({chatMessages, onSendMessage, onLike, onCreateChat}) => {
         {chatMessages && (chatMessages.length==0) && <span className="chat-not-found"> Чат пуст! Будь первым!</span> }
         {!chatMessages && <>
         <span className="chat-not-found"> Чат еще не создан</span>
-        <button onClick={onCreateChat} className="create-chat-btn">Создать чат</button>
         </>}
         {chatMessages && <ChatForm onSendMessage = {onSendMessage}/> }
     </main>
