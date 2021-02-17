@@ -8,11 +8,11 @@ import {Message} from '../Message/Message'
 //end components import
 import './chat.css';
 
-export const Chat = ({chatMessages, onSendMessage, onLike, onCreateChat}) => {
+export const Chat = ({chatMessages, onSendMessage, onLike, onCreateChat, onDeleteMessage, onEditMessage}) => {
    //console.log(chatMessages)
     return (
     <main>
-        {chatMessages  && (chatMessages.length>0) && <MessageList chatMessages={chatMessages} onSendMessage={onSendMessage} onLike = {onLike}/>}
+        {chatMessages  && (chatMessages.length>0) && <MessageList chatMessages={chatMessages} onSendMessage={onSendMessage} onDeleteMessage={onDeleteMessage} onLike = {onLike} onEditMessage={onEditMessage}/>}
         {chatMessages && (chatMessages.length==0) && <span className="chat-not-found"> Чат пуст! Будь первым!</span> }
         {!chatMessages && <>
         <span className="chat-not-found"> Чат еще не создан</span>
@@ -27,4 +27,7 @@ Chat.propTypes ={
     onSendMessage: PropTypes.func.isRequired,
     onCreateChat: PropTypes.func.isRequired,
     onLike: PropTypes.func.isRequired,
+    onDeleteMessage : PropTypes.func.isRequired,
+    onEditMessage : PropTypes.func.isRequired,
+
 }

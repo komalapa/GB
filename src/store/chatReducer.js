@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions'
 
-import {initChats,sendMessage, likeMessage, addChat} from './chatActions'
+import {initChats,sendMessage, likeMessage, deleteMessage, editMessage, addChat} from './chatActions'
 // export default (state={countedNumber:0}, action)=>{
 //     console.log(state, action)
 //     if (action.type == "COUNT"){
@@ -51,6 +51,36 @@ export default handleActions({
                 chat:[
                     ...state[id].chat,
                     {id:msgId, name, content, likes}
+                ]
+            }
+            
+        }
+    },
+    [deleteMessage]: (state, action)=>{
+        const {chatId, msgId} = action.payload
+        const newChat = state[chatId].chat.filter((item)=>(item.id != msgId));
+        //console.log (state)
+        //console.log (newChat)
+        return {
+            ...state,
+            [chatId]: {
+                ...state[chatId],
+                chat:[
+                    ...newChat
+                ]
+            }
+            
+        }
+    },
+    [editMessage]: (state, action)=>{
+        const {chatId, msgId, newContent} = action.payload
+        let newChat = state[chatId].chat.map(item => {if (item.id===msgId){item.content = newContent}; return item});
+        return {
+            ...state,
+            [chatId]: {
+                ...state[chatId],
+                chat:[
+                    ...newChat
                 ]
             }
             

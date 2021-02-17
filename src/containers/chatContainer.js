@@ -7,7 +7,7 @@ import {MessageList} from '../components/MessageList/MessageList'
 import {Chat} from '../components/chat/chat'
 import { render } from 'react-dom';
 //end components import
-import {sendMessage,likeMessage} from '../store/chatActions'
+import {sendMessage,likeMessage, deleteMessage, editMessage} from '../store/chatActions'
 
 ////Не используется т.к. робот теперь запускается при отправке сообщения, а не при обновлении компонента 
 // function usePrevious(value) {
@@ -151,7 +151,7 @@ const mapStateToProps = (store,props) =>{
 }
 
 const mapDispatchToProps = (dispatch) =>
-    bindActionCreators({sendMessage, likeMessage},dispatch)
+    bindActionCreators({sendMessage, likeMessage, deleteMessage, editMessage},dispatch)
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     const onSendMessage=(message) =>{
@@ -165,6 +165,14 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         const {id} = ownProps.match.params;
         dispatchProps.likeMessage(id, messageId, number)
     }
+    const onDeleteMessage=(msgId)=>{
+        const {id} = ownProps.match.params;
+        dispatchProps.deleteMessage(id, msgId)
+    }
+    const onEditMessage=(msgId, newContent)=>{
+        const {id} = ownProps.match.params;
+        dispatchProps.editMessage(id, msgId, newContent)
+    }
     return{
         ...stateProps,
         // ...dispatchProps,
@@ -172,6 +180,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         onSendMessage,
         onCreateChat,
         onLike,
+        onDeleteMessage,
+        onEditMessage,
     }
 }
 

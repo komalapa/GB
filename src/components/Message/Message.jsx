@@ -6,9 +6,22 @@ import {Counter} from '../counter/counter';
 //end components import
 import './message.css'
 
+
 const CONST_ROBOT_NAME="Hercule"
 //console.log(CONST_ROBOT_NAME)
-export const Message = ({name, content, likes, id,countLikes, isShowLikes}) => <li className={(name==CONST_ROBOT_NAME)?"message robot-message":"message"}><strong>{name}</strong> : {content}  {isShowLikes&& <Counter countLikes = {countLikes} likes = {likes}/> }  </li>
+export const Message = ({name, content, likes, id,countLikes, isShowLikes, onDeleteMessage, onEdit}) => {
+
+    const handleDeleteMessage=()=>{
+        onDeleteMessage(id)
+    }
+
+
+    return (<li className={(name==CONST_ROBOT_NAME)?"message robot-message":"message"}>
+        <strong>{name}</strong> : {content}  {isShowLikes&& <Counter countLikes = {countLikes} likes = {likes}/>  }  
+        <button onClick={handleDeleteMessage}>Удалить</button>
+        <button onClick={onEdit}>Изменить</button>
+    </li>)
+    }
 
 Message.propTypes ={
     name : PropTypes.string.isRequired,
@@ -16,6 +29,8 @@ Message.propTypes ={
     likes : PropTypes.number.isRequired,
     isShowLikes : PropTypes.bool.isRequired,
     countLikes : PropTypes.func.isRequired,
-    id: PropTypes.number
+    id: PropTypes.number,
+    onDeleteMessage : PropTypes.func.isRequired,
+    onEdit:PropTypes.func.isRequired,
 }
 
