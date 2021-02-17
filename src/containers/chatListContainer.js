@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -12,13 +10,12 @@ import {sendMessage,likeMessage,addChat} from '../store/chatActions'
 
 
 const mapStateToProps = (store,props) =>{
-    //console.log("!!!",store.chats);
-    const chats=[]
-    for (let item in store.chats){
-        //console.log(item)
-        chats.push({id: item, name:store.chats[item].name})
-    }
-    //console.log(chats)
+    // const chats=[]
+    // for (let item in store.chats){
+    //     //console.log(item)
+    //     chats.push({id: item, name:store.chats[item].name})
+    // }
+    const chats = Object.entries(store.chats).map(([id,{name}])=>({id, name}));
     return {
         chats  
     }

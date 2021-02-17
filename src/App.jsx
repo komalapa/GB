@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import {Provider} from 'react-redux'
+import {ConnectedRouter} from 'connected-react-router'
 //components import
 import ChatContainer from './containers/chatContainer'
 import {Header} from './components/header/header'
@@ -10,7 +11,7 @@ import { About } from './components/about/about';
 import { NotFound } from './components/notFound/notFound';
 //end components import
 //redux import
-import {initStore} from './store/index'
+import {initStore, history} from './store/index'
 import {initChats, sendMessage} from './store/chatActions'
 //end redux import
 
@@ -25,7 +26,8 @@ export const App = () => {
     };
     return(
     <Provider store={store}>
-        <BrowserRouter>
+        {/* <BrowserRouter> */}
+        <ConnectedRouter history={history}>    
             <Header/>
             <Switch>
                 <Route path = '/' exact><Redirect to="/chats" /></Route>
@@ -40,7 +42,8 @@ export const App = () => {
                 <Route path = '/contacts'>contacts page</Route>
                 <Route path = '/' component={NotFound}/>
             </Switch>
-        </BrowserRouter>
+        </ConnectedRouter>
+        {/* </BrowserRouter> */}
     </Provider>
     )
 }

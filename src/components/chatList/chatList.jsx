@@ -6,20 +6,28 @@ import {Link} from 'react-router-dom';
 
 //end components import
 import './chatList.css'
+import {useInput} from '../../hooks/hooksUseInput'
 
 
 
 export  const ChatList = ({chats, onCreateChat})=> { 
-    const handleClick = (event) => {
-        //alert("Выбран "+ event.target.innerText)
-    }
+    const [chatName, setChatName, setInitialChatName]=useInput('');
+
     const handleAddChat = () =>{
         let id = +chats[chats.length -1].id +1;
         if (!id) {id = +(new Date())}
+        const chatNameStr = chatName ? chatName : "Chat " + id;
         //console.log('id',id)
-        onCreateChat(id, "Chat"+id)
+        onCreateChat(id, chatNameStr);
+        setInitialChatName('');
     }
-
+    const handleKeyUp = (event) =>{
+        if (event.keyCode === 13) { // Enter
+            event.preventDefault();
+            handleAddChat();
+        }
+     
+    }
     
     return (
     <>
@@ -29,8 +37,21 @@ export  const ChatList = ({chats, onCreateChat})=> {
                     {item.name}
                 </Link>
                 </li>))}
+                <li  className="chat-list-item">
+                <input
+                    name = "chatname"
+                    placeholder="Новый чат"
+                    value = {chatName}
+                    onChange ={setChatName}
+                    // onChange ={(e) => setName(e.target.value)}
+                    className="chatlist-name-input"
+                    onKeyUp={handleKeyUp}
+                >
+                </input>
+                    <span className="add-chat" onClick={handleAddChat}>+</span>
+                </li>
         </ul>
-        <span className="add-chat" onClick={handleAddChat}>+</span>
+        
         
     </>
 )

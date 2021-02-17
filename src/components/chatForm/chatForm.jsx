@@ -4,13 +4,8 @@ import PropTypes from 'prop-types';
 //components import
 //end components import
 import './chatForm.css'
+import {useInput} from '../../hooks/hooksUseInput'
 
-function useInput(initialState) {
-    const [state, setState] = React.useState(initialState);
-
-    const setInput = (event) => setState(event.target.value);
-    return [state, setInput, setState] 
-}
 
 export const ChatForm = ({onSendMessage}) => {
     const [name, setName]=useInput('');
