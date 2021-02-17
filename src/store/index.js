@@ -6,6 +6,7 @@ import chatReducer from './chatReducer'
 
 //end import reducers
 import botMiddleware from './botMiddleware'
+import deleteMiddleware from './deleteMiddleware'
 
 export const history = createBrowserHistory();
 
@@ -28,6 +29,7 @@ export function initStore(preloadedState = undefined){
             applyMiddleware(
                 routerMiddleware(history),
                 botMiddleware,
+                deleteMiddleware,
             )
         ),
         

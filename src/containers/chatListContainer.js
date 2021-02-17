@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import {ChatList} from '../components/chatList/chatList'
 
 //end components import
-import {sendMessage,likeMessage,addChat} from '../store/chatActions'
+import {addChat, deleteChat} from '../store/chatActions'
 
 
 
@@ -22,7 +22,7 @@ const mapStateToProps = (store,props) =>{
 }
 
 const mapDispatchToProps = (dispatch) =>
-    bindActionCreators({sendMessage, likeMessage, addChat},dispatch)
+    bindActionCreators({ addChat, deleteChat},dispatch)
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     
@@ -31,12 +31,19 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         dispatchProps.addChat(id, name)
         
     }
+    const onDeleteChat=(id) =>{
+        
+        dispatchProps.deleteChat(id)
+        
+    }
+    
 
     return{
         ...stateProps,
         // ...dispatchProps,
         // ...ownProps,
         onCreateChat,
+        onDeleteChat,
     }
 }
 

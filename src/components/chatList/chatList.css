@@ -49,3 +49,7 @@
     border-bottom:1px solid grey;
     outline: lightgreen;
 }
+.chat-delete-btn:hover{
+    font-weight: 900;
+    cursor: pointer;
+}
