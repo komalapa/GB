@@ -53,3 +53,6 @@
     font-weight: 900;
     cursor: pointer;
 }
+.chat-list-item-highlighted{
+    box-shadow: 0 0 10px rgba(144,238,144,1); 
+}

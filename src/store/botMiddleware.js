@@ -8,7 +8,7 @@
 
 // }
 
-import {sendMessage, addChat} from './chatActions'
+import {sendMessage, addChat, chatHighlighter} from './chatActions'
 
 export const ROBOT_NAME = 'Hercule';
 const ROBOT_CONTENT = '! Use your little grey cells, mon ami!';
@@ -24,6 +24,10 @@ export default store => next => action =>
         if (name != ROBOT_NAME){
             clearTimeout(robotTimeoutIds[id]);
             robotTimeoutIds[id] = setTimeout(generateLocalRobotAnswer,2000,store,id,name);
+        } else {
+            //console.log("not Hercule")
+            store.dispatch(chatHighlighter(id));
+            setTimeout(store.dispatch, 1000, chatHighlighter(id))
         }
     }else if (action.type === addChat.toString()){
         const {name, chatId} = action.payload;

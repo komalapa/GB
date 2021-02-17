@@ -15,7 +15,7 @@ const mapStateToProps = (store,props) =>{
     //     //console.log(item)
     //     chats.push({id: item, name:store.chats[item].name})
     // }
-    const chats = Object.entries(store.chats).map(([id,{name}])=>({id, name}));
+    const chats = Object.entries(store.chats).map(([id,{name, isHighlighted}])=>({id, name, isHighlighted}));
     return {
         chats  
     }
@@ -36,7 +36,6 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         dispatchProps.deleteChat(id)
         
     }
-    
 
     return{
         ...stateProps,

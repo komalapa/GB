@@ -1,6 +1,6 @@
 import {createActions} from 'redux-actions';
 
-export const {initChats,sendMessage,deleteMessage, editMessage, likeMessage,addChat, deleteChat} = createActions({
+export const {initChats,sendMessage,deleteMessage, editMessage, likeMessage,addChat, deleteChat, chatHighlighter} = createActions({
     INIT_CHATS:()=>({}),
     SEND_MESSAGE:(id, name,content, likes)=>({id,name,content,likes}),
     DELETE_MESSAGE:(chatId, msgId)=>({chatId, msgId}),
@@ -8,5 +8,6 @@ export const {initChats,sendMessage,deleteMessage, editMessage, likeMessage,addC
     LIKE_MESSAGE:(chatId, messageId, number) =>({chatId, messageId, number}),
     ADD_CHAT:(chatId, name) => ({chatId, name}),
     DELETE_CHAT: (chatId)=>({chatId}),
+    CHAT_HIGHLIGHTER: (chatId)=>({chatId}),
     
 })
