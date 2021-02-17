@@ -17,9 +17,15 @@ export const Message = ({name, content, likes, id,countLikes, isShowLikes, onDel
 
 
     return (<li className={(name==CONST_ROBOT_NAME)?"message robot-message":"message"}>
-        <strong>{name}</strong> : {content}  {isShowLikes&& <Counter countLikes = {countLikes} likes = {likes}/>  }  
-        <button onClick={handleDeleteMessage}>Удалить</button>
-        <button onClick={onEdit}>Изменить</button>
+        <strong>{name}</strong> : {content}  
+        <hr/>
+        <div className="message-controls-wrp"> 
+            <div>
+                <button className="message-controls" onClick={handleDeleteMessage}>&#x1F5D1;</button>
+                <button className="message-controls" onClick={onEdit}>&#x1F58A;</button>
+            </div>
+            {isShowLikes&& <Counter countLikes = {countLikes} likes = {likes}/>  }
+        </div> 
     </li>)
     }
 

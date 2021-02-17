@@ -12,3 +12,16 @@
     background-color:lemonchiffon;
     align-self: flex-end;
 }
+.message-controls-wrp{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.message-controls{
+    background-color: transparent;
+    border:none;
+}
+.message-controls:hover{
+    font-weight: 900;
+    cursor: pointer;
+}
