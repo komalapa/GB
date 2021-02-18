@@ -18,21 +18,15 @@ import {initChats, sendMessage} from './store/chatActions'
 const store = initStore();
 store.dispatch(initChats());
 
-export const App = () => {
-    const [chats, setChats] = React.useState([{id:1,name:"Chat1"},{id:2,name:"Chat2"},{id:3,name:"Chat3"},{id:4,name:"Chat4"}])
-    const handleAddChat = (chatid, name) => {
-        setChats( [...chats, {id:chatid, name}])
-        console.log(chats)
-    };
-    return(
+export const App = () => 
     <Provider store={store}>
         {/* <BrowserRouter> */}
         <ConnectedRouter history={history}>    
             <Header/>
             <Switch>
                 <Route path = '/' exact><Redirect to="/chats" /></Route>
-                <Route path = '/chats'>
-                    <ChatListContainer />
+                <Route path = '/chats' >
+                    <ChatListContainer history={history}/>
                     <Switch>
                         <Route path = '/chats' exact><span className = "chat-not-found">Выбери чат</span></Route>
                         <Route path = '/chats/:id' exact component={ChatContainer}/>
@@ -45,8 +39,7 @@ export const App = () => {
         </ConnectedRouter>
         {/* </BrowserRouter> */}
     </Provider>
-    )
-}
+
     {/* <>
     <Header/>
     <ChatList />

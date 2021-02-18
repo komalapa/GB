@@ -142,7 +142,7 @@ const CONST_ROBOT_CONTENT = 'use your little grey cells mon ami';
 
 const mapStateToProps = (store,props) =>{
     const {id} = props.match.params;
-    //console.log("!!!",store.chats[id].chat);
+    //console.log('chatcont',props);
     const chat = id && store.chats && store.chats[id] ? store.chats[id] : undefined
     //console.log ("chat ", chat)
     return {

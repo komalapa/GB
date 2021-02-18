@@ -56,3 +56,7 @@
 .chat-list-item-highlighted{
     box-shadow: 0 0 10px rgba(144,238,144,1); 
 }
+.chat-list-item-selected{
+    border:1px solid lightgreen;
+    box-sizing: border-box;
+}

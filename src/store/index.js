@@ -7,7 +7,7 @@ import chatReducer from './chatReducer'
 //end import reducers
 import botMiddleware from './botMiddleware'
 import deleteMiddleware from './deleteMiddleware'
-
+import chatMiddleware from './chatMiddleware'
 export const history = createBrowserHistory();
 
 const reducer = combineReducers({
@@ -30,6 +30,7 @@ export function initStore(preloadedState = undefined){
                 routerMiddleware(history),
                 botMiddleware,
                 deleteMiddleware,
+                chatMiddleware,
             )
         ),
         

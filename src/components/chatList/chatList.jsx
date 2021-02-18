@@ -10,7 +10,7 @@ import {useInput} from '../../hooks/hooksUseInput'
 
 
 
-export  const ChatList = ({chats, onCreateChat, onDeleteChat, isHighlighted})=> { 
+export  const ChatList = ({chats, onCreateChat, onDeleteChat, isHighlighted, selectedChatId})=> { 
     const [chatName, setChatName, setInitialChatName]=useInput('');
     const handleAddChat = () =>{
         let id = +chats[chats.length -1].id +1;
@@ -36,7 +36,7 @@ export  const ChatList = ({chats, onCreateChat, onDeleteChat, isHighlighted})=> 
     return (
     <>
         <ul className="chat-list">
-            {chats.map( item => <li className={item.isHighlighted?"chat-list-item chat-list-item-highlighted":"chat-list-item"} key={item.id} >
+            {chats.map( item => <li className={"chat-list-item"+ (item.isHighlighted?" chat-list-item-highlighted":"" ) + (item.id == selectedChatId?" chat-list-item-selected":"")} key={item.id} >
                 <Link to = {'/chats/'+item.id}>
                     {item.name} 
                 </Link><span className="chat-delete-btn" onClick={handleDeleteChat(item.id)}>&#x1F5D1;</span>
@@ -65,4 +65,5 @@ ChatList.propTypes ={
    onCreateChat:PropTypes.func.isRequired,
    onDeleteChat:PropTypes.func.isRequired,
    isHighlighted: PropTypes.bool,
+   selectedChatId:PropTypes.number,
 }

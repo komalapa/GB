@@ -10,14 +10,12 @@ import {addChat, deleteChat} from '../store/chatActions'
 
 
 const mapStateToProps = (store,props) =>{
-    // const chats=[]
-    // for (let item in store.chats){
-    //     //console.log(item)
-    //     chats.push({id: item, name:store.chats[item].name})
-    // }
+    const path = props.history.location.pathname.split('/') 
+    const selectedChatId = +path[path.length-1]//Подсветка активного чата пока нерешаемо. Компонент не знает свой адрес. Вытаскивать из window не хорошо
     const chats = Object.entries(store.chats).map(([id,{name, isHighlighted}])=>({id, name, isHighlighted}));
     return {
-        chats  
+        chats,
+        selectedChatId,  
     }
 }
 
