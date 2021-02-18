@@ -30,7 +30,7 @@ export default handleActions({
         }
     },
     [failedLoading]: (state, action)=>{
-        //console.log ('initchats', state , action)
+        console.log ('fail', state , action)
         return {
             isLoadingChats: false,
             error:action.payload.msg,

@@ -33,9 +33,10 @@ export  const ChatList = ({isLoading,error, chats, onCreateChat, onDeleteChat, i
     }
 
     //console.log(error)
-    if (isLoading || error) 
+    if (isLoading || error){ 
         if (error){return <ErrorMsg message={error}></ErrorMsg>}
-    {return null}
+        return null
+    }
     return (
     <>
         <ul className="chat-list">

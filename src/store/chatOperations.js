@@ -6,11 +6,21 @@ export const fetchChat = () => async dispatch => {
         //console.log("fetch")
         
         const res = await fetch('/api/chats.json');
-        if (!res) {throw new Error("Ошибка загрузки чата")}
-        const result = await res.json();
-        dispatch(initChats(result));
+        if (!res.ok){
+            throw new Error("Ошибка загрузки чата")
+        } else {
+            const result = await res.json().then(result).catch((err)=>(null));
+            console.log(res,result)
+            if (!result){
+                throw new Error("Ошибка формата чата")
+            } else {
+                dispatch(initChats(result))
+            }
+            
+        }
         
     } catch(e) {
+        //console.log('eeee',e.message)
         dispatch(failedLoading(e.message))
     }
     // if (result) {
