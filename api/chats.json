@@ -1,0 +1,57 @@
+{
+    "1": {
+        "name": "Chat 1",
+        "chat": [{
+            "name": "Ivan",
+            "content": "hello",
+            "likes": 5,
+            "id": 0
+        }, {
+            "name": "Oleg",
+            "content": "hi",
+            "likes": 5,
+            "id": 1
+        }, {
+            "name": "Lena",
+            "content": "hello",
+            "likes": 5,
+            "id": 2
+        }],
+        "isHighlighted": false
+    },
+    "2": {
+        "name": "Chat 2",
+        "chat": [{
+            "name": "Ivan",
+            "content": "ok",
+            "likes": 5,
+            "id": 0
+        }, {
+            "name": "Oleg",
+            "content": "ok?",
+            "likes": 5,
+            "id": 1
+        }, {
+            "name": "Lena",
+            "content": "ok!",
+            "likes": 5,
+            "id": 2
+        }],
+        "isHighlighted": false
+    },
+    "3": {
+        "name": "Chat 3",
+        "chat": [{
+            "name": "Ivan",
+            "content": "=D",
+            "likes": 5,
+            "id": 0
+        }],
+        "isHighlighted": false
+    },
+    "4": {
+        "name": "Chat 4",
+        "chat": [],
+        "isHighlighted": false
+    }
+}

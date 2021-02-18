@@ -6,7 +6,7 @@ export default store => next => action =>
     
     if (action.type === deleteChat.toString()){
         const {chatId} = action.payload;
-        if (confirm(`Удить чат ${store.getState().chats[chatId].name}?`)){
+        if (confirm(`Удить чат ${store.getState().chats.chats[chatId].name}?`)){
             next(action)
         }     
     } else {

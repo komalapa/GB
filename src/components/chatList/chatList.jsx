@@ -7,10 +7,11 @@ import {Link} from 'react-router-dom';
 //end components import
 import './chatList.css'
 import {useInput} from '../../hooks/hooksUseInput'
+import { ErrorMsg } from '../errorMsg/errorMsg';
 
 
 
-export  const ChatList = ({chats, onCreateChat, onDeleteChat, isHighlighted, selectedChatId})=> { 
+export  const ChatList = ({isLoading,error, chats, onCreateChat, onDeleteChat, isHighlighted, selectedChatId})=> { 
     const [chatName, setChatName, setInitialChatName]=useInput('');
     const handleAddChat = () =>{
         let id = +chats[chats.length -1].id +1;
@@ -31,8 +32,10 @@ export  const ChatList = ({chats, onCreateChat, onDeleteChat, isHighlighted, sel
      
     }
 
-    //console.log(chats)
-    
+    //console.log(error)
+    if (isLoading || error) 
+        if (error){return <ErrorMsg message={error}></ErrorMsg>}
+    {return null}
     return (
     <>
         <ul className="chat-list">

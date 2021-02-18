@@ -13,11 +13,12 @@ import { NotFound } from './components/notFound/notFound';
 //redux import
 import {initStore, history} from './store/index'
 import {initChats, sendMessage} from './store/chatActions'
+import {fetchChat} from './store/chatOperations'
 //end redux import
 
 const store = initStore();
-store.dispatch(initChats());
-
+//store.dispatch(initChats());
+store.dispatch(fetchChat());
 export const App = () => 
     <Provider store={store}>
         {/* <BrowserRouter> */}

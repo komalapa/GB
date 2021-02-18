@@ -42,7 +42,7 @@ function generateLocalRobotAnswer(store,id, name){
 }
 
 function generateLocalRobotGreeting(store,id){
-    const chatName = store.getState().chats[id].name;
+    const chatName = store.getState().chats.chats[id].name;
     const msg = {name: ROBOT_NAME, content: `G'Day. Welcome to ${chatName}`,likes:5}
     store.dispatch(sendMessage(id, msg.name, msg.content, msg.likes))
 }

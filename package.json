@@ -27,12 +27,14 @@
     "webpack-serve": "^3.2.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "redux-actions": "^2.6.5"
+    "redux-actions": "^2.6.5",
+    "redux-thunk": "^2.3.0"
   }
 }
