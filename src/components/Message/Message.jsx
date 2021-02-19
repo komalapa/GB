@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //components import
 import {Counter} from '../counter/counter';
-//import {CONST_ROBOT_NAME} from '../../containers/chatContainer/chatContainer';
+import {ROBOT_NAME, ANFISA_NAME} from '../../store/botMiddleware';
 //end components import
 import './message.css'
 
 
-const CONST_ROBOT_NAME="Hercule"
+//const CONST_ROBOT_NAME="Hercule"
 //console.log(CONST_ROBOT_NAME)
 export const Message = ({name, content, likes, id,countLikes, isShowLikes, onDeleteMessage, onEdit}) => {
 
@@ -16,7 +16,7 @@ export const Message = ({name, content, likes, id,countLikes, isShowLikes, onDel
     }
 
 
-    return (<li className={(name==CONST_ROBOT_NAME)?"message robot-message":"message"}>
+    return (<li className={(name==ANFISA_NAME)?"message anfisa-message":((name==ROBOT_NAME)?"message robot-message":"message")}>
         <strong>{name}</strong> : {content}  
         <hr/>
         <div className="message-controls-wrp"> 

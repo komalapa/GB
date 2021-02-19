@@ -10,6 +10,10 @@
 }
 .robot-message{
     background-color:lemonchiffon;
+    align-self: center;
+}
+.anfisa-message{
+    background-color:PowderBlue;
     align-self: flex-end;
 }
 .message-controls-wrp{
