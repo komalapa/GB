@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LF - Контакты</title>
+    <!-- Подключение API yandex карт по инструкции https://tech.yandex.ru/maps/jsapi/doc/2.1/quick-start/index-docpage/ -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="logo"> 
+        <ul class="menu">
+            <li><a href="index.html">Главная</a></li><li><a href="#">Контакты</a></li><li class="catalog_menu"><a href="catalog.html">Каталог</a>
+                <ul>
+                    <li><a href="catalog/HP-hp.html">Гарри Поттер</a></li>
+                    <li><a href="catalog/HP-dm.html">Драко Малфой</a></li>
+                    <li><a href="catalog/AWL-a.html">Алиса в Стране Чудес</a></li>
+                </ul>
+            
+            </li>
+        </ul>
+        <hr>
+        
+        <h1>LEGO Figures</h1>
+    </header>
+    <h2>Напишите нам</h2>
+    <form id="message" action="#"> 
+        <fieldset id="message_fieldset">   
+            <legend>Ваше сообщение</legend>
+            <label>Ваше имя  <input id="name_input" type="text" placeholder="Ваше имя"></label><br>
+            <label>e-mail <input id="e-mail_input" type="email" placeholder="somebody@example.com"></label><br><br>
+            <label>Тема <br><input id="theme_input" type="text" size="50"></label><br>
+            <label>Сообщение <br>
+            <textarea id="message_textarea" rows="10"></textarea></label><br>
+            <label>Тип сообщения  
+                <select id="message_type_select">
+                    <option>Вопрос</option>
+                    <option>Благодарность</option>
+                    <option>Жалоба</option>
+                </select>
+            </label> <br><br>
+            <input type="submit" value="Сохранить"> <input type="reset">
+        </fieldset>
+    </form>
+    <div id="contacts">
+        <h2>Адрес</h2>
+        <p>Телефон: 8-123-456-78-90</p>
+        <p>e-mail: <a href="mailto:somebody@example.com">somebody@example.com</a></p>
+        <p>Адрес: Ветошный пер., 17, Москва</p>
+        <p>Нас невозможно найти :)</p>
+    </div>
+    <div id="map"></div>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init(){
+            // Создание карты.
+            var myMap = new ymaps.Map("map", {
+                // Координаты центра карты.
+                // Порядок по умолчанию: «широта, долгота».
+                center: [55.75473215, 37.62299422],
+                // Уровень масштабирования. Допустимые значения:
+                // от 0 (весь мир) до 19.
+                zoom: 16
+
+            });
+            myMap.balloon.open(myMap.getCenter(), {
+                    contentHeader: 'LEGO Figures',
+                    contentBody: 'Мы здесь'
+                });
+            myMap.hint.open([55.75473215, 37.62299422]);
+            
+        }
+    </script>
+    
+    <footer>
+        <hr>
+        <p>Все права защищены &copy;</p>
+    </footer>
+
+    
+</body>
+</html>
