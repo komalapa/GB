@@ -28,7 +28,7 @@ export const fetchChat = () => async dispatch => {
 }
 
 export const sendMessageToAnfisa = (botName, chatId, content) => async dispatch => {
-    console.log(botName)
+    //console.log(botName)
     const formData = new FormData;
     formData.append('query', JSON.stringify({
         ask: content,
@@ -40,7 +40,7 @@ export const sendMessageToAnfisa = (botName, chatId, content) => async dispatch 
             body: formData,
         });
         const result = await res.json();
-        console.log(result.aiml)
+        //console.log(result.aiml)
         dispatch(sendMessage(chatId, botName,result.aiml, 5))
     } catch(e) {
         

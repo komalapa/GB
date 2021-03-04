@@ -1,0 +1,17 @@
+{
+    "short_name": "chatik",
+    "name": "GB react chat",
+    "theme_color": "#fff",
+    "icons": [
+      {
+        "src":"/manifest/Chat_32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#fff",
+    "orientation": "any",
+    "display": "standalone"
+   }
+   

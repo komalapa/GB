@@ -1,1 +1,15 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>chatik</title><script defer="defer" src="index.js"></script></head><body></body></html>
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>chatik</title><base href="/"><script src="index.js"></script><script defer="defer" src="index.js"></script></head><body><div id="root"></div></body><script>if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/serviceWorker/serviceWorker.js').then(function(registration) {
+                // Registration was successful
+                console.log('ServiceWorker успешно зарегистрирован со сферой действия: ', registration.scope);
+                }, function(err) {
+                // registration failed :(
+                console.log('ServiceWorker не удалось зарегистрировать: ', err);
+            }).catch(function(err) {
+                console.log(err)
+            });
+        });
+    } else {
+        console.log('ServiceWorker не поддерживается');
+    }</script></html>
