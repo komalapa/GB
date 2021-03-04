@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script defer src="script/script.js"></script> -->
+    <script defer src="script/vueapp.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+    <title>Shoppy</title>
+</head>
+
+<body>
+    <div class="wrp" id="shoppy-app">
+        <!-- <div class="error-not-connected" v-if="!goodsList.goods.length">Внимание! Отсутствует соединение с сервером</div> -->
+        <connection-error v-bind:goods-list="goodsList">Внимание! Отсутствует соединение с сервером</connection-error>
+        <header>
+            <a href="#" class="logo">Shoppy</a>
+            <search-form @submit.prevent="filter()" v-model="searchLine"></search-form>
+        </header>
+        <nav class="menu">
+            <ul class="menu-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sale</a></li>
+                <li><a href="#">Handbags</a></li>
+                <li><a href="#">Wallets</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Mens Store</a></li>
+                <li><a href="#">Shoes</a></li>
+                <li><a href="#">Vintage</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+        </nav>
+        <main>
+            <cart-section v-bind:cart="cart" v-bind:is-visible-cart="isVisibleCart"></cart-section>
+            
+            <goods-section v-bind:cart="cart" v-bind:filtered-goods="filteredGoods"></goods-section>
+
+
+        </main>
+        <footer>
+
+            <section class="copyrights">
+                <p>Copyright &copy; 2013 <a href="http://psd-html-css.ru/templates/psd-shablon-internet-magazina"> Css
+                        Author</a></p>
+            </section>
+        </footer>
+    </div>
+</body>
+
+</html>
